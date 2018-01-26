@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
   email: {
     type: String,
   },
-  hash: String,
+  password_hash: String,
 });
 
 UserSchema.methods.validPassword = (password, hash, callback) => {
