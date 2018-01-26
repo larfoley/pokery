@@ -39,7 +39,7 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.set('view engine', 'ejs')
-app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
+// app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -48,13 +48,17 @@ app.use(session({ secret: "foobar" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/api/register', register)
-app.get('/api/login', login)
-app.get('/api/logout', logout)
-app.get('/api/profile', profile)
+app.use('/api/register', register)
+app.use('/api/login', login)
+app.use('/api/logout', logout)
+app.use('/api/profile', profile)
 
 app.get('*', (req, res, next) => {
-  res.sendFile(path.join(__dirname, 'client/build/index.html'))
+  if (process.env.ENVIROMENT === "production") {
+    res.sendFile(path.join(__dirname, 'client/build/index.html'))
+  } else {
+    res.status(404).send({ error: 'resource not found' })
+  }
 });
 
 
