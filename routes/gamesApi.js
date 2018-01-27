@@ -130,26 +130,25 @@ const gr =  {
     ]
 }
 
-const output = [gr, fitz, vg];
+const places = [gr, fitz, vg];
 
 router.get('/', (req, res) => {
 	const { day } = req.query;
-	console.log(day);
 	if(day === undefined) {
-		res.json(output);
+		res.json(places);
 	} else {
-        const arr = [];
+        const availableGames = [];
         
-		const map1 = output.map(x => {
-			x.games.map(y => {
-				if(y.day === day) {
-					y.name = x.name;
-					arr.push(y)
+		const map1 = places.map(place => {
+			place.games.map(placeGame => {
+				if(placeGame.day === day) {
+					placeGame.name = place.name;
+					availableGames.push(placeGame)
 				}
 				
 			})
         })
-		res.json(arr);
+		res.json(availableGames);
 	}
 });
 
