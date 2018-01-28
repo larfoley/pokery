@@ -2,9 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyleAnchor = styled.a`
-  padding: 2em;
+  padding: .6em 1.3em;
   display: inline-block;
-  background-color: black;
+  background-color: #55efc4;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
 `
 
 const Button = (props) => (

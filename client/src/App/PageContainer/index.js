@@ -4,7 +4,10 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   padding: 2em;
   position: relative;
-  margin-left: 300px;
+  
+  @media screen and (min-width: 700px) {
+    margin-left: 300px;
+  }
 `
 
 const PageContainer = (props) => (

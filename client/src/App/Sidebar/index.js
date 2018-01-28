@@ -10,7 +10,12 @@ const Wrapper = styled.div`
   width: 300px;
   top: 0;
   bottom: 0;
-  margin-top: 50px;
+  margin-top: 66px;
+  margin-left: -300px;
+
+  @media screen and (min-width: 700px) {
+    margin-left: 0;
+  }
 `
 
 const Sidebar = (props) => (
