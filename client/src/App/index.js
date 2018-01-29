@@ -12,6 +12,8 @@ import Header from './Header/index'
 import Footer from './Footer/index'
 import Sidebar from './Sidebar/index'
 import PageContainer from './PageContainer/index'
+import Banner from '../shared/Banner/index'
+import Box from '../shared/Box/index'
 
 // Views
 import Home from '../views/Home/index'
@@ -31,8 +33,11 @@ class App extends Component {
         <ThemeProvider theme={mainTheme}>
           <div>
             <Header />
+            
               <Sidebar />
             <PageContainer>
+            <Banner />
+            <Box />
               <Route exact path="/" component={Home}/>
               <Route path="/about" component={About}/>
               {/* Main Content Goes here */}
