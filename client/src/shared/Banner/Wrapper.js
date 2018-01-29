@@ -2,11 +2,10 @@ import React from 'react';
 import styled from 'styled-components'
 
 const Wrapper = styled.section`
-    height: 100%;
-    width: 75%;
-    position: absolute;
-    right: 0;
-    
+    background-color: black;
+    padding: 2em;
+    color: white;
+    margin-bottom: 2em;
 `;
 export default props => {
     return(

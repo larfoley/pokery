@@ -1,12 +1,12 @@
 import React from 'react'
-
+//Components
 import Wrapper from './Wrapper'
 import Title from './Title'
 
-const Banner = (props) =>{
+const Banner = (props) => {
     return(
     <Wrapper>
-        <Title>Find a Live Game</Title>
+        <Title name="Page Title"/>
     </Wrapper>
     );
 }
