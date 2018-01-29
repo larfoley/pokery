@@ -4,11 +4,14 @@ import { injectGlobal } from 'styled-components'
 import 'normalize.css'
 import styles from './styles/index.js'
 import App from './App/index.js'
-// import registerServiceWorker from './registerServiceWorker'
+import registerServiceWorker from './registerServiceWorker'
 
 injectGlobal`
   ${styles}
 `
 
 ReactDOM.render(<App />, document.getElementById('root'))
-// registerServiceWorker();
+
+if (process.env.ENVOIREMENT === "production") {
+  registerServiceWorker();
+}
