@@ -1,14 +1,11 @@
-import React from 'react'
-//Components
-import Wrapper from './Wrapper'
-import Title from './Title'
+import React from 'react';
+import styled from 'styled-components'
 
-const Banner = (props) => {
-    return(
-    <Wrapper>
-        <Title name="Page Title"/>
-    </Wrapper>
-    );
-}
+const Banner = styled.div`
+    background-color: black;
+    padding: 2em;
+    color: white;
+    margin-bottom: 2em;
+`;
 
-export default Banner
+export default props => <Banner>{props.children}</Banner>
