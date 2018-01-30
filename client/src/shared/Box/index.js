@@ -6,12 +6,5 @@ const Box = styled.div`
    padding: 1em;
    margin-bottom: 1em;
 `;
-export default props => {
-    return(
-        <div>
-            <Box>Hi</Box>
-            <Box>Hi</Box>
-            <Box>Hi</Box>
-        </div>
-    );
-}
+
+export default props => <Box>{props.children}</Box>
