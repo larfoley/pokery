@@ -2,13 +2,11 @@ var express = require('express');
 var router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-const gr = require('./green-room-data');
+const gr = require('./data/green-room');
 
-app.use(bodyParser.json());
+const tournamentsGames = [gr];
 
-const tournamentsGames = [gr];	
-
-app.get('/api', (req, res) => {
+router.get('/api', (req, res) => {
 	const { day } = req.query;
 	let x = request('http://en.clubpoker.net/poker-tournaments',  (error, response, html) => {
 	if (!error && response.statusCode == 200) {
@@ -17,7 +15,7 @@ app.get('/api', (req, res) => {
 		div.map((i, element) => {
 			const tournamentsGame = {};
 			tournamentsGame.day =  $(element).children('.tournamentItemDate').children('.dateDay').text().trim()
-			
+
 			if (tournamentsGame.day !== "") {
 				tournamentsGame.date = $(element).children('.tournamentItemDate').children('.dateInfos').children('.date').text().trim()
 				tournamentsGame.time = $(element).children('.tournamentItemDate').children('.dateInfos').children('.hour').text().trim()

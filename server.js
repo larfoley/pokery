@@ -18,7 +18,7 @@ var register = require('./routes/register')
 var login = require('./routes/login')
 var logout = require('./routes/logout')
 var profile = require('./routes/profile')
-var gamesApi = require('./routes/gamesApi')
+var livePokerTimetables = require('./routes/live-poker-timetables')
 
 
 db.on('error', () => {
@@ -50,7 +50,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api/register', register)
-app.use('/api/gamesApi', gamesApi)
+app.use('/api/live-poker-timetables', livePokerTimetables)
 app.use('/api/login', login)
 app.use('/api/logout', logout)
 app.use('/api/profile', profile)
