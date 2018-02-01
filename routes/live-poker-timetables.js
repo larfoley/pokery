@@ -2,47 +2,55 @@ var express = require('express');
 var router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-const gr = require('./data/green-room');
+const greenRoom = require('./data/green-room');
 
-const tournamentsGames = [gr];
+const tournamentsGames = [greenRoom];
 
 router.get('/api', (req, res) => {
 	const { day } = req.query;
-	let x = request('http://en.clubpoker.net/poker-tournaments',  (error, response, html) => {
-	if (!error && response.statusCode == 200) {
-		var $ = cheerio.load(html);
-		const div = $('#ipsLayout_mainArea').children('.tournamentItem');
-		div.map((i, element) => {
-			const tournamentsGame = {};
-			tournamentsGame.day =  $(element).children('.tournamentItemDate').children('.dateDay').text().trim()
+	request('http://en.clubpoker.net/poker-tournaments', (error, response, html) => {
 
-			if (tournamentsGame.day !== "") {
-				tournamentsGame.date = $(element).children('.tournamentItemDate').children('.dateInfos').children('.date').text().trim()
-				tournamentsGame.time = $(element).children('.tournamentItemDate').children('.dateInfos').children('.hour').text().trim()
-				tournamentsGame.buyIn = $(element).children('.nextOccurrenceResult').children('.buyin').text().trim()
-				tournamentsGame.tournamentName = $(element).children('.nextOccurrenceResult').children('.tournamentTitle').text().trim()
-				if($(element).children('.nextOccurrenceResult').children('div').children('span').hasClass('tournamentGaranteed')) {
-					tournamentsGame.prize = $(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed').text().trim()
-					tournamentsGame.type = $(element).children('.nextOccurrenceResult').children('.tournamentTitle').next().next().text().trim()
-					tournamentsGame.address = $(element).children('.nextOccurrenceResult').children('.tournamentTitle').next().next().next().text().trim()
-				} else {
-					tournamentsGame.type = $(element).children('.nextOccurrenceResult').children('.tournamentTitle').next().text().trim()
-					tournamentsGame.address = $(element).children('.nextOccurrenceResult').children('.tournamentTitle').next().next().text().trim()
+		const tournamentItemDate = itemDate =>
+			itemDate.children('.tournamentItemDate').children('.dateInfos');
+
+		const formatText = text =>
+			text.text().trim()
+		
+		const tourneyTitle = title =>
+			title.children('.nextOccurrenceResult').children('.tournamentTitle')
+
+		if (!error && response.statusCode == 200) {
+			const $ = cheerio.load(html);
+			const div = $('#ipsLayout_mainArea').children('.tournamentItem');
+			div.map((i, element) => {
+				const tournamentsGame = {};
+				tournamentsGame.day = formatText($(element).children('.tournamentItemDate').children('.dateDay'))
+				if (tournamentsGame.day !== "") {
+					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
+					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
+					tournamentsGame.buyIn = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
+					tournamentsGame.tournamentName = formatText(tourneyTitle($(element)))
+
+					if ($(element).children('.nextOccurrenceResult').children('div').children('span').hasClass('tournamentGaranteed')) {
+						tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
+						tournamentsGame.type = formatText(tourneyTitle($(element)).next().next())
+						tournamentsGame.address = formatText(tourneyTitle($(element)).next().next().next())
+					} else {
+						tournamentsGame.type = formatText(tourneyTitle($(element).next()))
+						tournamentsGame.address = formatText(tourneyTitle($(element).next().next()))
+					}
+					tournamentsGames.push(tournamentsGame);
 				}
-				tournamentsGames.push(tournamentsGame);
-			}
-		});
-	}
-	if(day === undefined) {
-		res.json(tournamentsGames);
-	} else {
-		const arr = [];
-		const map1 = tournamentsGames.map(x => {
-			if(x.day === day) {
-				arr.push(x)
-			}
-		})
-		res.json(arr);
+			});
+		}
+		if (day === undefined) {
+			res.json(tournamentsGames);
+		} else {
+			let filteredTournamentsGames = [];
+			tournamentsGames.map(game => {
+					game.day === day ? filteredTournamentsGames.push(game) : false
+			})
+			res.json(filteredTournamentsGames);
 		}
 	})
 });
