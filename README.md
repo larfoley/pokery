@@ -36,3 +36,105 @@ After you have confimed that you have commited everything you are now ready to p
 
 ## Github Cheatsheet
 https://education.github.com/git-cheat-sheet-education.pdf
+
+## React
+
+React is a JavaScript library for building user interfaces. In react all of our user interface elemnets are called components. A react component is simply a javascript function that return a HTML object. 
+
+### Creating Components
+
+The majority of our components will live inside `client/src/shared` directory.
+
+When creating a component first create a folder by naming it after the component you are creating and then inside that folder create an index.js file. Also make sure to capitilize the first letter of the folder when nameing you component and use camel case.
+
+```javascript
+import React from 'react'
+
+var PageHeader = function(props) => {
+  return (
+    <header>
+      <h1>Hello World</h1>
+    </header>
+  )
+}
+
+
+// The code below is the exact same as the code above except that we are using some of the features of the latest version of JavaScript (ES6).
+
+const PageHeader = props => (
+  <header>
+    <h1>Hello World</h1>
+  </header>
+)
+
+```
+
+### Calling a Component
+
+```javascript
+import MyComponent from 'shared/MyComponent/index.js'
+
+<MyComponent />
+
+// We can also call our componets using the following syntax
+
+<MyComponent></MyComponent>
+
+```
+
+### JSX
+
+If you noctice that are javascript functions are returning what looks like HTML. This is actually a JSX string which is currently not supported by browsers but because we our using the babel compliler our JSX code get coverted to a string of html.
+
+The main advantage of JSX is that it allows us to inject javascript expressions inside or our JSX strings by using curly braces.
+
+
+For example the following jsx `<p>{1 + 1}</p>` will be compiled to `<p>2</p>`
+
+### Props
+
+Every react componets can have 0 or more props. Any valid javascript type can be passed as a value for a prop.
+
+#### Passing props to a component
+
+```javascript
+
+// Here we are creating a propertie called name and giving it a value of bob which is of type String
+
+<User name="bob" />
+
+// To pass in values that are not of type String we must you wrap are value in curly braces like so
+
+<User name="bob" age={20} favMovies={ ["foo", "bar"] } />
+
+```
+
+#### Accesing Props From Within Our Component
+
+When our component get executed, the react library will create an object with all of the props specified and pass it into the componnet through the props paramater.
+
+```javascript
+
+const User = props => (
+  <table>
+    <tbody>
+      <tr>
+        <th> name: </th>
+        <td> { props.name }
+      </tr>
+      <tr>
+        <th> age: </th>
+        <td> { props.age }
+      </tr>
+    </tbody>
+  </table>
+)
+
+```
+
+
+
+
+
+
+
