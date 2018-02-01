@@ -6,8 +6,9 @@ const greenRoom = require('./data/green-room');
 
 const tournamentsGames = [greenRoom];
 
-router.get('/api', (req, res) => {
-	const { day } = req.query;
+router.get('/', (req, res) => {
+	const dayToFilterBy = req.query.day;
+
 	request('http://en.clubpoker.net/poker-tournaments', (error, response, html) => {
 
 		const tournamentItemDate = itemDate =>
@@ -15,7 +16,7 @@ router.get('/api', (req, res) => {
 
 		const formatText = text =>
 			text.text().trim()
-		
+
 		const tourneyTitle = title =>
 			title.children('.nextOccurrenceResult').children('.tournamentTitle')
 
@@ -43,15 +44,13 @@ router.get('/api', (req, res) => {
 				}
 			});
 		}
-		if (day === undefined) {
-			res.json(tournamentsGames);
+
+		if (dayToFilterBy) {
+			res.json(tournamentsGames.filter(game => game.day === dayToFilterBy))
 		} else {
-			let filteredTournamentsGames = [];
-			tournamentsGames.map(game => {
-					game.day === day ? filteredTournamentsGames.push(game) : false
-			})
-			res.json(filteredTournamentsGames);
+			res.json(tournamentsGames)
 		}
+
 	})
 });
 
