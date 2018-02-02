@@ -10,3 +10,6 @@ const pokerGameSchema = mongoose.Schema({
 		required: true
 	}
 });
+
+const GameName = module.exports = mongoose.model('games', pokerGameSchema);
+
