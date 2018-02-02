@@ -28,13 +28,15 @@ router.get('/', (req, res) => {
 				tournamentsGame.day = formatText($(element).children('.tournamentItemDate').children('.dateDay'))
 				tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
 
-
-
 				if (tournamentsGame.day !== "" && tournamentsGame.prize !== "") {
-					
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
 					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
-					tournamentsGame.buyIn = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
+					let x = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
+					x = x.split(" ")
+					console.log(x)
+					tournamentsGame.currency = x[1]
+					tournamentsGame.buyIn = x[0]
+
 					tournamentsGame.tournamentName = formatText(tourneyTitle($(element)))
 
 					if ($(element).children('.nextOccurrenceResult').children('div').children('span').hasClass('tournamentGaranteed')) {
@@ -45,13 +47,15 @@ router.get('/', (req, res) => {
 						tournamentsGame.type = formatText(tourneyTitle($(element).next()))
 						tournamentsGame.address = formatText(tourneyTitle($(element).next().next()))
 					}
-					console.log(tournamentsGame)
 					tournamentsGames.push(tournamentsGame);
 				} else if (tournamentsGame.day !== "") {
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
 					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
-					tournamentsGame.buyIn = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
-					tournamentsGame.tournamentName = formatText(tourneyTitle($(element)))
+					let x = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
+					x = x.split(" ")
+					console.log(x)
+					tournamentsGame.currency = x[1]
+					tournamentsGame.buyIn = x[0]
 
 					if ($(element).children('.nextOccurrenceResult').children('div').children('span').hasClass('tournamentGaranteed')) {
 						tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
