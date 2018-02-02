@@ -26,7 +26,12 @@ router.get('/', (req, res) => {
 			div.map((i, element) => {
 				const tournamentsGame = {};
 				tournamentsGame.day = formatText($(element).children('.tournamentItemDate').children('.dateDay'))
-				if (tournamentsGame.day !== "") {
+				tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
+
+				
+
+				if (tournamentsGame.day !== "" && tournamentsGame.prize !== "") {
+					
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
 					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
 					tournamentsGame.buyIn = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
@@ -40,6 +45,7 @@ router.get('/', (req, res) => {
 						tournamentsGame.type = formatText(tourneyTitle($(element).next()))
 						tournamentsGame.address = formatText(tourneyTitle($(element).next().next()))
 					}
+					console.log(tournamentsGame)
 					tournamentsGames.push(tournamentsGame);
 				}
 			});
