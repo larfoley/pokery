@@ -20,3 +20,5 @@ module.exports.getGameNameById = (id, callback) => GameName.findById(id, callbac
 module.exports.addGameName = (gameName, callback) => GameName.create(gameName, callback);
 
 module.exports.updateGameName = (id, name, callback) => GameName.findOneAndUpdate({_id: id}, {name}, {}, callback);
+
+module.exports.removeGameName = (id, callback) => GameName.remove({_id: id}, callback);
