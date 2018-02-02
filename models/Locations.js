@@ -14,3 +14,6 @@ const pokerGameSchema = mongoose.Schema({
 const GameName = module.exports = mongoose.model('games', pokerGameSchema);
 
 module.exports.getGameNames = (userId,callback) => GameName.find({userId},callback);
+
+module.exports.getGameNameById = (id, callback) => GameName.findById(id, callback);
+
