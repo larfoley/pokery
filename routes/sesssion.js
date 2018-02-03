@@ -24,3 +24,14 @@ router.get('/api/session/:id/:_id', (req, res) => {
 		res.json(session);
 	});
 });
+
+router.post('/api/session/:id', (req, res) => {
+	const session = req.body;
+	session.userId = req.params.id
+	Session.addSession(session, (err, session) => {
+		if (err) {
+			throw err;
+		}
+		res.json(session);
+	});
+});
