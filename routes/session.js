@@ -7,7 +7,7 @@ const Session = require('../models/Session');
 const keys = require('../config');
 mongoose.connect(keys.db);
 
-router.get('/api/session/:id', (req, res) => {
+router.get('/:id', (req, res) => {
 	Session.getSessions(req.params.id, (err, session) => {
 		if (err) {
 			throw err;
