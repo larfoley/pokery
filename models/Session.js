@@ -18,3 +18,5 @@ const pokerSessionSchema = mongoose.Schema({
 const Session = module.exports = mongoose.model('sessions', pokerSessionSchema);
 
 module.exports.getSessions = (userId,callback) => Session.find({userId},callback);
+
+module.exports.getSessionById = (id, callback) => Session.findById(id, callback);
