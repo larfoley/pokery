@@ -25,8 +25,8 @@ module.exports.getLocationss = (userId, callback) => Locations.find({ userId }, 
 
 module.exports.getLocationsById = (id, callback) => Locations.findById(id, callback);
 
-module.exports.addLocations = (gameName, callback) => Locations.create(gameName, callback);
+module.exports.addLocations = (location, callback) => Locations.create(location, callback);
 
-module.exports.updateLocations = (id, name, callback) => Locations.findOneAndUpdate({ _id: id }, { name }, {}, callback);
+module.exports.updateLocations = (id, pokerSessionSchema, callback) => Locations.findOneAndUpdate({ _id: id },  pokerSessionSchema, {}, callback);
 
 module.exports.removeLocations = (id, callback) => Locations.remove({ _id: id }, callback);
