@@ -47,3 +47,13 @@ router.put('/api/session/:id/:_id', (req, res) => {
 		res.json(session);
 	});
 });
+
+router.delete('/api/session/:id/:_id', (req, res) => {
+	const id = req.params._id;
+	Session.removeSession(id, (err, session) => {
+		if (err) {
+			throw err;
+		}
+		res.json(session);
+	});
+});
