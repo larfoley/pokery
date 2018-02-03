@@ -4,7 +4,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 const Session = require('../models/Session');
-const keys = require('../keys');
+const keys = require('../config');
 mongoose.connect(keys.db);
 
 router.get('/api/session/:id', (req, res) => {

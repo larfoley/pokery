@@ -6,12 +6,12 @@ const pokerSessionSchema = mongoose.Schema({
 		required: true
   },
   selectGame:{
-		type: String,
-		required: true
+    type: String,
+    required: true
   },
   earnings:{
-		type: String,
-		required: true
+    type: String,
+    required: true
 	 }
 });
 

@@ -20,6 +20,7 @@ var logout = require('./routes/logout')
 var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
 var locations = require('./routes/locations')
+var locations = require('./routes/session')
 
 
 db.on('error', () => {
