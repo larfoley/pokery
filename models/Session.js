@@ -22,3 +22,5 @@ module.exports.getSessions = (userId,callback) => Session.find({userId},callback
 module.exports.getSessionById = (id, callback) => Session.findById(id, callback);
 
 module.exports.addSession = (session, callback) => Session.create(session, callback);
+
+module.exports.updateSession = (id, pokerSessionSchema, callback) => Session.findOneAndUpdate({_id: id}, pokerSessionSchema, {}, callback);
