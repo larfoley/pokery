@@ -20,7 +20,7 @@ var logout = require('./routes/logout')
 var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
 var locations = require('./routes/locations')
-var session = require('./routes/session')
+var sessions = require('./routes/session')
 
 
 db.on('error', () => {
@@ -57,7 +57,7 @@ app.use('/api/login', login)
 app.use('/api/logout', logout)
 app.use('/api/profile', profile)
 app.use('/api/locations', locations)
-app.use('/api/session', session)
+app.use('/api/session', sessions)
 
 
 app.get('*', (req, res, next) => {
