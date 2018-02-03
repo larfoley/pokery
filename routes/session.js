@@ -25,7 +25,7 @@ router.get('/:id/:_id', (req, res) => {
 	});
 });
 
-router.post('/api/session/:id', (req, res) => {
+router.post('/:id', (req, res) => {
 	const session = req.body;
 	session.userId = req.params.id
 	Session.addSession(session, (err, session) => {
