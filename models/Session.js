@@ -14,3 +14,5 @@ const pokerSessionSchema = mongoose.Schema({
 		required: true
 	 }
 });
+
+const Session = module.exports = mongoose.model('sessions', pokerSessionSchema);
