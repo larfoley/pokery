@@ -27,19 +27,19 @@ router.get('/:id/:_id', (req, res) => {
 });
 
 router.post('/:id', (req, res) => {
-	const gameName = req.body;
-	gameName.userId = req.params.id
-	Location.addLocation(gameName, (err, gameName) => {
+	const location = req.body;
+	location.userId = req.params.id
+	Location.addLocation(location, (err, location) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gameName);
+		res.json(location);
 	});
 });
 
 router.put('/:id/:_id', (req, res) => {
 	const id = req.params._id;
-	const gameName = req.body.name;
+	const gameName = req.body;
 	Location.updateLocation(id, gameName, (err, gameName) => {
 		if (err) {
 			throw err;
