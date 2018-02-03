@@ -37,6 +37,16 @@ router.post('/api/gamenames/:id', (req, res) => {
 	});
 });
 
+router.put('/api/gamenames/:id/:_id', (req, res) => {
+	const id = req.params._id;
+	const gamename = req.body.name;
+	GameName.updateGameName(id, gamename, (err, gamename) => {
+		if (err) {
+			throw err;
+		}
+		res.json(gamename);
+	});
+});
 
 
 module.exports = router;
