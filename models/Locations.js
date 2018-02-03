@@ -19,14 +19,14 @@ const pokerLocationSchema = mongoose.Schema({
   }
 });
 
-const Locations = module.exports = mongoose.model('games', pokerLocationSchema);
+const Location = module.exports = mongoose.model('games', pokerLocationSchema);
 
-module.exports.getLocationss = (userId, callback) => Locations.find({ userId }, callback);
+module.exports.getLocations = (userId, callback) => Location.find({ userId }, callback);
 
-module.exports.getLocationsById = (id, callback) => Locations.findById(id, callback);
+module.exports.getLocationById = (id, callback) => Location.findById(id, callback);
 
-module.exports.addLocations = (location, callback) => Locations.create(location, callback);
+module.exports.addLocation = (location, callback) => Location.create(location, callback);
 
-module.exports.updateLocations = (id, pokerSessionSchema, callback) => Locations.findOneAndUpdate({ _id: id },  pokerSessionSchema, {}, callback);
+module.exports.updateLocation = (id, pokerSessionSchema, callback) => Location.findOneAndUpdate({ _id: id },  pokerSessionSchema, {}, callback);
 
-module.exports.removeLocations = (id, callback) => Locations.remove({ _id: id }, callback);
+module.exports.removeLocation = (id, callback) => Location.remove({ _id: id }, callback);

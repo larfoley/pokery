@@ -3,33 +3,33 @@ const router = express.Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 
-const GameName = require('../models/Locations');
+const Location = require('../models/Locations');
 const keys = require('../config');
 mongoose.connect(keys.db);
 
 
 router.get('/:id', (req, res) => {
-	GameName.getGameNames(req.params.id, (err, gameNames) => {
+	Location.getLocations(req.params.id, (err, location) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gameNames);
+		res.json(location);
 	});
 })
 
 router.get('/:id/:_id', (req, res) => {
-	GameName.getGameNameById(req.params._id, (err, gamename) => {
+	Location.getLocationById(req.params._id, (err, location) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gameName);
+		res.json(location);
 	});
 });
 
 router.post('/:id', (req, res) => {
 	const gameName = req.body;
 	gameName.userId = req.params.id
-	GameName.addGameName(gameName, (err, gameName) => {
+	Location.addLocation(gameName, (err, gameName) => {
 		if (err) {
 			throw err;
 		}
@@ -40,7 +40,7 @@ router.post('/:id', (req, res) => {
 router.put('/:id/:_id', (req, res) => {
 	const id = req.params._id;
 	const gameName = req.body.name;
-	GameName.updateGameName(id, gameName, (err, gameName) => {
+	Location.updateLocation(id, gameName, (err, gameName) => {
 		if (err) {
 			throw err;
 		}
@@ -50,7 +50,7 @@ router.put('/:id/:_id', (req, res) => {
 
 router.delete('/:id/:_id', (req, res) => {
 	const id = req.params._id;
-	GameName.removeGameName(id, (err, gameName) => {
+	Location.removeLocation(id, (err, gameName) => {
 		if (err) {
 			throw err;
 		}
