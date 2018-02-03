@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const mongoose = require('mongoose');
 
-const Session = require('../models/Locations');
+const Session = require('../models/Session');
 const keys = require('../keys');
 mongoose.connect(keys.db);
 
