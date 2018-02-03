@@ -37,7 +37,7 @@ router.post('/:id', (req, res) => {
 	});
 });
 
-router.put('/api/gamenames/:id/:_id', (req, res) => {
+router.put('/:id/:_id', (req, res) => {
 	const id = req.params._id;
 	const gameName = req.body.name;
 	GameName.updateGameName(id, gameName, (err, gameName) => {
