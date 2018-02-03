@@ -57,3 +57,5 @@ router.delete('/api/session/:id/:_id', (req, res) => {
 		res.json(session);
 	});
 });
+
+module.exports = router;
