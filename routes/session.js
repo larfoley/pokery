@@ -48,7 +48,7 @@ router.put('/:id/:_id', (req, res) => {
 	});
 });
 
-router.delete('/api/session/:id/:_id', (req, res) => {
+router.delete('/:id/:_id', (req, res) => {
 	const id = req.params._id;
 	Session.removeSession(id, (err, session) => {
 		if (err) {
