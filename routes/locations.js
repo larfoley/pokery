@@ -50,11 +50,11 @@ router.put('/:id/:_id', (req, res) => {
 
 router.delete('/:id/:_id', (req, res) => {
 	const id = req.params._id;
-	Location.removeLocation(id, (err, gameName) => {
+	Location.removeLocation(id, (err, location) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gameName);
+		res.json(location);
 	});
 });
 
