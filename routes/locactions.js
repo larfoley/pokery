@@ -48,5 +48,14 @@ router.put('/api/gamenames/:id/:_id', (req, res) => {
 	});
 });
 
+router.delete('/api/gamenames/:id/:_id', (req, res) => {
+	const id = req.params._id;
+	GameName.removeGameName(id, (err, gamename) => {
+		if (err) {
+			throw err;
+		}
+		res.json(gamename);
+	});
+});
 
 module.exports = router;
