@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
 
 const pokerGameSchema = mongoose.Schema({
+  userId: {
+    type: String,
+    required: true
+  },
   name: {
     type: String,
     required: true
   },
-  userId: {
+  location: {
+    type: String,
+    required: true
+  },
+  gameVariation: {
     type: String,
     required: true
   }
