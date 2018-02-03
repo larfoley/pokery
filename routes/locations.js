@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 	});
 })
 
-router.get('/api/locations/:id/:_id', (req, res) => {
+router.get('/:id/:_id', (req, res) => {
 	GameName.getGameNameById(req.params._id, (err, gamename) => {
 		if (err) {
 			throw err;
@@ -26,7 +26,7 @@ router.get('/api/locations/:id/:_id', (req, res) => {
 	});
 });
 
-router.post('/api/gamenames/:id', (req, res) => {
+router.post('/api/locations/:id', (req, res) => {
 	const gameName = req.body;
 	gameName.userId = req.params.id
 	GameName.addGameName(gameName, (err, gameName) => {
