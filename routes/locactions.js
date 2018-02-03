@@ -50,11 +50,11 @@ router.put('/api/gamenames/:id/:_id', (req, res) => {
 
 router.delete('/api/gamenames/:id/:_id', (req, res) => {
 	const id = req.params._id;
-	GameName.removeGameName(id, (err, gamename) => {
+	GameName.removeGameName(id, (err, gameName) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gamename);
+		res.json(gameName);
 	});
 });
 
