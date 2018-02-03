@@ -9,12 +9,21 @@ mongoose.connect(keys.db);
 
 
 router.get('/', (req, res) => {
-  GameName.getGameNames(req.params.id, (err, gameNames) => {
+	GameName.getGameNames(req.params.id, (err, gameNames) => {
 		if (err) {
 			throw err;
 		}
 		res.json(gameNames);
 	});
 })
+
+router.get('/api/gamenames/:id/:_id', (req, res) => {
+	GameName.getGameNameById(req.params._id, (err, gamename) => {
+		if (err) {
+			throw err;
+		}
+		res.json(gamename);
+	});
+});
 
 module.exports = router;
