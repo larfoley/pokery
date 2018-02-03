@@ -16,7 +16,7 @@ router.get('/:id', (req, res) => {
 	});
 });
 
-router.get('/api/session/:id/:_id', (req, res) => {
+router.get('/:id/:_id', (req, res) => {
 	Session.getSessionById(req.params._id, (err, session) => {
 		if (err) {
 			throw err;
