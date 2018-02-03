@@ -8,7 +8,7 @@ const keys = require('../config');
 mongoose.connect(keys.db);
 
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
 	GameName.getGameNames(req.params.id, (err, gameNames) => {
 		if (err) {
 			throw err;
@@ -26,7 +26,7 @@ router.get('/:id/:_id', (req, res) => {
 	});
 });
 
-router.post('/api/locations/:id', (req, res) => {
+router.post('/:id', (req, res) => {
 	const gameName = req.body;
 	gameName.userId = req.params.id
 	GameName.addGameName(gameName, (err, gameName) => {
