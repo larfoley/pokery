@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 	});
 })
 
-router.get('/api/gamenames/:id/:_id', (req, res) => {
+router.get('/api/locations/:id/:_id', (req, res) => {
 	GameName.getGameNameById(req.params._id, (err, gamename) => {
 		if (err) {
 			throw err;
