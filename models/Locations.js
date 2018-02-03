@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const pokerGameSchema = mongoose.Schema({
+const pokerLocationSchema = mongoose.Schema({
   userId: {
     type: String,
     required: true
@@ -19,14 +19,14 @@ const pokerGameSchema = mongoose.Schema({
   }
 });
 
-const GameName = module.exports = mongoose.model('games', pokerGameSchema);
+const Locations = module.exports = mongoose.model('games', pokerLocationSchema);
 
-module.exports.getGameNames = (userId, callback) => GameName.find({ userId }, callback);
+module.exports.getLocationss = (userId, callback) => Locations.find({ userId }, callback);
 
-module.exports.getGameNameById = (id, callback) => GameName.findById(id, callback);
+module.exports.getLocationsById = (id, callback) => Locations.findById(id, callback);
 
-module.exports.addGameName = (gameName, callback) => GameName.create(gameName, callback);
+module.exports.addLocations = (gameName, callback) => Locations.create(gameName, callback);
 
-module.exports.updateGameName = (id, name, callback) => GameName.findOneAndUpdate({ _id: id }, { name }, {}, callback);
+module.exports.updateLocations = (id, name, callback) => Locations.findOneAndUpdate({ _id: id }, { name }, {}, callback);
 
-module.exports.removeGameName = (id, callback) => GameName.remove({ _id: id }, callback);
+module.exports.removeLocations = (id, callback) => Locations.remove({ _id: id }, callback);
