@@ -35,3 +35,15 @@ router.post('/api/session/:id', (req, res) => {
 		res.json(session);
 	});
 });
+
+router.put('/api/session/:id/:_id', (req, res) => {
+	const id = req.params._id;
+	console.log(req.body)
+	const session = req.body;
+	Session.updateSession(id, session, (err, session) => {
+		if (err) {
+			throw err;
+		}
+		res.json(session);
+	});
+});
