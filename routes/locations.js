@@ -39,12 +39,12 @@ router.post('/:id', (req, res) => {
 
 router.put('/:id/:_id', (req, res) => {
 	const id = req.params._id;
-	const gameName = req.body;
-	Location.updateLocation(id, gameName, (err, gameName) => {
+	const location = req.body;
+	Location.updateLocation(id, location, (err, location) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gameName);
+		res.json(location);
 	});
 });
 
