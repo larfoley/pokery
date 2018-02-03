@@ -26,4 +26,15 @@ router.get('/api/gamenames/:id/:_id', (req, res) => {
 	});
 });
 
+router.post('/api/gamenames/:id', (req, res) => {
+	const gamename = req.body;
+	gamename.userId = req.params.id
+	GameName.addGameName(gamename, (err, gamename) => {
+		if (err) {
+			throw err;
+		}
+		res.json(gamename);
+	});
+});
+
 module.exports = router;
