@@ -22,19 +22,21 @@ router.get('/api/gamenames/:id/:_id', (req, res) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gamename);
+		res.json(gameName);
 	});
 });
 
 router.post('/api/gamenames/:id', (req, res) => {
-	const gamename = req.body;
-	gamename.userId = req.params.id
-	GameName.addGameName(gamename, (err, gamename) => {
+	const gameName = req.body;
+	gameName.userId = req.params.id
+	GameName.addGameName(gameName, (err, gameName) => {
 		if (err) {
 			throw err;
 		}
-		res.json(gamename);
+		res.json(gameName);
 	});
 });
+
+
 
 module.exports = router;
