@@ -15,3 +15,12 @@ router.get('/api/session/:id', (req, res) => {
 		res.json(session);
 	});
 });
+
+router.get('/api/session/:id/:_id', (req, res) => {
+	Session.getSessionById(req.params._id, (err, session) => {
+		if (err) {
+			throw err;
+		}
+		res.json(session);
+	});
+});
