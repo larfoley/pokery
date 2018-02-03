@@ -4,7 +4,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 const GameName = require('../models/Locations');
-const keys = require('../keys');
+const keys = require('../config');
 mongoose.connect(keys.db);
 
 
