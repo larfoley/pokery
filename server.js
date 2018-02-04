@@ -19,6 +19,8 @@ var login = require('./routes/login')
 var logout = require('./routes/logout')
 var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
+var locations = require('./routes/locations')
+var sessions = require('./routes/session')
 
 
 db.on('error', () => {
@@ -54,6 +56,9 @@ app.use('/api/live-poker-timetables', livePokerTimetables)
 app.use('/api/login', login)
 app.use('/api/logout', logout)
 app.use('/api/profile', profile)
+app.use('/api/locations', locations)
+app.use('/api/session', sessions)
+
 
 app.get('*', (req, res, next) => {
   if (process.env.ENVIROMENT === "production") {
