@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import mainTheme from '../styles/variables.js'
-import axios from 'axios'
 
 // Components
 import Header from './Header/index'
