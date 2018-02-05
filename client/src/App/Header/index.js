@@ -16,7 +16,7 @@ const Header = (props) => (
       <Title><FontAwesome name="bars" /> Poker Tracker</Title>
     </Col>
     <Col align="right">
-      <Button href="/">Add a Session</Button>
+      <Button href="/add-session">Add a Session</Button>
     </Col>
   </Wrapper>
 )

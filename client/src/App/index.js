@@ -7,18 +7,25 @@ import { ThemeProvider } from 'styled-components'
 import mainTheme from '../styles/variables.js'
 
 // Components
-import Header from './Header/index'
-import Footer from './Footer/index'
-import Sidebar from './Sidebar/index'
-import PageContainer from './PageContainer/index'
+import Header from './Header'
+import Footer from './Footer'
+import Sidebar from './Sidebar'
+import PageContainer from './PageContainer'
 
 // Views
-import Home from '../views/Home/index'
-import About from '../views/About/index'
+import Home from '../views/Home'
+import About from '../views/About'
+import AddSession from '../views/AddSession'
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = props.user
+  }
+
   render() {
+    var user = this.state.user
     return (
       <Router>
         <ThemeProvider theme={mainTheme}>
@@ -28,6 +35,9 @@ class App extends Component {
             <PageContainer>
               <Route exact path="/" component={Home}/>
               <Route path="/about" component={About}/>
+              <Route path="/add-session" render={() => (
+                <AddSession user={user} />
+              )}/>
             </PageContainer>
             <Footer />
           </div>
