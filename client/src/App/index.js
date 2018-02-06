@@ -21,11 +21,14 @@ class App extends Component {
 
   constructor(props) {
     super(props)
-    this.state = props.user
+    this.state = {
+      user: props.user
+    }
   }
 
   render() {
     var user = this.state.user
+
     return (
       <Router>
         <ThemeProvider theme={mainTheme}>
