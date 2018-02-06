@@ -1,6 +1,6 @@
 import React from 'react'
 // import styled from 'styled-components'
-import axios from 'axios'
+// import axios from 'axios'
 
 class AddSessionForm extends React.Component {
 
@@ -22,7 +22,6 @@ class AddSessionForm extends React.Component {
 
     return (
       <form ref={form => {this.form = form}} onSubmit={this.onSubmit.bind(this)}>
-        {}
         <label>Select a Game</label>
         <select>
           <option>Green Room</option>
