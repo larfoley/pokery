@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import mainTheme from '../styles/variables.js'
+import axios from 'axios'
 
 // Components
 import Header from './Header'
@@ -27,11 +28,27 @@ class App extends Component {
     }
   }
 
+  isLoggedIn() {
+    return !!this.state.user
+  }
+
+  logIn(callback) {
+    axios.post("/api/login", {
+      username: this.state.username,
+      password: this.state.password
+      })
+      .then(success => {
+        if (success) {
+          <Redirect to="/home" />
+        }
+      })
+      .catch(err => {
+        this.setState({error: "error logining in"})
+      })
+  }
+
   render() {
     var user = this.state.user
-    var isLoggedIn = function() {
-      return false
-    }
 
     return (
       <Router>
@@ -41,7 +58,7 @@ class App extends Component {
             <Route exact path="/" component={Landing}/>
 
             <Route path="/home" render={() => (
-              isLoggedIn()? (
+              this.isLoggedIn()? (
 
                 <div>
                   <Header />
@@ -58,7 +75,7 @@ class App extends Component {
             )}/>
 
             <Route path="/add-session" render={() => (
-              isLoggedIn()? (
+              this.isLoggedIn()? (
 
                 <div>
                   <Header />

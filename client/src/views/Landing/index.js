@@ -2,16 +2,17 @@ import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 import LoginForm from "../../shared/LoginForm"
+import Header from './Header.js'
 
-const Home = props => (
+const Landing = props => (
   <div>
-
+    <Header />
     <PageSection>
-      <SectionTitle title="Landing Page"/>
+
       <LoginForm />
     </PageSection>
 
   </div>
 )
 
-export default Home
+export default Landing
