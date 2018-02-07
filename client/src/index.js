@@ -11,7 +11,20 @@ injectGlobal`
   ${styles}
 `
 
-ReactDOM.render(<App user={{sessions: ["foo"]}} />, document.getElementById('root'))
+const mockUser = {
+  username: "bob",
+  sessions: [
+    {
+      earnings: 100
+    },
+    {
+      earnings: 250
+    }
+  ]
+}
+
+
+ReactDOM.render(<App user={mockUser} />, document.getElementById('root'))
 
 if (process.env.ENVOIREMENT === "production") {
   registerServiceWorker();
