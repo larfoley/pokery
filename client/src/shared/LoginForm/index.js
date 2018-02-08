@@ -1,5 +1,4 @@
 import React from "react"
-import axios from 'axios'
 import { Redirect } from 'react-router'
 
 class Login extends React.Component {
@@ -9,7 +8,8 @@ class Login extends React.Component {
     this.state = {
       username: "",
       password: "",
-      error: ""
+      error: "",
+      authenticated: false,
     };
   }
 
@@ -25,21 +25,17 @@ class Login extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("/api/login", {
-      username: this.state.username,
-      password: this.state.password
-      })
-      .then(res => {
-      })
-      .catch(err => {
-        this.setState({error: "error logining in"})
-      })
+    this.props.logIn(this.state.username, this.state.password, (err, user) => {
+      // if (user) {
+      //   this.setState({authenticated: true})
+      // }
+    })
   }
 
   render() {
     return (
       <div>
-        {this.state.error? <Redirect to="/" /> :
+        {this.state.authenticated? <Redirect to="/home" /> :
 
           <form onSubmit={this.handleSubmit}>
             <div id="username">

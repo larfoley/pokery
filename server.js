@@ -12,7 +12,7 @@ var passport = require('passport')
 var localStrategy = require('./middleware/localStrategy')
 var bcrypt = require('bcrypt');
 var app = express()
-// var User = require('./models/User.js')
+var User = require('./models/User.js')
 
 // Routes
 var register = require('./routes/register')
