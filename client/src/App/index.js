@@ -28,67 +28,70 @@ class App extends Component {
     }
   }
 
-  isLoggedIn() {
-    return !!this.state.user
+  componentWillMount() {
+    // Update state in the case the user refreshes a protected route
+    this.isLoggedIn((err, user) => {
+      this.setState({ user })
+    })
   }
 
-  logIn(callback) {
-    axios.post("/api/login", {
-      username: this.state.username,
-      password: this.state.password
+  isLoggedIn(callback) {
+    axios.get("/api/is-logged-in")
+      .then(res => {
+        callback(null, res.data.user);
       })
-      .then(success => {
-        if (success) {
-          <Redirect to="/home" />
-        }
+      .catch(err => callback(err))
+  }
+
+  logIn(username, password, callback) {
+    axios.post("/api/login", {
+      username: username,
+      password: password
+      })
+      .then(res => {
+        callback(null, res.data)
+        this.setState({user: res.data})
       })
       .catch(err => {
-        this.setState({error: "error logining in"})
+        callback(err)
       })
   }
 
   render() {
-    var user = this.state.user
 
     return (
       <Router>
         <ThemeProvider theme={mainTheme}>
           <div>
 
-            <Route exact path="/" component={Landing}/>
+            <Route exact path="/" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <Redirect to="/home" />
+            )}/>
 
             <Route path="/home" render={() => (
-              this.isLoggedIn()? (
-
-                <div>
-                  <Header />
-                  <Sidebar />
-                  <PageContainer>
-                    <Home />
-                  </PageContainer>
-                  <Footer />
-                </div>
-
-              ) : (
-                <Redirect to="/" />
-              )
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+              <div>
+                <Header />
+                <Sidebar />
+                <PageContainer>
+                  <Home />
+                </PageContainer>
+                <Footer />
+              </div>
             )}/>
 
             <Route path="/add-session" render={() => (
-              this.isLoggedIn()? (
-
-                <div>
-                  <Header />
-                  <Sidebar />
-                  <PageContainer>
-                    <AddSession user={user} />
-                  </PageContainer>
-                  <Footer />
-                </div>
-
-              ) : (
-                <Redirect to="/" />
-              )
+              <div>
+                <Header />
+                <Sidebar />
+                <PageContainer>
+                  <AddSession user={this.state.user} />
+                </PageContainer>
+                <Footer />
+              </div>
             )}/>
 
           </div>
