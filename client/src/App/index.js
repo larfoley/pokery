@@ -28,8 +28,15 @@ class App extends Component {
     }
   }
 
-  isLoggedIn() {
-    return !!this.state.user
+  isLoggedIn(callback) {
+    axios.get("/api/is-logged-in")
+      .then(res => {
+        if (res.is_logged_in) {
+          callback(true)
+        } else {
+          callback(false);
+        }
+      })
   }
 
   logIn(callback) {
@@ -37,9 +44,9 @@ class App extends Component {
       username: this.state.username,
       password: this.state.password
       })
-      .then(success => {
-        if (success) {
-          <Redirect to="/home" />
+      .then(user => {
+        if (user) {
+          this.setState({ user })
         }
       })
       .catch(err => {
@@ -48,18 +55,19 @@ class App extends Component {
   }
 
   render() {
-    var user = this.state.user
 
     return (
       <Router>
         <ThemeProvider theme={mainTheme}>
           <div>
 
-            <Route exact path="/" component={Landing}/>
+            <Route exact path="/" component={() => (
+              <Landing logIn={this.logIn.bind(this)}/>
+            )}/>
 
-            <Route path="/home" render={() => (
-              this.isLoggedIn()? (
+            {this.state.user? (
 
+              <Route path="/home" render={() => (
                 <div>
                   <Header />
                   <Sidebar />
@@ -68,27 +76,24 @@ class App extends Component {
                   </PageContainer>
                   <Footer />
                 </div>
+              )}/>
 
-              ) : (
-                <Redirect to="/" />
-              )
-            )}/>
+            ) : (
+              <Route path="*" render={() => (
+                <div>Log in</div>
+              )}/>
+            )
+            }
 
             <Route path="/add-session" render={() => (
-              this.isLoggedIn()? (
-
-                <div>
-                  <Header />
-                  <Sidebar />
-                  <PageContainer>
-                    <AddSession user={user} />
-                  </PageContainer>
-                  <Footer />
-                </div>
-
-              ) : (
-                <Redirect to="/" />
-              )
+              <div>
+                <Header />
+                <Sidebar />
+                <PageContainer>
+                  <AddSession user={this.state.user} />
+                </PageContainer>
+                <Footer />
+              </div>
             )}/>
 
           </div>

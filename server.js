@@ -12,6 +12,7 @@ var passport = require('passport')
 var localStrategy = require('./middleware/localStrategy')
 var bcrypt = require('bcrypt');
 var app = express()
+// var User = require('./models/User.js')
 
 // Routes
 var register = require('./routes/register')
@@ -21,6 +22,7 @@ var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
 var locations = require('./routes/locations')
 var sessions = require('./routes/session')
+var isLoggedIn = require('./routes/is-logged-in')
 
 
 db.on('error', () => {
@@ -58,6 +60,7 @@ app.use('/api/logout', logout)
 app.use('/api/profile', profile)
 app.use('/api/locations', locations)
 app.use('/api/session', sessions)
+app.use('/api/is-logged-in', isLoggedIn)
 
 
 app.get('*', (req, res, next) => {

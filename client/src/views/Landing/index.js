@@ -9,7 +9,7 @@ const Landing = props => (
     <Header />
     <PageSection>
 
-      <LoginForm />
+      <LoginForm logIn={props.logIn}/>
     </PageSection>
 
   </div>
