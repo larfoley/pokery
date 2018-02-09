@@ -6,6 +6,7 @@ const Banner = styled.div`
     padding: 2em;
     color: white;
     margin-bottom: 2em;
+    text-align:center;
 `;
 
 export default props => <Banner>{props.children}</Banner>

@@ -1,12 +1,18 @@
 import React from "react"
+
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 
-const Home = props => (
-  <div>
+const Home = props => {
+ 
+ 
+
+  return (
+    <div>
 
     <PageSection>
       <SectionTitle title="Recent Sessions"/>
+      
     </PageSection>
 
     <PageSection>
@@ -14,6 +20,10 @@ const Home = props => (
     </PageSection>
 
   </div>
-)
+  )
 
-export default Home
+}
+
+
+
+export default Home 
