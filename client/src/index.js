@@ -11,7 +11,8 @@ injectGlobal`
   ${styles}
 `
 
-ReactDOM.render(<App user={{sessions: ["foo"]}} />, document.getElementById('root'))
+
+ReactDOM.render(<App />, document.getElementById('root'))
 
 if (process.env.ENVOIREMENT === "production") {
   registerServiceWorker();
