@@ -22,7 +22,10 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = props.user
+   
   }
+
+
 
   render() {
     var user = this.state.user
