@@ -57,7 +57,27 @@ class App extends Component {
       })
   }
 
+  addSession(session) {
+    // axios.post('/api/session/' + this.state.user.id)
+    //   .then(res => {
+    //     this.setState(prevState => {
+    //       prevState.user.sessions.push(session)
+    //       return prevState
+    //     })
+    //   })
+    console.log("adding session", session);
+  }
 
+  addPokerLocation(location) {
+    // axios.post('/api/session/' + this.state.user.id)
+    //   .then(res => {
+    //     this.setState(prevState => {
+    //       prevState.user.sessions.push(session)
+    //       return prevState
+    //     })
+    //   })
+    console.log("adding location", location);
+  }
 
   render() {
 
@@ -90,7 +110,11 @@ class App extends Component {
                 <Header />
                 <Sidebar />
                 <PageContainer>
-                  <AddSession user={this.state.user} />
+                  <AddSession
+                    user={this.state.user}
+                    addSession={this.addSession.bind(this)}
+                    addPokerLocation={this.addPokerLocation.bind(this)}
+                  />
                 </PageContainer>
                 <Footer />
               </div>
