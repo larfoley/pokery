@@ -21,10 +21,10 @@ const Wrapper = styled.div`
 const Sidebar = (props) => (
   <Wrapper>
     <ul>
-      <li><Link to="/"><FontAwesome name='home' /> Home</Link></li>
-      <li><Link to="/about"><FontAwesome name='search' /> Find a Game</Link></li>
-      <li><Link to="/"><FontAwesome name='line-chart' /> Progress</Link></li>
-      <li><Link to="/about"><FontAwesome name='cog' /> Settings</Link></li>
+      <li><Link to="/home"><FontAwesome name='home' /> Home</Link></li>
+      <li><Link to="/find-a-game"><FontAwesome name='search' /> Find a Game</Link></li>
+      <li><Link to="/progress"><FontAwesome name='line-chart' /> Progress</Link></li>
+      <li><Link to="/settings"><FontAwesome name='cog' /> Settings</Link></li>
     </ul>
   </Wrapper>
 )

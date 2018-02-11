@@ -18,6 +18,7 @@ import PageContainer from './PageContainer'
 import Landing from '../views/Landing'
 import Home from '../views/Home'
 import AddSession from '../views/AddSession'
+import FindAGame from '../views/FindAGame'
 
 class App extends Component {
 
@@ -80,6 +81,19 @@ class App extends Component {
                 <Sidebar />
                 <PageContainer>
                   <Home />
+                </PageContainer>
+                <Footer />
+              </div>
+            )}/>
+
+            <Route path="/find-a-game" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+              <div>
+                <Header />
+                <Sidebar />
+                <PageContainer>
+                  <FindAGame />
                 </PageContainer>
                 <Footer />
               </div>

@@ -12,7 +12,10 @@ const StyledH2 = styled.h2`
     height: 9px;
     background-color: ${css.primary_color};
   }
+
 `
+
+
 
 const SectionTitle = (props) => (
   <StyledH2>
