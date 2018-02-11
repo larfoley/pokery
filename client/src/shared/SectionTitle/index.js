@@ -12,6 +12,7 @@ const StyledH2 = styled.h2`
     height: 9px;
     background-color: ${css.primary_color};
   }
+  margin-bottom: 1.25em;
 `
 
 const SectionTitle = (props) => (

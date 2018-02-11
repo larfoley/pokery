@@ -6,6 +6,7 @@ const StyleAnchor = styled.a`
   display: inline-block;
   background-color: #55efc4;
   border-radius: 5px;
+  border-bottom: 3px solid darkgreen;
   color: white;
   text-decoration: none;
 `
