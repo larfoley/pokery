@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 const request = require('request');
 const cheerio = require('cheerio');
-const greenRoom = require('./data/green-room');
 
-const tournamentsGames = [greenRoom];
+const tournamentsGames = [];
 
 router.get('/', (req, res) => {
 	const dayToFilterBy = req.query.day;
