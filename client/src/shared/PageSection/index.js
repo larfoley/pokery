@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledSection = styled.section`
-  margin: 2.5em;
+  margin: 3em 2em;
 `
 
 const PageSection = (props) => (
