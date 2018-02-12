@@ -12,11 +12,7 @@ const StyledH2 = styled.h2`
     height: 9px;
     background-color: ${css.primary_color};
   }
-<<<<<<< HEAD
-
-=======
   margin-bottom: 1.25em;
->>>>>>> da98e3cb6ddcd2d2a7b2cc328a1b16683bd7a59d
 `
 
 
