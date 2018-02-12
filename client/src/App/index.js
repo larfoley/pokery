@@ -18,6 +18,7 @@ import PageContainer from './PageContainer'
 import Landing from '../views/Landing'
 import Home from '../views/Home'
 import AddSession from '../views/AddSession'
+import Login from '../views/Login'
 
 class App extends Component {
 
@@ -104,6 +105,8 @@ class App extends Component {
                 <Footer />
               </div>
             )}/>
+
+            <Route path="/login" component={Login}/>
 
             <Route path="/add-session" render={() => (
               <div>
