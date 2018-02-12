@@ -23,12 +23,17 @@ router.get('/', (req, res) => {
 		if (!error && response.statusCode == 200) {
 			const $ = cheerio.load(html);
 			const div = $('#ipsLayout_mainArea').children('.tournamentItem');
+			let id = 0;
+			
 			div.map((i, element) => {
 				const tournamentsGame = {};
+				tournamentsGame.id = id;
+				
 				tournamentsGame.day = formatText($(element).children('.tournamentItemDate').children('.dateDay'))
 				tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
 
 				if (tournamentsGame.day !== "" && tournamentsGame.prize !== "") {
+					id++;
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
 					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
 					let x = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
@@ -47,6 +52,7 @@ router.get('/', (req, res) => {
 						tournamentsGame.type = formatText(tourneyTitle($(element).next()))
 						tournamentsGame.address = formatText(tourneyTitle($(element).next().next()))
 					}
+					
 					tournamentsGames.push(tournamentsGame);
 				} else if (tournamentsGame.day !== "") {
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
