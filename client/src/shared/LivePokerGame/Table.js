@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledTable = styled.table`
+const Table = styled.table`
 	padding-top: 1em;
 	& th{
   	text-align: left;
@@ -12,4 +12,4 @@ const StyledTable = styled.table`
 
 `
 
-export default StyledTable
+export default Table

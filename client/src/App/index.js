@@ -18,6 +18,7 @@ import PageContainer from './PageContainer'
 import Landing from '../views/Landing'
 import Home from '../views/Home'
 import AddSession from '../views/AddSession'
+import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
 
 class App extends Component {
@@ -106,18 +107,7 @@ class App extends Component {
               </div>
             )}/>
 
-            <Route path="/find-a-game" render={() => (
-              !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-              <div>
-                <Header />
-                <Sidebar />
-                <PageContainer>
-                  <FindAGame />
-                </PageContainer>
-                <Footer />
-              </div>
-            )}/>
+            <Route path="/login" component={Login}/>
 
             <Route path="/add-session" render={() => (
               <div>
@@ -129,6 +119,17 @@ class App extends Component {
                     addSession={this.addSession.bind(this)}
                     addPokerLocation={this.addPokerLocation.bind(this)}
                   />
+                </PageContainer>
+                <Footer />
+              </div>
+            )}/>
+
+             <Route path="/find-a-game" render={() => (
+              <div>
+                <Header />
+                <Sidebar />
+                <PageContainer>
+                  <FindAGame />
                 </PageContainer>
                 <Footer />
               </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const StyledBar = styled.div`
+const Bar = styled.div`
 	border-bottom: 1px solid black;
     & h3{
       display: block;
@@ -10,4 +10,4 @@ const StyledBar = styled.div`
   }
 `
 
-export default StyledBar
+export default Bar
