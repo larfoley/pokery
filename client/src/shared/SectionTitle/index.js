@@ -15,6 +15,8 @@ const StyledH2 = styled.h2`
   margin-bottom: 1.25em;
 `
 
+
+
 const SectionTitle = (props) => (
   <StyledH2>
     {props.title}
