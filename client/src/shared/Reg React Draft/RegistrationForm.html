@@ -1,0 +1,23 @@
+import FormField from 'shared/form-field'
+import Button from "button"	
+import SectionTitle from '../SectionTitle'
+
+const RegisterForm = props => (
+	<form method="post" action="/register">
+		<FormField label="Username*">
+			<input id="textInput" type="text" />
+		</FormField>	
+		
+		<FormField label="Email*">
+			<label for="textInput" type="email"/>
+		</FormField>
+		
+		<FormField label="Password*">
+			<input id="textInput" type="text" />
+		</FormField>
+		
+		<button type="submit">Register</button>
+	</form>	
+)
+	
+export default RegisterForm
