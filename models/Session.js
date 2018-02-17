@@ -3,15 +3,18 @@ const mongoose = require('mongoose');
 const pokerSessionSchema = mongoose.Schema({
   userId: {
     type: String,
-		required: true
+    required: true,
+    trim: true 
   },
   selectGame:{
     type: String,
-    required: true
+    required: true,
+    trim: true 
   },
   earnings:{
     type: String,
-    required: true
+    required: true,
+    trim: true 
 	 }
 });
 

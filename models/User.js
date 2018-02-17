@@ -4,11 +4,20 @@ var bcrypt = require('bcrypt');
 var UserSchema = new mongoose.Schema({
   username: {
     type: String,
+    required: true,
+    trim: true,
+    unique: true 
   },
   email: {
     type: String,
+    required: true,
+    trim: true,
   },
-  hash: String,
+  hash: {
+    String,
+    required: true,
+    trim: true,
+  }
 });
 
 UserSchema.methods.validPassword = (password, hash, callback) => {
