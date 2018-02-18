@@ -59,7 +59,7 @@ class App extends Component {
       })
   }
 
-  addSession(session) {
+  addPokerSession(session) {
     // axios.post('/api/session/' + this.state.user.id)
     //   .then(res => {
     //     this.setState(prevState => {
@@ -67,18 +67,22 @@ class App extends Component {
     //       return prevState
     //     })
     //   })
-    console.log("adding session", session);
+    // console.log("adding session", session);
   }
 
-  addPokerLocation(location) {
-    // axios.post('/api/session/' + this.state.user.id)
+  addPokerLocation(location, callback) {
+    console.log("adding poker location: ", location);
+    var res = {status: 200};
+    callback(res);
+    // axios.post('/api/locations/' + '5a7b60e8734d1d7521e7fc17')
     //   .then(res => {
+    //     callback(res)
+    //     console.log(res);
     //     this.setState(prevState => {
-    //       prevState.user.sessions.push(session)
+    //       prevState.user.sessions.push(location)
     //       return prevState
     //     })
     //   })
-    console.log("adding location", location);
   }
 
   render() {
@@ -97,43 +101,22 @@ class App extends Component {
             <Route path="/home" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-              <div>
-                <Header />
-                <Sidebar />
-                <PageContainer>
-                  <Home />
-                </PageContainer>
-                <Footer />
-              </div>
+                <Home />
             )}/>
 
             <Route path="/login" component={Login}/>
 
             <Route path="/add-session" render={() => (
-              <div>
-                <Header />
-                <Sidebar />
-                <PageContainer>
-                  <AddSession
-                    user={this.state.user}
-                    addSession={this.addSession.bind(this)}
-                    addPokerLocation={this.addPokerLocation.bind(this)}
-                  />
-                </PageContainer>
-                <Footer />
-              </div>
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <AddSession
+                  user={this.state.user}
+                  addSession={this.addPokerSession.bind(this)}
+                  addPokerLocation={this.addPokerLocation.bind(this)}
+                />
             )}/>
 
-             <Route path="/find-a-game" render={() => (
-              <div>
-                <Header />
-                <Sidebar />
-                <PageContainer>
-                  <FindAGame />
-                </PageContainer>
-                <Footer />
-              </div>
-            )}/>
+             <Route path="/find-a-game" render={() => <FindAGame /> }/>
 
           </div>
         </ThemeProvider>
