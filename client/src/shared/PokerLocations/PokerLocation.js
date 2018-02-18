@@ -7,10 +7,10 @@ const PokerLocation = styled.div`
 `
 
 export default props => (
-    <PokerLocation>
-      <Box>
-        {props.name}
-        {props.children}
-      </Box>
-    </PokerLocation>
+  <PokerLocation>
+    <Box>
+      {props.name}
+      {props.children}
+    </Box>
+  </PokerLocation>
 )

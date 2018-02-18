@@ -7,9 +7,7 @@ class PokerLocations extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      pokerLocations: [
-
-      ]
+      pokerLocations: []
     }
   }
 
@@ -18,7 +16,6 @@ class PokerLocations extends React.Component {
 
     return (
       <div>
-        <AddPokerLocationForm />
         { pokerLocations.map((location, i) => (
           <PokerLocation key={i}>{location.name}</PokerLocation>
         )) }

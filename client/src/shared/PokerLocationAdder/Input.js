@@ -12,6 +12,6 @@ const Input = styled.input`
 
 export default props => (
   <Wrapper>
-    <Input placeholder={props.placeholder} type="text" />
+    <Input placeholder={props.placeholder} type="text" onChange={props.onChange}/>
   </Wrapper>
 )
