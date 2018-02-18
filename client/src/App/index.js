@@ -68,9 +68,7 @@ class App extends Component {
     axios.post('/api/locations/add', {pokerLocation: location})
       .then(res => {
         this.setState(prevState => {
-          prevState.user.pokerLocations.push(location)
-          console.log(prevState);
-          // prevState.user.poker Locations.push(location)
+          prevState.user.pokerLocations.push({name: location})
           callback(null, res)
           return prevState
         })

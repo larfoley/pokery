@@ -1,12 +1,13 @@
 import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
-// import AddSessionForm from "../../shared/AddSessionForm"
-import PokerLocationAdder from "../../shared/PokerLocationAdder"
 import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
+// import AddSessionForm from "../../shared/AddSessionForm"
+import PokerLocationAdder from "../../shared/PokerLocationAdder"
+import PokerLocations from "../../shared/PokerLocations"
 
 class AddSession extends React.Component {
   constructor() {
@@ -44,6 +45,7 @@ class AddSession extends React.Component {
               user={this.props.user}
               addPokerLocation={this.props.addPokerLocation}
             />
+            <PokerLocations locations={this.props.user.pokerLocations} />
           </PageSection>
 
         </PageContainer>

@@ -24,9 +24,9 @@ router.post('/add', requiresAuth, (req, res, next) => {
 	User.findById(req.user._id, (err, user) => {
   	if (err) return next(err);
 		// Check if location already exists
-		if (user.pokerLocations.find(pokerLocation => req.body.pokerLocation)) {
+		if (user.pokerLocations.find(pokerLocation => pokerLocation.name === req.body.pokerLocation)) {
 			return res.status(400).json({message: "location already exists"})
-		}
+		};
 		user.pokerLocations.push({name: req.body.pokerLocation})
 		user.save(function (err, updatedTank) {
     if (err) return next(err);

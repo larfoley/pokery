@@ -1,5 +1,4 @@
 import React from 'react'
-import AddPokerLocationForm from "./AddPokerLocationForm/"
 import PokerLocation from "./PokerLocation"
 
 class PokerLocations extends React.Component {
@@ -9,6 +8,10 @@ class PokerLocations extends React.Component {
     this.state = {
       pokerLocations: []
     }
+  }
+
+  componentWillMount() {
+    this.setState({pokerLocations: this.props.locations})
   }
 
   render() {

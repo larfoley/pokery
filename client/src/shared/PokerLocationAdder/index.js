@@ -25,6 +25,7 @@ class PokerLocationAdder extends React.Component {
         window.alert("Location added")
       } else {
         window.alert("Error adding location")
+        console.log("Error", err);
       }
     })
   }
