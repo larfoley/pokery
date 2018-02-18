@@ -20,8 +20,8 @@ class PokerLocationAdder extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     e.target.reset()
-    this.props.addPokerLocation(this.state.location, (res) => {
-      if(res.status === 200) {
+    this.props.addPokerLocation(this.state.location, (err, res) => {
+      if(!err) {
         window.alert("Location added")
       } else {
         window.alert("Error adding location")

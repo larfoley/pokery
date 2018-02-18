@@ -2,8 +2,8 @@ import React from 'react'
 
 const Login = props => (
     <div className="login">
-    
-    <div className="form"> 
+
+    <div className="form">
         <form className="register">
             <input type="text" placeholder="name" />
             <input type="password" placeholder="password" />
@@ -11,17 +11,17 @@ const Login = props => (
             <button>create</button>
 
             <p className="reg">Already registered?
-                <a href="#">Sign In</a>`
+                <a href="/login">Sign In</a>`
             </p>
         </form>
-        
-        <form className="login">   
+
+        <form className="login">
             <input type="text" placeholder="username" />
             <input type="password" placeholder="password" />
             <button>login</button>
-            
+
             <p className="reg">Not registered?
-              <a href="#">Create an account </a>
+              <a href="/register">Create an account </a>
             </p>
 
         </form>

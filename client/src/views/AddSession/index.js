@@ -18,7 +18,7 @@ class AddSession extends React.Component {
   }
 
   render() {
-    const locations = this.state.locations
+    // const locations = this.state.locations
 
     return (
       <div>
