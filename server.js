@@ -20,7 +20,7 @@ var login = require('./routes/login')
 var logout = require('./routes/logout')
 var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
-var locations = require('./routes/locations')
+var locations = require('./routes/poker-locations')
 var sessions = require('./routes/session')
 var isLoggedIn = require('./routes/is-logged-in')
 
