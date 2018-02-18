@@ -1,26 +1,14 @@
-import React from "react"
-
-import SectionTitle from "../../shared/SectionTitle"
+import React from "react" 
 import PageSection from "../../shared/PageSection"
 import Login from "../../shared/Login/"
 
-const Home = props => {
- 
- 
-
-  return (
-    <div>
-
+const LoginPage = props => (
+  <div>
     <PageSection>
-      <SectionTitle title="Login"/>
       <Login />
     </PageSection>
-
   </div>
-  )
-
-}
+)
 
 
-
-export default Home 
+export default LoginPage
