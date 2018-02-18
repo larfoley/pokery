@@ -23,11 +23,11 @@ router.get('/', (req, res) => {
 			const $ = cheerio.load(html);
 			const div = $('#ipsLayout_mainArea').children('.tournamentItem');
 			let id = 0;
-			
+
 			div.map((i, element) => {
 				const tournamentsGame = {};
 				tournamentsGame.id = id;
-				
+
 				tournamentsGame.day = formatText($(element).children('.tournamentItemDate').children('.dateDay'))
 				tournamentsGame.prize = formatText($(element).children('.nextOccurrenceResult').children('div').children('.tournamentGaranteed'))
 
@@ -37,7 +37,6 @@ router.get('/', (req, res) => {
 					tournamentsGame.time = formatText(tournamentItemDate($(element)).children('.hour'))
 					let x = formatText($(element).children('.nextOccurrenceResult').children('.buyin'))
 					x = x.split(" ")
-					console.log(x)
 					tournamentsGame.currency = x[1]
 					tournamentsGame.buyIn = x[0]
 
@@ -51,7 +50,7 @@ router.get('/', (req, res) => {
 						tournamentsGame.type = formatText(tourneyTitle($(element).next()))
 						tournamentsGame.address = formatText(tourneyTitle($(element).next().next()))
 					}
-					
+
 					tournamentsGames.push(tournamentsGame);
 				} else if (tournamentsGame.day !== "") {
 					tournamentsGame.date = formatText(tournamentItemDate($(element)).children('.date'))
