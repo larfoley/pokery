@@ -8,12 +8,6 @@ import { ThemeProvider } from 'styled-components'
 import mainTheme from '../styles/variables.js'
 import axios from 'axios'
 
-// Components
-import Header from './Header'
-import Footer from './Footer'
-import Sidebar from './Sidebar'
-import PageContainer from './PageContainer'
-
 // Views
 import Landing from '../views/Landing'
 import Home from '../views/Home'
@@ -71,18 +65,17 @@ class App extends Component {
   }
 
   addPokerLocation(location, callback) {
-    console.log("adding poker location: ", location);
-    var res = {status: 200};
-    callback(res);
-    // axios.post('/api/locations/' + '5a7b60e8734d1d7521e7fc17')
-    //   .then(res => {
-    //     callback(res)
-    //     console.log(res);
-    //     this.setState(prevState => {
-    //       prevState.user.sessions.push(location)
-    //       return prevState
-    //     })
-    //   })
+    axios.post('/api/locations/add', {pokerLocation: location})
+      .then(res => {
+        this.setState(prevState => {
+          prevState.user.pokerLocations.push(location)
+          console.log(prevState);
+          // prevState.user.poker Locations.push(location)
+          callback(null, res)
+          return prevState
+        })
+      })
+      .catch(err => {callback(err)})
   }
 
   render() {
