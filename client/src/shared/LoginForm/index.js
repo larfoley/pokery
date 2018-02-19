@@ -1,7 +1,13 @@
 import React from "react"
 import { Redirect } from 'react-router'
+import Input from '../Input'
+import Button from '../Button'
+import Text from '../Text'
+import Link from '../Link'
+import FormField from '../FormField'
+import Form from '../Form'
 
-class Login extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -37,37 +43,41 @@ class Login extends React.Component {
       <div>
         {this.state.authenticated? <Redirect to="/home" /> :
 
-          <form onSubmit={this.handleSubmit}>
-            <div id="username">
-              <label>Username</label>
-              <input
-                name="username"
+        <Form onSubmit={this.handleSubmit}>
+
+            <FormField>
+              <Input name="username"
                 autoFocus
                 type="text"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-            </div>
-            <div id="password">
-              <label>Password</label>
-              <input
+            </FormField>
+
+            <FormField>
+              <Input
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
                 type="password"
               />
-            </div>
-            <button
-              disabled={!this.validateForm()}
-              type="submit"
-              >
-                Login
-              </button>
-            </form>
+            </FormField>
+
+            <FormField>
+              <Button type="submit" fullWidth >Login</Button>
+            </FormField>
+
+            <Text color="white" align="center" size=".8em">
+              Not Registered?
+              <Link to="/register">Create an account </Link>
+            </Text>
+
+        </Form>
+
         }
       </div>
     );
   }
 }
 
-export default Login
+export default LoginForm

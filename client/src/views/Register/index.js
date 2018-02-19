@@ -1,16 +1,16 @@
 import React from "react"
 import PageSection from "../../shared/PageSection"
-import LoginForm from "../../shared/LoginForm/"
+import RegForm from "../../shared/RegForm/"
 import Header from '../../shared/SiteHeader'
 
-const LoginPage = props => (
+const Register = props => (
   <div>
     <Header />
     <PageSection>
-      <LoginForm logIn={props.logIn}/>
+      <RegForm />
     </PageSection>
   </div>
 )
 
 
-export default LoginPage
+export default Register
