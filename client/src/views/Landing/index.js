@@ -2,7 +2,8 @@ import React from "react"
 // import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 import LoginForm from "../../shared/LoginForm"
-import Header from './Header.js'
+import Header from '../../shared/SiteHeader'
+
 
 const Landing = props => (
   <div>
