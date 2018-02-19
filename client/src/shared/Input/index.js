@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components'
 
 const StyledInput = styled.input`
@@ -9,10 +8,4 @@ const StyledInput = styled.input`
    width: 100%;
 `;
 
-export default props => (
-  <StyledInput
-    type={props.type}
-    value={props.value}
-    onChange={props.onChange}
-  />
-)
+export default StyledInput

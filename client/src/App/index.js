@@ -14,6 +14,7 @@ import Home from '../views/Home'
 import AddSession from '../views/AddSession'
 import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
+import Register from '../views/Register'
 
 class App extends Component {
 
@@ -95,7 +96,11 @@ class App extends Component {
                 <Home />
             )}/>
 
-            <Route path="/login" component={Login}/>
+            <Route path="/login" render={() => (
+              <Login logIn={this.logIn.bind(this)}/>
+            )}/>
+
+            <Route path="/register" component={Register}/>
 
             <Route path="/add-session" render={() => (
               !this.state.user?

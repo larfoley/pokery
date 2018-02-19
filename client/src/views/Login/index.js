@@ -1,11 +1,13 @@
-import React from "react" 
+import React from "react"
 import PageSection from "../../shared/PageSection"
-import Login from "../../shared/Login/"
+import LoginForm from "../../shared/LoginForm/"
+import Header from '../../shared/SiteHeader'
 
 const LoginPage = props => (
   <div>
+    <Header />
     <PageSection>
-      <Login />
+      <LoginForm logIn={props.logIn}/>
     </PageSection>
   </div>
 )

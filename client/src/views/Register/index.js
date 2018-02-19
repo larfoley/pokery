@@ -1,19 +1,16 @@
 import React from "react"
-// import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
-import LoginForm from "../../shared/LoginForm"
+import RegForm from "../../shared/RegForm/"
 import Header from '../../shared/SiteHeader'
 
-
-const Landing = props => (
+const Register = props => (
   <div>
     <Header />
     <PageSection>
-
-      <LoginForm logIn={props.logIn}/>
+      <RegForm />
     </PageSection>
-
   </div>
 )
 
-export default Landing
+
+export default Register

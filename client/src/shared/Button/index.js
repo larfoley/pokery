@@ -1,20 +1,22 @@
-import React from 'react'
 import styled from 'styled-components'
 
-const StyleAnchor = styled.a`
+const Button = styled.button`
   padding: .6em 1.3em;
   display: inline-block;
   background-color: #55efc4;
   border-radius: 5px;
+  border: none;
+  outline: none;
   border-bottom: 3px solid darkgreen;
   color: white;
   text-decoration: none;
+  text-align: center;
+  width: ${props => props.fullWidth? '100%' : null};
+
+  &:hover {
+    cursor: pointer;
+  }
 `
 
-const Button = (props) => (
-  <StyleAnchor href={props.href}>
-    {props.children}
-  </StyleAnchor>
-)
 
 export default Button
