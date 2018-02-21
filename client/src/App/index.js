@@ -54,7 +54,7 @@ class App extends Component {
       })
   }
 
-  addPokerSession(session) {
+  addPokerSession(session, callback) {
     // axios.post('/api/session/' + this.state.user.id)
     //   .then(res => {
     //     this.setState(prevState => {
@@ -62,7 +62,8 @@ class App extends Component {
     //       return prevState
     //     })
     //   })
-    // console.log("adding session", session);
+    console.log("adding session...", session);
+    callback(null, true)
   }
 
   addPokerLocation(location, callback) {

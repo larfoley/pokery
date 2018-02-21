@@ -12,36 +12,66 @@ class AddSessionForm extends React.Component {
     super()
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      session: {id: 1},
-      name: ""
+      session: {}
     }
   }
 
   onSubmit(e) {
     e.preventDefault()
-    this.props.addSession(this.state.session)
-    console.log(this.state.name);
+    this.props.addSession(this.state.session, (err, result) => {
+      if (!err) {
+        window.alert("Session added")
+      } else {
+        window.alert('Unable to add session ')
+      }
+    })
   }
 
   handleChange(event) {
-    this.setState({name: event.target.value});
+    const session = this.state.session;
+    session[event.target.name] = event.target.value;
+    console.log(session);
+    console.log("name", event.target.name);
+    this.setState(session);
   }
 
   render() {
+    const locations = this.props.pokerLocations.map(location => ({value: location.name}));
     return (
       <form ref={form => {this.form = form}} onSubmit={this.onSubmit.bind(this)}>
 
-        <FormField label="Select Game">
-          <ComboBox options={[
-            {value: "one"},
-            {value: "two"},
-            {value: "three"}
+        <FormField label="Location">
+          <ComboBox onChange={this.handleChange.bind(this)} name="locations" options={locations}/>
+        </FormField>
+
+        <FormField label="Game Variation">
+          <ComboBox onChange={this.handleChange.bind(this)} name="gameVariation" options={[
+            {value: "Texas Hold'em "},
+            {value: "Cash Game"}
           ]}/>
         </FormField>
 
-        <FormField label="Earnings">
+        <FormField label="Game Type">
+          <ComboBox onChange={this.handleChange.bind(this)} name="gameType" options={[
+            {value: "Tournament (Re-Buy)"},
+            {value: "Frezeout"},
+            {value: "Cash Game"}
+          ]}/>
+        </FormField>
+
+        <FormField label="Buy In">
           <Input
-            type="text"
+            name="buyIn"
+            type="number"
+            value={this.state.name}
+            onChange={this.handleChange.bind(this)}
+          />
+        </FormField>
+
+        <FormField label="Amount Won (Excluding Buy In)">
+          <Input
+            name="amountWon"
+            type="number"
             value={this.state.name}
             onChange={this.handleChange.bind(this)}
           />

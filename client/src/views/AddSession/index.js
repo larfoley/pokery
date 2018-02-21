@@ -5,7 +5,7 @@ import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
-// import AddSessionForm from "../../shared/AddSessionForm"
+import PokerSessionAdder from "../../shared/PokerSessionAdder"
 import PokerLocationAdder from "../../shared/PokerLocationAdder"
 import PokerLocations from "../../shared/PokerLocations"
 
@@ -19,7 +19,7 @@ class AddSession extends React.Component {
   }
 
   render() {
-    // const locations = this.state.locations
+    const locations = this.state.locations
 
     return (
       <div>
@@ -27,17 +27,17 @@ class AddSession extends React.Component {
         <Sidebar />
         <PageContainer>
 
-          {/* <PageSection>
+          <PageSection>
             <SectionTitle title="Create a Session"/>
             {
             locations.length?
-            <AddSessionForm
-              user={this.props.user}
+            <PokerSessionAdder
+              pokerLocations={this.props.user.pokerLocations}
               addSession={this.props.addSession}
             /> :
             <p>Before creating a session you must add a location</p>
             }
-          </PageSection> */}
+          </PageSection>
 
           <PageSection>
             <SectionTitle title="Poker Locations"/>
@@ -50,7 +50,6 @@ class AddSession extends React.Component {
 
         </PageContainer>
         <Footer />
-
       </div>
     )
   }
