@@ -6,6 +6,8 @@ const ComboBox = styled.select`
   padding: .5em;
   border: 1px solid #eee;
   width: 100%;
+  margin-bottom: 1em;
+
   &:hover {
     cursor: pointer;
   }
@@ -15,9 +17,11 @@ const ComboBox = styled.select`
 `
 
 export default props => (
-  <ComboBox>
-    {props.options.map(option => (
-      <option>{option.value}</option>
+  <ComboBox onChange={props.onChange} name={props.name}>
+    {props.options.map((option) => (
+      <option key={option.value} value={option.value}>
+        {option.value}
+      </option>
     ))}
   </ComboBox>
 )
