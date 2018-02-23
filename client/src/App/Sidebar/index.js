@@ -10,16 +10,23 @@ const Wrapper = styled.div`
   width: 300px;
   top: 0;
   bottom: 0;
-  margin-top: 66px;
+  margin-top: 46px;
   margin-left: -300px;
+  transition: .3s;
+
+  &.isOpen {
+    margin-left: 0;
+    z-index: 2;
+  }
 
   @media screen and (min-width: 700px) {
+    margin-top: 66px;
     margin-left: 0;
   }
 `
 
 const Sidebar = (props) => (
-  <Wrapper>
+  <Wrapper id="app-sidebar">
     <ul>
       <li><Link to="/home"><FontAwesome name='home' /> Home</Link></li>
       <li><Link to="/find-a-game"><FontAwesome name='search' /> Find a Game</Link></li>
