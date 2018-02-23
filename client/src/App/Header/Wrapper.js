@@ -8,7 +8,10 @@ const StyledHeader = styled.header`
   overflow: auto;
   display: table;
   width: 100%;
-  font-size: 13px;
+  font-size: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 
   @media screen and (min-width: 700px) {
     font-size: 15px;
