@@ -15,6 +15,7 @@ import AddSession from '../views/AddSession'
 import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
 import Register from '../views/Register'
+import Progress from '../views/Progress'
 
 class App extends Component {
 
@@ -95,6 +96,12 @@ class App extends Component {
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
                 <Home />
+            )}/>
+
+            <Route path="/progress" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <Progress/>
             )}/>
 
             <Route path="/login" render={() => (
