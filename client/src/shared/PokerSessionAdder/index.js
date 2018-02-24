@@ -12,7 +12,13 @@ class AddSessionForm extends React.Component {
     super()
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      session: {}
+      session: {
+        location: "foo",
+        variation: "texas holdem",
+        gameType: "texas holdem",
+        buyIn: 0,
+        amountWon: 0,
+      }
     }
   }
 
@@ -21,7 +27,9 @@ class AddSessionForm extends React.Component {
     this.props.addSession(this.state.session, (err, result) => {
       if (!err) {
         window.alert("Session added")
+        console.log(result);
       } else {
+        console.log(err);
         window.alert('Unable to add session ')
       }
     })

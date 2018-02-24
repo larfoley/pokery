@@ -3,13 +3,6 @@ const router = express.Router();
 const User = require('../models/User');
 const requiresAuth = require('../middleware/requiresAuth.js')
 
-router.get("/test", requiresAuth, (req, res, next) => {
-	User.findById(req.user._id, (err, user) => {
-	  if (err) return next(err);
-	  res.json(user.pokerLocations);
-	})
-})
-
 // Get all poker locations
 router.get('/', requiresAuth, (req, res, next) => {
 	User.findById(req.user._id, (err, user) => {
@@ -28,7 +21,7 @@ router.post('/add', requiresAuth, (req, res, next) => {
 			return res.status(400).json({message: "location already exists"})
 		};
 		user.pokerLocations.push({name: req.body.pokerLocation})
-		user.save(function (err, updatedTank) {
+		user.save(err => {
     if (err) return next(err);
     	res.json({message: "location added"});
   	});

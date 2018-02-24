@@ -21,7 +21,7 @@ var logout = require('./routes/logout')
 var profile = require('./routes/profile')
 var livePokerTimetables = require('./routes/live-poker-timetables')
 var locations = require('./routes/poker-locations')
-var sessions = require('./routes/session')
+var pokerSessions = require('./routes/poker-sessions')
 var isLoggedIn = require('./routes/is-logged-in')
 
 
@@ -59,7 +59,7 @@ app.use('/api/login', login)
 app.use('/api/logout', logout)
 app.use('/api/profile', profile)
 app.use('/api/locations', locations)
-app.use('/api/session', sessions)
+app.use('/api/poker-sessions', pokerSessions)
 app.use('/api/is-logged-in', isLoggedIn)
 
 
