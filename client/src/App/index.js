@@ -55,15 +55,15 @@ class App extends Component {
   }
 
   addPokerSession(session, callback) {
-    // axios.post('/api/session/' + this.state.user.id)
-    //   .then(res => {
-    //     this.setState(prevState => {
-    //       prevState.user.sessions.push(session)
-    //       return prevState
-    //     })
-    //   })
-    console.log("adding session...", session);
-    callback(null, true)
+    axios.post('/api/poker-sessions/add', {pokerSession: session})
+      .then(res => {
+        this.setState(prevState => {
+          prevState.user.pokerSessions.push(session)
+          callback(null, true)
+          return prevState
+        })
+      })
+      .catch(err => callback(err))
   }
 
   addPokerLocation(location, callback) {
