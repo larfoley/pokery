@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
 const Table = styled.table`
-	padding-top: 1em;
 	& th{
   	text-align: left;
 	}
-	.details{
-    margin-left: 2em;
+	& td{
+    padding-left: 3.5em;
 	}
 
 `
-
 export default Table
+

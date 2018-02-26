@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 // Component
-import LivePokerGame from "../../shared/LivePokerGame"
+import LivePokerGame from "../../shared/LivePokerGames"
 import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
@@ -14,11 +14,9 @@ class FindAGame extends Component {
       <div>
         <Header />
         <Sidebar />
-        <PageContainer>
-
-          <LivePokerGame />
-
-        </PageContainer>
+          <PageContainer>
+              <LivePokerGame />
+          </PageContainer>
         <Footer />
       </div>
   )}

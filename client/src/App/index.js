@@ -15,6 +15,7 @@ import AddSession from '../views/AddSession'
 import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
 import Register from '../views/Register'
+import Progress from '../views/Progress'
 
 class App extends Component {
 
@@ -54,15 +55,16 @@ class App extends Component {
       })
   }
 
-  addPokerSession(session) {
-    // axios.post('/api/session/' + this.state.user.id)
-    //   .then(res => {
-    //     this.setState(prevState => {
-    //       prevState.user.sessions.push(session)
-    //       return prevState
-    //     })
-    //   })
-    // console.log("adding session", session);
+  addPokerSession(session, callback) {
+    axios.post('/api/poker-sessions/add', {pokerSession: session})
+      .then(res => {
+        this.setState(prevState => {
+          prevState.user.pokerSessions.push(session)
+          callback(null, true)
+          return prevState
+        })
+      })
+      .catch(err => callback(err))
   }
 
   addPokerLocation(location, callback) {
@@ -94,6 +96,12 @@ class App extends Component {
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
                 <Home />
+            )}/>
+
+            <Route path="/progress" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <Progress/>
             )}/>
 
             <Route path="/login" render={() => (
