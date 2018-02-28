@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-  padding: .6em 1.3em;
+  padding: .6em 1.1em;
   display: inline-block;
   background-color: #55efc4;
   border-radius: 5px;
