@@ -4,7 +4,7 @@ import FontAwesome from 'react-fontawesome'
 import Link from './Link'
 
 const Wrapper = styled.div`
-  background-color: #eee;
+  background-color: #414345;
   color: white;
   position: fixed;
   width: 300px;
