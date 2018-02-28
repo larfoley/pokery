@@ -6,11 +6,12 @@ const StyledLink = styled(Link)`
   padding: 1em;
   display: inline-block;
   width: 100%;
-  border-bottom: 1px solid #ddd;
-  color: #333;
+  border-bottom: 1px solid #2e2e2e;
+  color: white;
   text-decoration: none;
+  transition: .3s;
   &:hover {
-    font-weight: bold;
+    background-color: #232526;
   }
   span {
     margin-right: 8px;
