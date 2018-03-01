@@ -6,16 +6,16 @@ import PageContainer from '../../App/PageContainer'
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 
-const HomePage = props => {
+const SessionsHistoryPage = props => {
   return (
     <div>
       <Header />
       <Sidebar />
       <PageContainer>
         <PageSection>
-          <SectionTitle title="Recent Sessions"/>
+          <SectionTitle title="Session History"/>
         </PageSection>
-        <h1> Session History </h1>
+
       </PageContainer>
       <Footer />
     </div>
@@ -25,4 +25,4 @@ const HomePage = props => {
 
 
 
-export default HomePage
+export default SessionsHistoryPage
