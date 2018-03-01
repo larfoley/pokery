@@ -31,6 +31,7 @@ const Sidebar = (props) => (
       <li><Link to="/home"><FontAwesome name='home' /> Home</Link></li>
       <li><Link to="/find-a-game"><FontAwesome name='search' /> Find a Game</Link></li>
       <li><Link to="/progress"><FontAwesome name='line-chart' /> Progress</Link></li>
+      <li><Link to ="/session-history"><FontAwesome name='history' /> Session History</Link></li>
       <li><Link to="/settings"><FontAwesome name='cog' /> Settings</Link></li>
     </ul>
   </Wrapper>
