@@ -16,6 +16,7 @@ import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
 import Register from '../views/Register'
 import Progress from '../views/Progress'
+import SessionHistory from '../views/SessionHistory'
 
 class App extends Component {
 
@@ -121,7 +122,11 @@ class App extends Component {
             )}/>
 
              <Route path="/find-a-game" render={() => <FindAGame /> }/>
-
+             <Route path="/session-history" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <SessionHistory/>
+            )}/>
           </div>
         </ThemeProvider>
       </Router>
