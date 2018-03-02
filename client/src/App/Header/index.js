@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../shared/Button/'
+import ButtonLink from '../../shared/ButtonLink/'
 
 // Components
 import Wrapper from './Wrapper'
@@ -14,7 +14,7 @@ const Header = (props) => (
       <Title><Hamburger>foo</Hamburger> Poker Tracker</Title>
     </Col>
     <Col align="right">
-      <Button href="/add-session">Add a Session</Button>
+      <ButtonLink to="/add-session">Add a Session</ButtonLink>
     </Col>
   </Wrapper>
 )
