@@ -1,18 +1,16 @@
 import React from "react"
 // import SectionTitle from "../../shared/SectionTitle"
-import PageSection from "../../shared/PageSection"
-import LoginForm from "../../shared/LoginForm"
-import Header from '../../shared/SiteHeader'
-
+// import PageSection from "../../shared/PageSection"
+// import LoginForm from "../../shared/LoginForm"
+import styled from "styled-components"
+import Header from './Header'
+import Navbar from './Navbar'
+import Features from './Features'
 
 const Landing = props => (
   <div>
     <Header />
-    <PageSection>
-
-      <LoginForm logIn={props.logIn}/>
-    </PageSection>
-
+    <Features />
   </div>
 )
 
