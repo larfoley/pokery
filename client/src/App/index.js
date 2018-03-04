@@ -106,7 +106,9 @@ class App extends Component {
             )}/>
 
             <Route path="/login" render={() => (
-              <Login logIn={this.logIn.bind(this)}/>
+              !this.state.user?
+               <Login logIn={this.logIn.bind(this)}/> :
+               <Home />
             )}/>
 
             <Route path="/register" component={Register}/>
