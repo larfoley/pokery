@@ -19,6 +19,7 @@ export default css`
 
   img {
     vertical-align: bottom;
+    max-width: 100%;
   }
 
   ul,
