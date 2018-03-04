@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const StyledLink = styled(Link)`
   display: inline-block;
   border-radius: 5px;
-  color: white;
+  color: ${props => props.color? props.color : "white"};
   text-decoration: none;
   margin-right: 7px;
   text-align: center;
