@@ -25,6 +25,7 @@ const Title = styled.h1`
 
 const Tagline = styled.p`
   margin-top: 0;
+  color: white;
 `
 
 
