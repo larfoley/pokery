@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import vars from './variables'
 
 export default css`
   html {
@@ -30,5 +31,14 @@ export default css`
 
   li {
     list-style-type: none;
+  }
+
+  p,
+  input,
+  textarea,
+  button
+  option,
+  select {
+    color: ${vars.text_color}
   }
 `

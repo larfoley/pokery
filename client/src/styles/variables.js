@@ -1,3 +1,5 @@
 export default {
-  primary_color: "#55efc4"
+  primary_color: "#55efc4",
+  text_color: "#40404f",
+  sidebar_bg_color: "#414345"
 }
