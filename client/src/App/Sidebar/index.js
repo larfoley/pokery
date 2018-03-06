@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import FontAwesome from 'react-fontawesome'
 import Link from './Link'
+import css from "../../styles/variables"
 
 const Wrapper = styled.div`
-  background-color: #414345;
+  background-color: ${css.sidebar_bg_color};
   color: white;
   position: fixed;
   width: 300px;
@@ -32,6 +33,7 @@ const Sidebar = (props) => (
       <li><Link to="/find-a-game"><FontAwesome name='search' /> Find a Game</Link></li>
       <li><Link to="/progress"><FontAwesome name='line-chart' /> Progress</Link></li>
       <li><Link to="/settings"><FontAwesome name='cog' /> Settings</Link></li>
+      <li><Link to="/add-session"><FontAwesome name='plus' /> New Session</Link></li>
     </ul>
   </Wrapper>
 )
