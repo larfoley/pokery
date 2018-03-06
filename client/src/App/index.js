@@ -18,6 +18,8 @@ import Register from '../views/Register'
 import Progress from '../views/Progress'
 import SessionHistory from '../views/SessionHistory'
 
+import Button from '../shared/ButtonLink'
+
 class App extends Component {
 
   constructor(props) {

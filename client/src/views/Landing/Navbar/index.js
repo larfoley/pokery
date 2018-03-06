@@ -9,7 +9,7 @@ const Navbar = props => (
   <Wrapper>
     <Link to="/">Home</Link>
     <Link to="/login">Login</Link>
-    <ButtonLink to="/register">Sign Up</ButtonLink>
+    <ButtonLink pill flat to="/register">Sign Up</ButtonLink>
   </Wrapper>
 )
 
