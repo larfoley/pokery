@@ -61,14 +61,11 @@ app.use('/api/profile', profile)
 app.use('/api/locations', locations)
 app.use('/api/poker-sessions', pokerSessions)
 app.use('/api/is-logged-in', isLoggedIn)
-
-
+app.get('/api/*', (req, res) => {
+  res.status(404).json({message: 'resource not found'})
+})
 app.get('*', (req, res, next) => {
-  if (process.env.ENVIROMENT === "production") {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'))
-  } else {
-    res.status(404).send({ error: 'resource not found' })
-  }
+  res.sendFile(path.join(__dirname, 'client/build/index.html'))
 });
 
 
