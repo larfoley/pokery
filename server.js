@@ -44,6 +44,8 @@ passport.deserializeUser(function(id, done) {
 });
 
 app.set('view engine', 'ejs')
+
+app.use(express.static('client/build/'))
 // app.use(favicon(path.join(__dirname, 'client/build', 'favicon.ico')))
 app.use(logger('dev'))
 app.use(bodyParser.json())
