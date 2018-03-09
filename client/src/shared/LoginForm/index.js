@@ -64,7 +64,7 @@ class LoginForm extends React.Component {
             </FormField>
 
             <FormField>
-              <Button type="submit" fullWidth >Login</Button>
+              <Button type="submit" fullWidth>Login</Button>
             </FormField>
 
             <Text color="white" align="center" size=".8em">
