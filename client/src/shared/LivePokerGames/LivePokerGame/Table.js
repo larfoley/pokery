@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Table = styled.table`
+const Table = styled.div`
 	& th{
   	text-align: left;
 	}

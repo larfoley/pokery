@@ -4,7 +4,8 @@ import Wrapper from './Wrapper'
 import Table from './Table'
 import TableBox from './TableBox'
 import Box from '../../Box'
-const Games = props => (
+
+const LivePokerGame = props => (
     <div>
         <Wrapper>
         <Header>
@@ -35,4 +36,4 @@ const Games = props => (
    </div>
 )  
 
-export default Games
+export default LivePokerGame

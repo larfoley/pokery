@@ -4,41 +4,51 @@ import React, { Component } from "react"
 
 import SectionTitle from "../SectionTitle"
 import PageSection from "../PageSection"
-import Games from "./Games"
+import LivePokerGame from "./LivePokerGame"
 import axios from "axios"
 
-class LivePokerGame extends Component {
+class LivePokerGames extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      livePokerGames: []
+      livePokerGames: [],
+      limit: props.limit? props.limit : 0
     }
   }
 
-  componentDidMount(){
+  componentWillMount(){
     axios.get('/api/live-poker-timetables')
     .then(response => {
-      this.setState({livePokerGames: response.data});
+      
+      const filteredPokerGames = [];
+      const livePokerGames = response.data;
+
+
+      if (true) {
+        for (var i = 0; i < 3; i++) {
+          filteredPokerGames.push(response.data[i])
+        }
+      }
+
+      this.setState({livePokerGames: filteredPokerGames.length > 0 ? filteredPokerGames : livePokerGames });
+
       
     })
     .catch(function (error) {
       console.log(error);
     })
   }
-
+  
 
   render() {
-  
-    return (
-      <div>
-        <PageSection>
-          <SectionTitle title="Find A Live Game"/>
-        </PageSection>
-        
-        <PageSection>
+
+    if (this.state.livePokerGames.length > 0) {
+      return (
+        <div>
           {this.state.livePokerGames.map((item, i) => (
-              <Games key = {i} 
+          
+              <LivePokerGame key = {i} 
                 type={item.type}
                 address={item.address}
                 buyIn={item.buyIn}
@@ -46,9 +56,13 @@ class LivePokerGame extends Component {
                 time={item.time}
               />
         ))}
-        </PageSection>
         </div>
-  )}
+      )
+    } else {
+      return <p> Loading...</p>
+    }
+  
+    }
 
 }
-export default LivePokerGame
+export default LivePokerGames

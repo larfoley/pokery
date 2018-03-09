@@ -1,12 +1,13 @@
 import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
-import Button from "../../shared/Button"
+import Button from "../../shared/ButtonLink"
 import Table from "../../shared/Table"
 import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
+import LivePokerGames from "../../shared/LivePokerGames";
 
 const Home = props => {
   return (
@@ -22,13 +23,15 @@ const Home = props => {
             [ {data: "Most Scuccesfull Location", type: "th"}, {data: "Merrion", type: "td"} ],
             [ {data: "Most Scuccesfull Variation", type: "th"}, {data: "Texas Hold'em", type: "td"} ]
           ]}/>
-          <Button>Find out More</Button>
+          <Button to="/progress">Find out More</Button>
         </PageSection>
         <PageSection>
           <SectionTitle title="Recent Sessions"/>
         </PageSection>
         <PageSection>
           <SectionTitle title="Nearby Games"/>
+          <LivePokerGames limit={5} />
+          <Button to="find-a-game">Find More Games</Button>
         </PageSection>
 
       </PageContainer>
