@@ -13,7 +13,7 @@ const Home = props => {
   return (
     <div>
       <Header />
-      <Sidebar />
+      <Sidebar logout={props.logout.bind(this)}/>
       <PageContainer>
         <PageSection>
           <SectionTitle title="Lifetime Progress"/>
