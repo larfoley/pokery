@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 const Form = styled.form`
-  background-color: #2e2e2e;
+  background-color: white;
   max-width: 600px;
-  margin: auto;
+  margin: 2em auto;
   padding: 3em 2em 2em 2em;
   border-radius: 5px;
 `
