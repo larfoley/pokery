@@ -17,6 +17,7 @@ import FindAGame from '../views/FindAGame'
 import Register from '../views/Register'
 import Progress from '../views/Progress'
 import SessionHistory from '../views/SessionHistory'
+import Settings from '../views/Settings'
 
 import Button from '../shared/ButtonLink'
 
@@ -58,6 +59,14 @@ class App extends Component {
       })
   }
 
+  logout() {
+    axios.get("/api/logout")
+    .then(res => {
+      this.setState(null)
+      window.location.reload()
+    })
+  }
+
   addPokerSession(session, callback) {
     axios.post('/api/poker-sessions/add', {pokerSession: session})
       .then(res => {
@@ -82,6 +91,7 @@ class App extends Component {
       .catch(err => {callback(err)})
   }
 
+
   render() {
 
     return (
@@ -98,19 +108,19 @@ class App extends Component {
             <Route path="/home" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Home />
+                <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/progress" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Progress/>
+                <Progress logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/login" render={() => (
               !this.state.user?
                <Login logIn={this.logIn.bind(this)}/> :
-               <Home />
+               <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/register" component={Register}/>
@@ -126,11 +136,18 @@ class App extends Component {
             )}/>
 
              <Route path="/find-a-game" render={() => <FindAGame /> }/>
+
              <Route path="/session-history" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <SessionHistory/>
+                <SessionHistory logout={this.logout.bind(this)}/>
             )}/>
+
+            <Route path="/settings" render={() => (
+             !this.state.user?
+               <Landing logIn={this.logIn.bind(this)}/> :
+               <Settings logout={this.logout.bind(this)}/>
+           )}/>
           </div>
         </ThemeProvider>
       </Router>
