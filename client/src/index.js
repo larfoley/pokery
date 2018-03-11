@@ -5,15 +5,11 @@ import 'normalize.css'
 import styles from './styles/index.js'
 import App from './App/index.js'
 import registerServiceWorker from './registerServiceWorker'
-// import axios from 'axios'
 
 injectGlobal`
   ${styles}
 `
 
-
 ReactDOM.render(<App />, document.getElementById('root'))
 
-if (process.env.ENVOIREMENT === "production") {
-  registerServiceWorker();
-}
+registerServiceWorker();
