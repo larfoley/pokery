@@ -16,6 +16,7 @@ export default css`
     font-size: 18px;
     line-height: 1.2;
     font-family:  'Nunito', sans-serif;
+    background-color: #f5f5f5;
   }
 
   img {
