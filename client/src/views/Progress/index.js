@@ -31,6 +31,18 @@ const data = [
   {name: 'July', uv: 3490, pv: 4300, amt: 2100},
 ]
 
+const dataBar = [
+  {name: 'Village Green', cashgames: 10, tournaments: 19, amt: 100},
+  {name: 'Fitzwilliam Casino', cashgames: 15, tournaments: 7, amt: 100},
+  {name: 'Macau Casino', cashgames: 2, tournaments: 9, amt: 100},
+  {name: 'Eglinton', cashgames: 6, tournaments: 3, amt: 100},
+  {name: 'Sporting Emporium', cashgames: 8, tournaments: 9, amt: 100},
+  {name: 'Penthouse Casino', cashgames: 1, tournaments: 11, amt: 100},
+  {name: 'Green Room', cashgames: 17, tournaments: 2, amt: 100},
+]
+
+
+
 const data01 = [
   {name: 'Group A', value: 400},
   {name: 'Group B', value: 300},
@@ -95,14 +107,14 @@ const Home = props => {
 
         <PageSection>
           <SectionTitle title="Most Scuccesfull Locations"/>
-          <BarChart width={730} height={250} data={data}>
+          <BarChart width={730} height={250} data={dataBar}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pv" fill="#8884d8" />
-            <Bar dataKey="uv" fill="#82ca9d" />
+            <Bar dataKey="cashgames" fill="#8884d8" />
+            <Bar dataKey="tournaments" fill="#82ca9d" />
           </BarChart>
         </PageSection>
 
