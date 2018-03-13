@@ -121,7 +121,7 @@ const Home = props => {
 
 
         <PageSection>
-        <SectionTitle title="Win Rate"/>
+        <SectionTitle title="Most Successful Game Location"/>
               <PieChart width={730} height={250}>
                 <Pie
                   data={data01}
