@@ -32,13 +32,13 @@ const data = [
 ]
 
 const dataBar = [
-  {name: 'Village Green', cash: 10, tournaments: 19, amt: 100},
-  {name: 'Fitzwilliam Casino', cash: 15, tournaments: 7, amt: 100},
-  {name: 'Macau Casino', cash: 2, tournaments: 9, amt: 100},
-  // {name: 'Eglinton', cash: 6, tournaments: 3, amt: 100},
-  // {name: 'Sporting Emporium', cash: 8, tournaments: 9, amt: 100},
-  // {name: 'Penthouse Casino', cash: 1, tournaments: 11, amt: 100},
-  {name: 'Green Room', cash: 17, tournaments: 2, amt: 100},
+  {name: 'Village Green', Cash: 10, Tournaments: 19, amt: 100},
+  {name: 'Fitzwilliam Casino', Cash: 15, Tournaments: 7, amt: 100},
+  {name: 'Macau Casino', Cash: 2, Tournaments: 9, amt: 100},
+  // {name: 'Eglinton', Cash: 6, Tournaments: 3, amt: 100},
+  // {name: 'Sporting Emporium', Cash: 8, Tournaments: 9, amt: 100},
+  // {name: 'Penthouse Casino', Cash: 1, Tournaments: 11, amt: 100},
+  {name: 'Green Room', Cash: 17, Tournaments: 2, amt: 100},
 ]
 
 
@@ -114,8 +114,8 @@ const Home = props => {
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="cash" fill="#8884d8" />
-            <Bar dataKey="tournaments" fill="#82ca9d" />
+            <Bar dataKey="Cash" fill="#8884d8" />
+            <Bar dataKey="Tournaments" fill="#82ca9d" />
           </BarChart>
         </PageSection>
 
