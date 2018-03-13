@@ -11,7 +11,7 @@ import Hamburger from './Hamburger'
 const Header = (props) => (
   <Wrapper>
     <Col>
-      <Title><Hamburger>foo</Hamburger> Poker Tracker</Title>
+      <Title><Hamburger>foo</Hamburger> Poker</Title>
     </Col>
     <Col align="right">
       <ButtonLink to="/add-session">Add a Session</ButtonLink>
