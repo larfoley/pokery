@@ -83,7 +83,7 @@ const Home = props => {
         </PageSection>
 
         <PageSection>
-          <SectionTitle title="Win Rate"/>
+          <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
@@ -142,6 +142,7 @@ const Home = props => {
                   fill="#82ca9d"
                   label />
               </PieChart>
+              
             </PageSection>
 
       </PageContainer>
