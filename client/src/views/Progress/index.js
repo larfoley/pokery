@@ -83,7 +83,7 @@ const Home = props => {
         </PageSection>
 
         <PageSection>
-          <SectionTitle title="Life Time Earnings By Wins"/>
+          <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
               <defs>
@@ -121,7 +121,7 @@ const Home = props => {
 
 
         <PageSection>
-        <SectionTitle title="Most Successful Game Location By Victories"/>
+        <SectionTitle title="Most Successful Game Location"/>
               <PieChart width={730} height={250}>
                 <Pie
                   data={data01}
