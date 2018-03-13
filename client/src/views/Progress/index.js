@@ -108,6 +108,7 @@ const Home = props => {
 
 
         <PageSection>
+        <SectionTitle title="Win Rate"/>
               <PieChart width={730} height={250}>
                 <Pie
                   data={data01}
