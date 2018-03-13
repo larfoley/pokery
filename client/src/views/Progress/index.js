@@ -107,7 +107,7 @@ const Home = props => {
         </PageSection>
 
         <PageSection>
-          <SectionTitle title="Most successful Game Type"/>
+          <SectionTitle title="Most Successful Game Type"/>
           <BarChart width={730} height={250} data={dataBar}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
