@@ -77,8 +77,8 @@ const Home = props => {
           <Table rows={[
             [ {data: "Earnings: ", type: "th"}, {data: "$2590", type: "td"} ],
             [ {data: "Win Rate: ", type: "th"}, {data: "27%", type: "td"} ],
-            [ {data: "Most Scuccesfull Location", type: "th"}, {data: "Merrion", type: "td"} ],
-            [ {data: "Most Scuccesfull Variation", type: "th"}, {data: "Texas Hold'em", type: "td"} ]
+            [ {data: "Most Successful Location", type: "th"}, {data: "Merrion", type: "td"} ],
+            [ {data: "Most Successful Variation", type: "th"}, {data: "Texas Hold'em", type: "td"} ]
           ]}/>
         </PageSection>
 
