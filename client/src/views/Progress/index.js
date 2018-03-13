@@ -129,18 +129,10 @@ const Home = props => {
                   nameKey="name"
                   cx="50%"
                   cy="50%"
-                  outerRadius={80}
-                  fill="#8884d8" />
-                <Pie
-                  data={data01}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
                   outerRadius={90}
                   fill="#82ca9d"
                   label />
+              <Legend />
               </PieChart>
               
             </PageSection>
