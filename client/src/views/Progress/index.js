@@ -44,10 +44,10 @@ const dataBar = [
 
 
 const data01 = [
-  {name: 'Group A', value: 400},
-  {name: 'Group B', value: 300},
-  {name: 'Group C', value: 300},
-  {name: 'Group D', value: 200}
+  {name: 'Green Room', value: 29},
+  {name: 'Village Green', value: 22},
+  {name: 'Fitzwilliam Casino', value: 11},
+  {name: 'Green Room', value: 19}
 ]
 
 
