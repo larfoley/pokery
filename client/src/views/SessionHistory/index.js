@@ -15,7 +15,6 @@ const SessionsHistoryPage = props => {
         <PageSection>
           <SectionTitle title="Session History"/>
         </PageSection>
-
       </PageContainer>
       <Footer />
     </div>

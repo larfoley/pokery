@@ -6,7 +6,9 @@ import TableBox from './TableBox'
 import Box from '../../Box'
 
 const LivePokerGame = props => (
+
     <div>
+	
         <Wrapper>
         <Header>
             <h3>{props.type}</h3>
@@ -27,6 +29,10 @@ const LivePokerGame = props => (
 				         <tr>
 					         <th>Start Time:</th>
 					         <td>{props.time}</td>
+				         </tr>
+						 <tr>
+					         <th>Start Day:</th>
+					         <td>{props.day}</td>
 				         </tr>
 			         </tbody>
 		         </table>
