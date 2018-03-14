@@ -22,13 +22,13 @@ import {
 } from 'recharts'
 
 const data = [
-  {name: 'Jan', uv: 400, pv: 240, amt: 200},
-  {name: 'Feb', uv: 300, pv: 138, amt: 221},
-  {name: 'March', uv: 200, pv: 680, amt: 229},
-  {name: 'April', uv: 278, pv: 308, amt: 200},
-  {name: 'May', uv: 189, pv: 400, amt: 218},
-  {name: 'June', uv: 239, pv: 300, amt: 250},
-  {name: 'July', uv: 349, pv: 430, amt: 210},
+  {name: 'Jan', Cash: 400, Tournament: 240, amt: 200},
+  {name: 'Feb', Cash: 300, Tournament: 138, amt: 221},
+  {name: 'March', Cash: 200, Tournament: 680, amt: 229},
+  {name: 'April', Cash: 278, Tournament: 308, amt: 200},
+  {name: 'May', Cash: 189, Tournament: 400, amt: 218},
+  {name: 'June', Cash: 239, Tournament: 300, amt: 250},
+  {name: 'July', Cash: 349, Tournament: 430, amt: 210},
 ]
 
 const dataBar = [
@@ -101,8 +101,8 @@ const Home = props => {
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
-             <Area type="monotone" dataKey="uv" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> 
-              <Area type="monotone" dataKey="pv" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+             <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> 
+              <Area type="monotone" dataKey="Tournament" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
             </AreaChart>
         </PageSection>
 
