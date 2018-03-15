@@ -20,7 +20,7 @@ class PokerLocations extends React.Component {
     return (
       <div>
         { pokerLocations.map((location, i) => (
-          <PokerLocation key={i}>{location.name}</PokerLocation>
+          <PokerLocation key={i} name={location.name} />
         )) }
       </div>
     )

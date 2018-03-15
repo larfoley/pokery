@@ -5,15 +5,17 @@ import { darken, lighten } from 'polished'
 const Button = styled.button`
   font-size: 16px;
   padding: .6em 1.1em;
+  text-align: center;
   margin-right: 7px;
-  background-color: ${css.primary_color};
-  color: white;
+  background-color: ${props => props.bgColor? props.bgColor : css.primary_color};
+  color: ${props => props.color? props.color : "white"};
   display: inline-block;
   text-decoration: none;
   text-align: center;
   border: none;
   outline: none;
-  border-bottom: 3px solid ${darken(0.2, css.primary_color)};
+  border-bottom: 3px solid  ${ props => props.bgColor?
+    darken(0.1, props.bgColor) : darken(0.1, css.primary_color) };;
   border-radius: 5px;
   font-weight: bold;
   transition: .3s;
@@ -56,7 +58,8 @@ const Button = styled.button`
 
   &:hover {
     cursor: pointer;
-    background-color: ${darken(0.1, css.primary_color)};
+    background-color: ${ props => props.bgColor?
+      darken(0.1, props.bgColor) : darken(0.1, css.primary_color)};
   }
 `
 

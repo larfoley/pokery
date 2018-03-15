@@ -5,11 +5,11 @@ const ComboBox = styled.select`
   background-color: white;
   padding: .5em;
   border: 1px solid #eee;
-  width: 100%;
+  width: ${props => props.width? props.width : "100%"};
   margin-bottom: 1em;
 
   &:hover {
-    cursor: pointer;
+    cursor: pointer;  
   }
 
   & option {
@@ -25,4 +25,3 @@ export default props => (
     ))}
   </ComboBox>
 )
-

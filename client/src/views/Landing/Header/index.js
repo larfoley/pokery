@@ -33,11 +33,18 @@ const Header = props => (
   <Wrapper>
     <Navbar />
     <Container>
-      <Section>
-        <Title>Pokery</Title>
-        <Tagline>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero asperiores velit, mollitia, beatae ut nihil modi natus distinctio laudantium. Soluta ex quasi itaque, corrupti repudiandae modi voluptatum ut dolorum earum!</Tagline>
-        <Button>Sign Up</Button>
-      </Section>
+      <div className="grid">
+       <div className="grid__col grid__col--2-of-4">
+         <Section>
+           <Title>Pokery</Title>
+           <Tagline>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero asperiores velit, mollitia, beatae ut nihil modi natus distinctio laudantium. Soluta ex quasi itaque, corrupti repudiandae modi voluptatum ut dolorum earum!</Tagline>
+           <Button>Sign Up</Button>
+         </Section>
+       </div>
+       <div className="grid__col grid__col--2-of-4">
+          {/* <img src="/img/phone.png" alt="phone"/> */}
+       </div>
+     </div>
     </Container>
   </Wrapper>
 )
