@@ -17,16 +17,18 @@ class LivePokerGames extends Component {
     this.state = {
       livePokerGames: [],
       limit: props.limit? props.limit : 0,
-      day : ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][new Date().getDay()]
+      day : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()],
     }
   }
 
-  componentWillMount() {
+  componentDidUpdate() {
     axios.get('/api/live-poker-timetables')
-    .then(response => {  
-      this.setState({ livePokerGames: response.data
-        .filter(game => this.state.day === game.day.toLowerCase())
-        .filter((game, i) => i < this.state.limit? true : false)})
+    .then(response => {
+      this.setState({
+        loading: false,
+        livePokerGames: response.data
+          .filter(game => this.state.day === game.day)
+          .filter((game, i) => i < this.state.limit? true : false)})
     })
 
     .catch(function (error) {
@@ -36,11 +38,10 @@ class LivePokerGames extends Component {
 
   handleDayChange(event) {
     this.setState({day: event.target.value});
-    this.forceUpdate();
   }
 
   loadMorePokerGames() {
-    this.setState({limit: this.state.limit + 15});
+    this.setState({limit: this.state.limit + 15,});
   }
   
   render() {
@@ -51,13 +52,13 @@ class LivePokerGames extends Component {
         <div>
           <FormField label="Day">
             <ComboBox  onChange={this.handleDayChange.bind(this)} name="day" options={[
-              {value: "monday", selected: this.state.day === 'monday'},
-              {value: "tuesday", selected: this.state.day === 'tuesday'},
-              {value: "wednesday", selected: this.state.day === 'wednesday'},
-              {value: "thursday", selected: this.state.day === 'thursday'},
-              {value: "friday", selected: this.state.day === 'friday'},
-              {value: "saturday", selected: this.state.day === 'saturday'},
-              {value: "sunday", selected: this.state.day === 'sunday'},
+              {value: "Monday", selected: this.state.day === 'Monday'},
+              {value: "Tuesday", selected: this.state.day === 'Tuesday'},
+              {value: "Wednesday", selected: this.state.day === 'Wednesday'},
+              {value: "Thursday", selected: this.state.day === 'Thursday'},
+              {value: "Friday", selected: this.state.day === 'Friday'},
+              {value: "Saturday", selected: this.state.day === 'Saturday'},
+              {value: "Sunday", selected: this.state.day === 'Sunday'},
             ]}/>
           </FormField>
           {this.state.livePokerGames.map((item, i) => (
@@ -67,18 +68,23 @@ class LivePokerGames extends Component {
                 buyIn={item.buyIn  }
                 date={item.date }
                 time={item.time }
-                day={item.day  }
+                day={item.day}
                 
               />
         ))}
-        <Button fullWidth={true} onClick={this.loadMorePokerGames.bind(this)}>Load More</Button>
+        {this.state.limit <= this.state.livePokerGames.length?
+          <Button
+            fullWidth={true}
+            onClick={this.loadMorePokerGames.bind(this)}>
+            Load More
+          </Button> : null}
+        
         </div>
       )
     } else {
       return <p> Loading...</p>
     }
-  
-    }
+  }
 
 }
 export default LivePokerGames
