@@ -10,6 +10,8 @@ import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 import ComboBox from "../../shared/ComboBox"
 
+
+
 const FindAGame = (props) => (
   <div>
     <Header />
@@ -17,15 +19,8 @@ const FindAGame = (props) => (
     <PageContainer>
         <PageSection>
           <SectionTitle title="Find a Game"/>
-          <ComboBox width="150px" name="day" options={[
-            {value: "Today"},
-            {value: "Monday"},
-            {value: "Tuesday"},
-            {value: "Wednesday"},
-            {value: "Thursday"},
-            {value: "Friday"}
-          ]} />
-          <LivePokerGames limit={50} />
+       
+          <LivePokerGames limit={15} />
         </PageSection>
     </PageContainer>
     <Footer />

@@ -7,4 +7,5 @@ const Text = styled.p`
   font-size: ${props => props.size? props.size : null};
 `
 
-export default Text
+export default Text;
+

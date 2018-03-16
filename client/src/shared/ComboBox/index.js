@@ -9,7 +9,7 @@ const ComboBox = styled.select`
   margin-bottom: 1em;
 
   &:hover {
-    cursor: pointer;
+    cursor: pointer;  
   }
 
   & option {
