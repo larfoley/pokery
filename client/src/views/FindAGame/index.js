@@ -19,7 +19,6 @@ const FindAGame = (props) => (
     <PageContainer>
         <PageSection>
           <SectionTitle title="Find a Game"/>
-       
           <LivePokerGames limit={15} />
         </PageSection>
     </PageContainer>
