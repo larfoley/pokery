@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 
 // Component
 import LivePokerGames from "../../shared/LivePokerGames"
@@ -8,9 +8,6 @@ import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
-import ComboBox from "../../shared/ComboBox"
-
-
 
 const FindAGame = (props) => (
   <div>
