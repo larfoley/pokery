@@ -9,15 +9,13 @@ const ComboBox = styled.select`
   margin-bottom: 1em;
 
   &:hover {
-    cursor: pointer;  
+    cursor: pointer;
   }
 
-  & option {
-  }
 `
 
 export default props => (
-  <ComboBox onChange={props.onChange} name={props.name}>
+  <ComboBox value={props.selected} onChange={props.onChange} name={props.name}>
     {props.options.map((option) => (
       <option key={option.value} value={option.value}>
         {option.value}

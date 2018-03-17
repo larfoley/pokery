@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import css from '../../styles/variables.js'
-import { darken, lighten } from 'polished'
+import { darken } from 'polished'
 
 const Button = styled.button`
   font-size: 16px;

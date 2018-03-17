@@ -1,9 +1,5 @@
 import React, { Component } from "react"
 
-// Components
-
-import SectionTitle from "../SectionTitle"
-import PageSection from "../PageSection"
 import LivePokerGame from "./LivePokerGame"
 import FormField from "../FormField"
 import ComboBox from "../ComboBox"
@@ -16,74 +12,84 @@ class LivePokerGames extends Component {
     super(props);
     this.state = {
       livePokerGames: [],
-      limit: props.limit? props.limit : 0,
+      loading: true,
+      disableLoadMoreButton: props.disableLoadMoreButton,
+      limit: props.limit? props.limit : 15,
+      resultsCount: props.limit? props.limit : 15,
       day : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()],
     }
   }
 
-  componentDidUpdate() {
-    axios.get('/api/live-poker-timetables')
-    .then(response => {
-      this.setState({
-        loading: false,
-        livePokerGames: response.data
-          .filter(game => this.state.day === game.day)
-          .filter((game, i) => i < this.state.limit? true : false)})
-    })
-
-    .catch(function (error) {
-      console.log(error);
-    })
+  componentWillMount() {
+    axios.get(`/api/live-poker-timetables?day=${this.state.day}`)
+      .then(response => {
+        let livePokerGames = response.data;
+        this.setState({ livePokerGames , loading: false})
+      })
+      .catch(error => console.log(error));
   }
 
   handleDayChange(event) {
-    this.setState({day: event.target.value});
+    this.setState({loading: true, day: event.target.value})
+    axios.get(`/api/live-poker-timetables?day=${event.target.value}`)
+      .then(response => {
+        let livePokerGames = response.data;
+        this.setState({ livePokerGames, loading: false })
+      })
+      .catch(error => console.log(error));
   }
 
   loadMorePokerGames() {
-    this.setState({limit: this.state.limit + 15,});
+    this.setState({loading: true});
+    this.setState({
+      limit: this.state.limit + this.state.resultsCount,
+      loading: false
+    });
   }
-  
-  render() {
 
-    if (this.state.livePokerGames.length > 0 ) {
-      return (
-     
-        <div>
-          <FormField label="Day">
-            <ComboBox  onChange={this.handleDayChange.bind(this)} name="day" options={[
-              {value: "Monday", selected: this.state.day === 'Monday'},
-              {value: "Tuesday", selected: this.state.day === 'Tuesday'},
-              {value: "Wednesday", selected: this.state.day === 'Wednesday'},
-              {value: "Thursday", selected: this.state.day === 'Thursday'},
-              {value: "Friday", selected: this.state.day === 'Friday'},
-              {value: "Saturday", selected: this.state.day === 'Saturday'},
-              {value: "Sunday", selected: this.state.day === 'Sunday'},
-            ]}/>
-          </FormField>
-          {this.state.livePokerGames.map((item, i) => (
-              <LivePokerGame key = {i} 
+  render() {
+    const livePokerGames = this.state.livePokerGames
+      .filter((game, i) => i < this.state.limit? true : false);
+
+    return (
+      <div>
+        <FormField>
+          <ComboBox selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
+            {value: "Monday"},
+            {value: "Tuesday"},
+            {value: "Wednesday"},
+            {value: "Thursday"},
+            {value: "Friday"},
+            {value: "Saturday"},
+            {value: "Sunday"},
+          ]}/>
+        </FormField>
+        {!this.state.loading?
+          <div>
+            <h5>Games Found: {this.state.livePokerGames.length}</h5>
+            {livePokerGames.map((item, i) => (
+              <LivePokerGame key = {i}
                 type={item.type }
                 address={item.address }
                 buyIn={item.buyIn  }
                 date={item.date }
                 time={item.time }
                 day={item.day}
-                
+
               />
-        ))}
-        {this.state.limit <= this.state.livePokerGames.length?
-          <Button
-            fullWidth={true}
-            onClick={this.loadMorePokerGames.bind(this)}>
-            Load More
-          </Button> : null}
-        
-        </div>
-      )
-    } else {
-      return <p> Loading...</p>
-    }
+            ))}
+          </div> :
+          <p>Loading...</p>
+        }
+      {this.state.limit <= this.state.livePokerGames.length && !this.state.disableLoadMoreButton?
+        <Button
+          onClick={this.loadMorePokerGames.bind(this)}>
+          Load More
+        </Button> : null}
+
+      </div>
+    )
+
   }
 
 }

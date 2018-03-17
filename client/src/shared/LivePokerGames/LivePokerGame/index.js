@@ -3,16 +3,13 @@ import Header from './Header'
 import Wrapper from './Wrapper'
 import Table from './Table'
 import TableBox from './TableBox'
-import Box from '../../Box'
 
 const LivePokerGame = props => (
-
     <div>
-	
         <Wrapper>
         <Header>
-            <h3>{props.type}</h3>
-            <h4>{props.address}</h4>
+          <h3>{props.type}</h3>
+          <h4>{props.address}</h4>
         </Header>
         <TableBox>
             <Table>
@@ -40,6 +37,6 @@ const LivePokerGame = props => (
          </TableBox>
       </Wrapper>
    </div>
-)  
+)
 
 export default LivePokerGame

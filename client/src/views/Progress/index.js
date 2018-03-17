@@ -41,28 +41,11 @@ const dataBar = [
   {name: 'Green Room', Cash: 17, Tournaments: 2, amt: 100},
 ]
 
-
-
 const data01 = [
   {name: 'Green Room', value: 29},
   {name: 'Village Green', value: 22},
   {name: 'Fitzwilliam Casino', value: 11},
   {name: 'Green Room', value: 19}
-]
-
-
-const data02 = [
-  {name: 'A1', value: 100},
-  {name: 'A2', value: 300},
-  {name: 'B1', value: 100},
-  {name: 'B2', value: 80},
-  {name: 'B3', value: 40},
-  {name: 'B4', value: 30},
-  {name: 'B5', value: 50},
-  {name: 'C1', value: 100},
-  {name: 'C2', value: 200},
-  {name: 'D1', value: 150},
-  {name: 'D2', value: 50}
 ]
 
 const Home = props => {
@@ -101,7 +84,7 @@ const Home = props => {
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
-             <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" /> 
+             <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
               <Area type="monotone" dataKey="Tournament" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
             </AreaChart>
         </PageSection>
@@ -134,7 +117,7 @@ const Home = props => {
                   label />
               <Legend />
               </PieChart>
-              
+
             </PageSection>
 
       </PageContainer>

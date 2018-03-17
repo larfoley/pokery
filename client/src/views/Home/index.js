@@ -30,7 +30,7 @@ const Home = props => {
         </PageSection>
         <PageSection>
           <SectionTitle title="Nearby Games"/>
-          <LivePokerGames limit={5} />
+          <LivePokerGames limit={3} disableLoadMoreButton={true}/>
           <Button to="find-a-game">Find More Games</Button>
         </PageSection>
 
