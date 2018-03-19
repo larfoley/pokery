@@ -14,7 +14,6 @@ import {
 
 const BarCharts = props => {
   return (
-    <div>
         <PageSection>
           <SectionTitle title={props.title}/>
           <BarChart width={props.width} height={props.height} data={props.data}>
@@ -27,7 +26,6 @@ const BarCharts = props => {
             <Bar dataKey={props.dataKey2} fill={props.fill2} />
           </BarChart>
         </PageSection>
-    </div>
   )
 
 }
