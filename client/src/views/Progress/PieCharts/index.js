@@ -20,13 +20,6 @@ import {
 } from 'recharts'
 
 
-const data01 = [
-  {name: 'Green Room', value: 29},
-  {name: 'Village Green', value: 22},
-  {name: 'Fitzwilliam Casino', value: 11},
-  {name: 'Green Room', value: 19}
-]
-
 const PieCharts = props => {
   return (
     <div>
@@ -34,7 +27,7 @@ const PieCharts = props => {
         <SectionTitle title={props.title}/>
             <PieChart width={730} height={250}>
               <Pie
-                data={data01}
+                data={props.data}
                 dataKey="value"
                 nameKey="name"
                 cx="50%"
