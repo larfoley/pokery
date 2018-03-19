@@ -9,6 +9,7 @@ import Table from '../../shared/Table'
 import PieCharts from './PieCharts'
 import BarCharts from './BarCharts'
 import LineCharts from './LineCharts'
+import AreaCharts from './AreaCharts'
 
 import {
   AreaChart,
@@ -93,7 +94,7 @@ const Home = props => {
           lineDataKey="Cash" 
           stroke="#82ca9d"
         />
-        
+
         <PageSection>
           <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}

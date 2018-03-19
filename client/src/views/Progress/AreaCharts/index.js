@@ -1,14 +1,6 @@
 import React from "react"
-import SectionTitle from "../../shared/SectionTitle"
-import PageSection from "../../shared/PageSection"
-import Header from '../../App/Header'
-import Footer from '../../App/Footer'
-import Sidebar from '../../App/Sidebar'
-import PageContainer from '../../App/PageContainer'
-import Table from '../../shared/Table'
-import PieCharts from './PieCharts'
-import BarCharts from './BarCharts'
-import LineCharts from './LineCharts'
+import SectionTitle from "../../../shared/SectionTitle"
+import PageSection from "../../../shared/PageSection"
 
 import {
   AreaChart,
@@ -64,7 +56,6 @@ const AreaCharts = props => {
         </AreaChart>
     </PageSection>
   )
-
 }
 
 export default AreaCharts
