@@ -1,10 +1,11 @@
 import React, { Component } from "react"
-
 import LivePokerGame from "./LivePokerGame"
 import FormField from "../FormField"
 import ComboBox from "../ComboBox"
 import axios from "axios"
 import Button from "../Button"
+import Loading from "../Loading"
+import Align from "../Align"
 
 class LivePokerGames extends Component {
 
@@ -80,7 +81,10 @@ class LivePokerGames extends Component {
               />
             ))}
           </div> :
-          <p>Loading...</p>
+          <Align to="center">
+            <Loading />
+          </Align>
+
         }
       {this.state.limit <= this.state.livePokerGames.length && !this.state.disableLoadMoreButton?
         <Button
