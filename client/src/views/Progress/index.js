@@ -63,6 +63,8 @@ const Home = props => {
       <Sidebar />
       <PageContainer>
 
+      
+
         <PageSection>
           <SectionTitle title="Lifetime Progress"/>
           <Table rows={[
@@ -95,6 +97,19 @@ const Home = props => {
           stroke="#82ca9d"
         />
 
+        <AreaCharts 
+          title="Life Time Earnings" 
+          width={730} 
+          height={250} 
+          data={data}
+          margin={{ top: 10, right: 30, left: 0, bottom: 0 }} 
+          yLabel={{ value: '€', position: 'insideTopLeft' }}
+          dataKey1="Cash"
+          stroke1="#8884d8"
+          dataKey2="Tournament"
+          stroke2="#82ca9d"
+        />        
+
         <PageSection>
           <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
@@ -114,7 +129,7 @@ const Home = props => {
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
-             <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+              <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
               <Area type="monotone" dataKey="Tournament" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
             </AreaChart>
         </PageSection>

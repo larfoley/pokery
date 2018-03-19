@@ -25,9 +25,9 @@ const data = [
 const AreaCharts = props => {
   return (
     <PageSection>
-      <SectionTitle title="Life Time Earnings"/>
-        <AreaChart width={730} height={250} data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+      <SectionTitle title={props.title}/>
+        <AreaChart width={props.width} height={props.height} data={props.data}
+          margin={props.margin}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
@@ -39,12 +39,12 @@ const AreaCharts = props => {
             </linearGradient>
           </defs>
           <XAxis dataKey="name" />
-          <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
+          <YAxis label={props.yLabel} />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
           <Legend />
-          <Area type="monotone" dataKey="Cash" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
-          <Area type="monotone" dataKey="Tournament" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
+          <Area type="monotone" dataKey={props.dataKey1} stroke={props.stroke1} fillOpacity={1} fill="url(#colorUv)" />
+          <Area type="monotone" dataKey={props.dataKey2} stroke={props.stroke2} fillOpacity={1} fill="url(#colorPv)" />
         </AreaChart>
     </PageSection>
   )
