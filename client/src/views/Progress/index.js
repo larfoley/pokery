@@ -6,6 +6,7 @@ import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import Table from '../../shared/Table'
+import PieCharts from './PieCharts'
 import {
   AreaChart,
   Area,
