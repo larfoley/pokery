@@ -7,6 +7,8 @@ import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import Table from '../../shared/Table'
 import PieCharts from './PieCharts'
+import BarCharts from './BarCharts'
+
 import {
   AreaChart,
   Area,
@@ -116,6 +118,20 @@ const Home = props => {
               <Area type="monotone" dataKey="Tournament" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)" />
             </AreaChart>
         </PageSection>
+
+        <BarCharts 
+          title="Most Successful Game Type" 
+          width={730} 
+          height={250} 
+          data={dataBar} 
+          strokeDasharray="3 3"
+          dataKey="name"
+          label={{ value: 'games won', angle: -90, position: 'insideLeft' }}
+          dataKey1="Cash"
+          fill1="#8884d8"
+          dataKey2="Tournaments"
+          fill2="#82ca9d"
+        />
 
         <PageSection>
           <SectionTitle title="Most Successful Game Type"/>
