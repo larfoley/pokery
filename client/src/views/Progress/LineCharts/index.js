@@ -37,23 +37,6 @@ const data = [
   {name: 'July', Cash: 349, Tournament: 430, amt: 210},
 ]
 
-const dataBar = [
-  {name: 'Village Green', Cash: 10, Tournaments: 19, amt: 100},
-  {name: 'Fitzwilliam Casino', Cash: 15, Tournaments: 7, amt: 100},
-  {name: 'Macau Casino', Cash: 2, Tournaments: 9, amt: 100},
-  // {name: 'Eglinton', Cash: 6, Tournaments: 3, amt: 100},
-  // {name: 'Sporting Emporium', Cash: 8, Tournaments: 9, amt: 100},
-  // {name: 'Penthouse Casino', Cash: 1, Tournaments: 11, amt: 100},
-  {name: 'Green Room', Cash: 17, Tournaments: 2, amt: 100},
-]
-
-const data01 = [
-  {name: 'Green Room', value: 29},
-  {name: 'Village Green', value: 22},
-  {name: 'Fitzwilliam Casino', value: 11},
-  {name: 'Green Room', value: 19}
-]
-
 const LineCharts = props => {
   return (
     <PageSection>
