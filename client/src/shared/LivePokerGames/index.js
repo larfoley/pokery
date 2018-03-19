@@ -5,7 +5,8 @@ import FormField from "../FormField"
 import ComboBox from "../ComboBox"
 import axios from "axios"
 import Button from "../Button"
-
+import FontAwesome from 'react-fontawesome'
+import Icon from "./LivePokerGame/Icon"
 class LivePokerGames extends Component {
 
   constructor(props){
@@ -80,7 +81,8 @@ class LivePokerGames extends Component {
               />
             ))}
           </div> :
-          <p>Loading...</p>
+          <Icon><p><FontAwesome name='spinner' pulse size="lg"/></p></Icon>
+         
         }
       {this.state.limit <= this.state.livePokerGames.length && !this.state.disableLoadMoreButton?
         <Button
