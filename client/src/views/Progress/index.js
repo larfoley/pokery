@@ -165,6 +165,9 @@ const Home = props => {
 
         </PageSection>
 
+
+        <PieCharts />
+
       </PageContainer>
 
 
