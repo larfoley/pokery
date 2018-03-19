@@ -1,26 +1,27 @@
 import React from 'react'
-import PokerLocation from "./PokerLocation"
+import PokerLocation from "./PokerLocation/"
 
 class PokerLocations extends React.Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      pokerLocations: []
-    }
-  }
-
-  componentWillMount() {
-    this.setState({pokerLocations: this.props.locations})
   }
 
   render() {
-    const pokerLocations = this.state.pokerLocations;
+    const pokerLocations = this.props.locations;
+    const sessions = this.props.sessions;
 
     return (
       <div>
-        { pokerLocations.map((location, i) => (
-          <PokerLocation key={i} name={location.name} />
+        { pokerLocations.map(location => (
+          <PokerLocation
+            key={location._id}
+            id={location._id}
+            name={location.name}
+            sessions={sessions.filter(s => s.location === location.name)}
+            editLivePokerLocation={this.props.editLivePokerLocation}
+            deleteLivePokerLocation={this.props.deleteLivePokerLocation}
+          />
         )) }
       </div>
     )
