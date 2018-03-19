@@ -72,8 +72,35 @@ const Home = props => {
           ]}/>
         </PageSection>
 
+        <LineCharts 
+          data={data} 
+          title="Earnings" 
+          width={730} 
+          height={250} 
+          margin={
+            { 
+              top: 5, 
+              right: 30, 
+              left: 20, 
+              bottom: 5 
+            }
+          }
+          strokeDasharray="3 3"
+          xDataKey="name"
+          label={ 
+            { 
+              value: '€', 
+              position: 'insideTopLeft' 
+            }
+          }
+          strokeDasharray="3 3"
+          type="monotone" 
+          lineDataKey="Cash" 
+          stroke="#82ca9d"
+        />
+
         <PageSection>
-          <SectionTitle title="Earnings"/>
+          <SectionTitle title="Earnings" />
             <LineChart width={730} 
               height={250}
               data={data}
