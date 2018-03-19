@@ -12,7 +12,7 @@ const PieCharts = props => {
   return (
     <div>
         <PageSection>
-        <SectionTitle title={props.title}/>
+          <SectionTitle title={props.title}/>
             <PieChart width={props.width} height={props.height}>
               <Pie
                 data={props.data}
