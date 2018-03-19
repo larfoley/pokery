@@ -121,7 +121,7 @@ const Home = props => {
           <BarChart width={730} height={250} data={dataBar}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis label={{ value: 'games won', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
             <Legend />
             <Bar dataKey="Cash" fill="#8884d8" />
