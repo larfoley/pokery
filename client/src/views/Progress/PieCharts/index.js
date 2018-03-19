@@ -2,21 +2,9 @@ import React from "react"
 import SectionTitle from "../../../shared/SectionTitle"
 import PageSection from "../../../shared/PageSection"
 import {
-  AreaChart,
-  Area,
-  linearGradient,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Bar,
-  BarChart,
   Legend,
   Pie,
   PieChart,
-  Line,
-  LineChart,
-  Label
 } from 'recharts'
 
 
