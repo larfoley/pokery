@@ -25,7 +25,7 @@ class PokerSessions extends React.Component {
   render() {
     return (
       <div>
-        {this.state.pokerSessions.map(session => <PokerSession session={session} />)}
+        {this.state.pokerSessions.map((session, i) => <PokerSession key={i} session={session} />)}
       </div>
     )
   }

@@ -21,6 +21,7 @@ class LivePokerGames extends Component {
   }
 
   componentWillMount() {
+    this.setState({loading: true})
     axios.get(`/api/live-poker-timetables?day=${this.state.day}`)
       .then(response => {
         let livePokerGames = response.data;
@@ -40,7 +41,7 @@ class LivePokerGames extends Component {
   }
 
   loadMorePokerGames() {
-    this.setState({loading: true});
+    // this.setState({loading: true});
     this.setState({
       limit: this.state.limit + this.state.resultsCount,
       loading: false

@@ -60,7 +60,7 @@ app.use('/api/live-poker-timetables', livePokerTimetables)
 app.use('/api/login', login)
 app.use('/api/logout', logout)
 app.use('/api/profile', profile)
-app.use('/api/locations', locations)
+app.use('/api/poker-locations', locations)
 app.use('/api/poker-sessions', pokerSessions)
 app.use('/api/is-logged-in', isLoggedIn)
 app.get('/api/*', (req, res) => {
