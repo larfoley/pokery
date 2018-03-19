@@ -15,24 +15,17 @@ const LineCharts = props => {
   return (
     <PageSection>
       <SectionTitle title={props.title}/>
-        <LineChart width={730} 
-          height={250}
+        <LineChart width={props.width} 
+          height={props.height}
           data={props.data}
-          margin={
-            { 
-              top: 5, 
-              right: 30, 
-              left: 20, 
-              bottom: 5 
-            }
-          }
+          margin={props.margin}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
+          <CartesianGrid strokeDasharray={props.strokeDasharray} />
+          <XAxis dataKey={props.xDataKey} />
+          <YAxis label={props.label} />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="Cash" stroke="#82ca9d" />
+          <Line type={props.type} dataKey={props.lineDataKey} stroke={props.stroke} />
         </LineChart>
     </PageSection>
   )
