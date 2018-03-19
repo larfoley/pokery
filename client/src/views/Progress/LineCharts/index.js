@@ -1,30 +1,14 @@
 import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
-import Header from '../../App/Header'
-import Footer from '../../App/Footer'
-import Sidebar from '../../App/Sidebar'
-import PageContainer from '../../App/PageContainer'
-import Table from '../../shared/Table'
-import PieCharts from './PieCharts'
-import BarCharts from './BarCharts'
-
 import {
-  AreaChart,
-  Area,
-  linearGradient,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  Bar,
-  BarChart,
   Legend,
-  Pie,
-  PieChart,
   Line,
   LineChart,
-  Label
 } from 'recharts'
 
 const data = [
