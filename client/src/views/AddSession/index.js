@@ -38,16 +38,19 @@ class AddSession extends React.Component {
             <p>Before creating a session you must add a location</p>
             }
           </PageSection>
-
           <PageSection>
             <SectionTitle title="Poker Locations"/>
             <PokerLocationAdder
               user={this.props.user}
               addPokerLocation={this.props.addPokerLocation}
             />
-            <PokerLocations locations={this.props.user.pokerLocations} />
+            <PokerLocations
+              locations={this.props.user.pokerLocations}
+              sessions={this.props.user.pokerSessions}
+              editLivePokerLocation={this.props.editLivePokerLocation}
+              deleteLivePokerLocation={this.props.deleteLivePokerLocation}
+            />
           </PageSection>
-
         </PageContainer>
         <Footer />
       </div>
