@@ -21,7 +21,7 @@ const PieCharts = props => {
                 cx="50%"
                 cy="50%"
                 outerRadius={90}
-                fill="#8884d8"
+                fill={props.fill}
                 label />
             <Legend />
           </PieChart>
