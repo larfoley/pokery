@@ -125,7 +125,7 @@ const Home = props => {
           height={250} 
           data={dataBar} 
           strokeDasharray="3 3"
-          dataKey="name"
+          xDataKey="name"
           label={{ value: 'games won', angle: -90, position: 'insideLeft' }}
           dataKey1="Cash"
           fill1="#8884d8"

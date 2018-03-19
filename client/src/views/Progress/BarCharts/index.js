@@ -27,15 +27,15 @@ const BarCharts = props => {
   return (
     <div>
         <PageSection>
-          <SectionTitle title="Most Successful Game Type"/>
-          <BarChart width={730} height={250} data={dataBar}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis label={{ value: 'games won', angle: -90, position: 'insideLeft' }} />
+          <SectionTitle title={props.title}/>
+          <BarChart width={props.width} height={props.height} data={props.data}>
+            <CartesianGrid strokeDasharray={props.strokeDasharray} />
+            <XAxis dataKey={props.xDataKey} />
+            <YAxis label={props.label} />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Cash" fill="#8884d8" />
-            <Bar dataKey="Tournaments" fill="#82ca9d" />
+            <Bar dataKey={props.dataKey1} fill={props.fill1} />
+            <Bar dataKey={props.dataKey2} fill={props.fill2} />
           </BarChart>
         </PageSection>
     </div>
