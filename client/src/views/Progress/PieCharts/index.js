@@ -31,7 +31,7 @@ const PieCharts = props => {
   return (
     <div>
         <PageSection>
-        <SectionTitle title="Most Played Game Location"/>
+        <SectionTitle title={props.title}/>
             <PieChart width={730} height={250}>
               <Pie
                 data={data01}
