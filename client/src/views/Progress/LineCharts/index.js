@@ -15,7 +15,8 @@ const LineCharts = props => {
   return (
     <PageSection>
       <SectionTitle title={props.title}/>
-        <LineChart width={props.width} 
+        <LineChart 
+          width={props.width} 
           height={props.height}
           data={props.data}
           margin={props.margin}
@@ -25,7 +26,11 @@ const LineCharts = props => {
           <YAxis label={props.label} />
           <Tooltip />
           <Legend />
-          <Line type={props.type} dataKey={props.lineDataKey} stroke={props.stroke} />
+          <Line 
+            type={props.type} 
+            dataKey={props.lineDataKey} 
+            stroke={props.stroke} 
+          />
         </LineChart>
     </PageSection>
   )
