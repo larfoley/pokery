@@ -13,14 +13,14 @@ const PieCharts = props => {
     <div>
         <PageSection>
         <SectionTitle title={props.title}/>
-            <PieChart width={730} height={250}>
+            <PieChart width={props.width} height={props.height}>
               <Pie
                 data={props.data}
                 dataKey={props.dataKey}
                 nameKey={props.nameKey}
-                cx="50%"
-                cy="50%"
-                outerRadius={90}
+                cx={props.cx}
+                cy={props.cy}
+                outerRadius={props.outerRadius}
                 fill={props.fill}
                 label />
             <Legend />
