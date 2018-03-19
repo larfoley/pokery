@@ -69,6 +69,30 @@ const Home = props => {
         </PageSection>
 
         <PageSection>
+          <SectionTitle title="Earnings"/>
+            <LineChart width={730} 
+              height={250}
+              data={data}
+              margin={
+                { 
+                  top: 5, 
+                  right: 30, 
+                  left: 20, 
+                  bottom: 5 
+                }
+              }
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="Cash" stroke="#82ca9d" />
+            </LineChart>
+        </PageSection>
+
+
+        <PageSection>
           <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -125,35 +149,20 @@ const Home = props => {
 
         <PageSection>
         <SectionTitle title="Most Played Game Location"/>
-              <PieChart width={730} height={250}>
-                <Pie
-                  data={data01}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={90}
-                  fill="#82ca9d"
-                  label />
-              <Legend />
-              </PieChart>
+            <PieChart width={730} height={250}>
+              <Pie
+                data={data01}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={90}
+                fill="#8884d8"
+                label />
+            <Legend />
+          </PieChart>
 
-            </PageSection>
-
-
-        <PageSection>
-        <SectionTitle title="Earnings"/>
-        <LineChart width={730} height={250} data={data}
-          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="Cash" stroke="#8884d8" />
-        </LineChart>
-
-            </PageSection>
+        </PageSection>
 
       </PageContainer>
 
