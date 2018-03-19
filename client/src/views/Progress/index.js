@@ -18,7 +18,10 @@ import {
   BarChart,
   Legend,
   Pie,
-  PieChart
+  PieChart,
+  Line,
+  LineChart,
+  Label
 } from 'recharts'
 
 const data = [
@@ -120,7 +123,23 @@ const Home = props => {
 
             </PageSection>
 
+        <PageSection>
+        <SectionTitle title="Most Successful Game Location"/>
+        <LineChart width={730} height={250} data={data}
+          margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="Cash" stroke="#8884d8" />
+        </LineChart>
+
+            </PageSection>
+
       </PageContainer>
+
+
       <Footer />
     </div>
   )
