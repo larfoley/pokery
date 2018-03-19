@@ -1,7 +1,6 @@
 import React from "react"
 import SectionTitle from "../../../shared/SectionTitle"
 import PageSection from "../../../shared/PageSection"
-
 import {
   AreaChart,
   Area,
@@ -10,14 +9,7 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Bar,
-  BarChart,
   Legend,
-  Pie,
-  PieChart,
-  Line,
-  LineChart,
-  Label
 } from 'recharts'
 
 const data = [
