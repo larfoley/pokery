@@ -16,8 +16,8 @@ const PieCharts = props => {
             <PieChart width={730} height={250}>
               <Pie
                 data={props.data}
-                dataKey="value"
-                nameKey="name"
+                dataKey={props.dataKey}
+                nameKey={props.nameKey}
                 cx="50%"
                 cy="50%"
                 outerRadius={90}

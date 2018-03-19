@@ -166,7 +166,7 @@ const Home = props => {
         </PageSection>
 
 
-        <PieCharts title={"Most Played Game Location"} data={data01} />
+        <PieCharts title="Most Played Game Location" data={data01} dataKey="value" nameKey="name"/>
 
       </PageContainer>
 
