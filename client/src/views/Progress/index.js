@@ -93,9 +93,7 @@ const Home = props => {
           lineDataKey="Cash" 
           stroke="#82ca9d"
         />
-
-
-
+        
         <PageSection>
           <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
