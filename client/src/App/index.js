@@ -89,12 +89,12 @@ class App extends Component {
       .catch(err => {callback(err)})
   }
 
-  deleteLivePokerLocation(id, callback) {
+  deleteLivePokerLocation(id, name, callback) {
     if (window.confirm(`
       Deleting this location will also delete all sessions associatied with this location.
       Are you sure you want to delete?
       `)) {
-      axios.post('/api/poker-locations/delete', { id })
+      axios.post('/api/poker-locations/delete', { id, name })
         .then(res => {
           this.setState(prevState => {
             prevState.user.pokerLocations = res.data

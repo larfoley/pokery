@@ -87,7 +87,7 @@ class PokerLocation extends React.Component {
   }
 
   onDeleteLocation() {
-    this.props.deleteLivePokerLocation(this.state.id, (err, successful) => {
+    this.props.deleteLivePokerLocation(this.state.id, this.state.name, (err, successful) => {
       if (!err) {
         window.alert("Location deleted")
       } else {
