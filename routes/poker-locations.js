@@ -52,6 +52,7 @@ router.post('/delete', requiresAuth, (req, res, next) => {
 	User.findById(req.user._id, (err, user) => {
 		if (err) return next(err);
 		user.pokerLocations.id(req.body.id).remove();
+		user.pokerSessions = user.pokerSessions.filter(session => session.name != req.body.name)
 		user.save((err, doc) => {
 		  if (err) return next(err);
 		  res.json(doc.pokerLocations)
