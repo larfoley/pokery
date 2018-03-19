@@ -1,6 +1,6 @@
 import React from "react"
-import SectionTitle from "../../shared/SectionTitle"
-import PageSection from "../../shared/PageSection"
+import SectionTitle from "../../../shared/SectionTitle"
+import PageSection from "../../../shared/PageSection"
 import {
   CartesianGrid,
   XAxis,

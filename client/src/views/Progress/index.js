@@ -8,6 +8,7 @@ import PageContainer from '../../App/PageContainer'
 import Table from '../../shared/Table'
 import PieCharts from './PieCharts'
 import BarCharts from './BarCharts'
+import LineCharts from './LineCharts'
 
 import {
   AreaChart,
