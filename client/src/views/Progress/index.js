@@ -130,30 +130,12 @@ const Home = props => {
           </BarChart>
         </PageSection>
 
-
-        <PageSection>
-        <SectionTitle title="Most Successful Game Location"/>
-              <PieChart width={730} height={250}>
-                <Pie
-                  data={data01}
-                  dataKey="value"
-                  nameKey="name"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={90}
-                  fill="#82ca9d"
-                  label />
-              <Legend />
-              </PieChart>
-
-            </PageSection>
-
         <PieCharts 
-          title="Most Played Game Location" 
+          title="Most Successful Game Location" 
           data={data01} 
           dataKey="value" 
           nameKey="name" 
-          fill="#8884d8"
+          fill="#82ca9d"
           cx="50%"
           cy="50%"
           outerRadius={90}
