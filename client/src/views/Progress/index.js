@@ -107,7 +107,7 @@ const Home = props => {
                 </linearGradient>
               </defs>
               <XAxis dataKey="name" />
-              <YAxis />
+              <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
