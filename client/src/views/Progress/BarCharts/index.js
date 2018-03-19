@@ -9,19 +9,8 @@ import {
   Tooltip,
   Bar,
   BarChart,
-  Legend,
+  Legend
 } from 'recharts'
-
-
-const dataBar = [
-  {name: 'Village Green', Cash: 10, Tournaments: 19, amt: 100},
-  {name: 'Fitzwilliam Casino', Cash: 15, Tournaments: 7, amt: 100},
-  {name: 'Macau Casino', Cash: 2, Tournaments: 9, amt: 100},
-  // {name: 'Eglinton', Cash: 6, Tournaments: 3, amt: 100},
-  // {name: 'Sporting Emporium', Cash: 8, Tournaments: 9, amt: 100},
-  // {name: 'Penthouse Casino', Cash: 1, Tournaments: 11, amt: 100},
-  {name: 'Green Room', Cash: 17, Tournaments: 2, amt: 100},
-]
 
 const BarCharts = props => {
   return (
