@@ -18,7 +18,10 @@ import {
   BarChart,
   Legend,
   Pie,
-  PieChart
+  PieChart,
+  Line,
+  LineChart,
+  Label
 } from 'recharts'
 
 const data = [
@@ -66,6 +69,30 @@ const Home = props => {
         </PageSection>
 
         <PageSection>
+          <SectionTitle title="Earnings"/>
+            <LineChart width={730} 
+              height={250}
+              data={data}
+              margin={
+                { 
+                  top: 5, 
+                  right: 30, 
+                  left: 20, 
+                  bottom: 5 
+                }
+              }
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="Cash" stroke="#82ca9d" />
+            </LineChart>
+        </PageSection>
+
+
+        <PageSection>
           <SectionTitle title="Life Time Earnings"/>
             <AreaChart width={730} height={250} data={data}
               margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
@@ -80,7 +107,7 @@ const Home = props => {
                 </linearGradient>
               </defs>
               <XAxis dataKey="name" />
-              <YAxis />
+              <YAxis label={{ value: '€', position: 'insideTopLeft' }} />
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Legend />
@@ -94,7 +121,7 @@ const Home = props => {
           <BarChart width={730} height={250} data={dataBar}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis />
+            <YAxis label={{ value: 'games won', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
             <Legend />
             <Bar dataKey="Cash" fill="#8884d8" />
@@ -120,7 +147,26 @@ const Home = props => {
 
             </PageSection>
 
+        <PageSection>
+        <SectionTitle title="Most Played Game Location"/>
+            <PieChart width={730} height={250}>
+              <Pie
+                data={data01}
+                dataKey="value"
+                nameKey="name"
+                cx="50%"
+                cy="50%"
+                outerRadius={90}
+                fill="#8884d8"
+                label />
+            <Legend />
+          </PieChart>
+
+        </PageSection>
+
       </PageContainer>
+
+
       <Footer />
     </div>
   )
