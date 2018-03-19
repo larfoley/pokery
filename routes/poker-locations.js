@@ -21,9 +21,9 @@ router.post('/add', requiresAuth, (req, res, next) => {
 			return res.status(400).json({message: "location already exists"})
 		};
 		user.pokerLocations.push({name: req.body.pokerLocation})
-		user.save(err => {
+		user.save((err, doc) => {
     if (err) return next(err);
-    	res.json({message: "location added"});
+    	res.json(doc.pokerLocations);
   	});
 	})
 });
