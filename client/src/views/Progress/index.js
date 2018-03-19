@@ -124,7 +124,25 @@ const Home = props => {
             </PageSection>
 
         <PageSection>
-        <SectionTitle title="Most Successful Game Location"/>
+        <SectionTitle title="Most Played Game Location"/>
+              <PieChart width={730} height={250}>
+                <Pie
+                  data={data01}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={90}
+                  fill="#82ca9d"
+                  label />
+              <Legend />
+              </PieChart>
+
+            </PageSection>
+
+
+        <PageSection>
+        <SectionTitle title="Earnings"/>
         <LineChart width={730} height={250} data={data}
           margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />
