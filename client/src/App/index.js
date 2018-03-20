@@ -144,7 +144,7 @@ class App extends Component {
             <Route path="/progress" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Progress logout={this.logout.bind(this)}/>
+                <Progress logout={this.logout.bind(this)} sessions={this.state.user.pokerSessions}/>
             )}/>
 
             <Route path="/login" render={() => (

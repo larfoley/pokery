@@ -2,163 +2,39 @@ import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 import Header from '../../App/Header'
-import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
-import Table from '../../shared/Table'
-import PieCharts from './PieCharts'
-import BarCharts from './BarCharts'
-import LineCharts from './LineCharts'
-import AreaCharts from './AreaCharts'
 
-import {
-  AreaChart,
-  Area,
-  linearGradient,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Bar,
-  BarChart,
-  Legend,
-  Pie,
-  PieChart,
-  Line,
-  LineChart,
-  Label
-} from 'recharts'
+// Charts
+import EarningsChart from './EarningsChart'
+import BestGameTypeChart from './BestGameTypeChart'
+import BestLocationsChart from './BestLocationsChart';
+import MostPlayedLocationChart from './MostPlayedLocationChart';
 
-const data = [
-  {name: 'Jan', Cash: 400, Tournament: 240, amt: 200},
-  {name: 'Feb', Cash: 300, Tournament: 138, amt: 221},
-  {name: 'March', Cash: 200, Tournament: 680, amt: 229},
-  {name: 'April', Cash: 278, Tournament: 308, amt: 200},
-  {name: 'May', Cash: 189, Tournament: 400, amt: 218},
-  {name: 'June', Cash: 239, Tournament: 300, amt: 250},
-  {name: 'July', Cash: 349, Tournament: 430, amt: 210},
-]
-
-const dataBar = [
-  {name: 'Village Green', Cash: 10, Tournaments: 19, amt: 100},
-  {name: 'Fitzwilliam Casino', Cash: 15, Tournaments: 7, amt: 100},
-  {name: 'Macau Casino', Cash: 2, Tournaments: 9, amt: 100},
-  // {name: 'Eglinton', Cash: 6, Tournaments: 3, amt: 100},
-  // {name: 'Sporting Emporium', Cash: 8, Tournaments: 9, amt: 100},
-  // {name: 'Penthouse Casino', Cash: 1, Tournaments: 11, amt: 100},
-  {name: 'Green Room', Cash: 17, Tournaments: 2, amt: 100},
-]
-
-const data01 = [
-  {name: 'Green Room', value: 29},
-  {name: 'Village Green', value: 22},
-  {name: 'Fitzwilliam Casino', value: 11},
-  {name: 'Green Room', value: 19}
-]
-
-const Home = props => {
-  return (
-    <div>
-      <Header />
-      <Sidebar />
-      <PageContainer>
-
-      
-
-        <PageSection>
-          <SectionTitle title="Lifetime Progress"/>
-          <Table rows={[
-            [ {data: "Earnings: ", type: "th"}, {data: "$2590", type: "td"} ],
-            [ {data: "Win Rate: ", type: "th"}, {data: "27%", type: "td"} ],
-            [ {data: "Most Successful Location", type: "th"}, {data: "Merrion", type: "td"} ],
-            [ {data: "Most Successful Variation", type: "th"}, {data: "Texas Hold'em", type: "td"} ]
-          ]}/>
-        </PageSection>
-
-        <LineCharts 
-          data={data} 
-          title="Earnings" 
-          width={730} 
-          height={250} 
-          margin={
-            { 
-              top: 5, 
-              right: 30, 
-              left: 20, 
-              bottom: 5 
-            }
-          }
-          strokeDasharray="3 3"
-          xDataKey="name"
-          label={{ value: '€', position: 'insideTopLeft' }}
-          strokeDasharray="3 3"
-          type="monotone" 
-          lineDataKey="Cash" 
-          stroke="#82ca9d"
-        />
-
-        <AreaCharts 
-          title="Life Time Earnings" 
-          width={730} 
-          height={250} 
-          data={data}
-          margin={{ top: 10, right: 30, left: 0, bottom: 0 }} 
-          yLabel={{ value: '€', position: 'insideTopLeft' }}
-          dataKey1="Cash"
-          stroke1="#8884d8"
-          dataKey2="Tournament"
-          stroke2="#82ca9d"
-        />        
-
-        <BarCharts 
-          title="Most Successful Game Type" 
-          width={730} 
-          height={250} 
-          data={dataBar} 
-          strokeDasharray="3 3"
-          xDataKey="name"
-          label={{ value: 'games won', angle: -90, position: 'insideLeft' }}
-          dataKey1="Cash"
-          fill1="#8884d8"
-          dataKey2="Tournaments"
-          fill2="#82ca9d"
-        />
-
-        <PieCharts 
-          title="Most Successful Game Location" 
-          data={data01} 
-          dataKey="value" 
-          nameKey="name" 
-          fill="#82ca9d"
-          cx="50%"
-          cy="50%"
-          outerRadius={90}
-          width={730} 
-          height={250}
-        />
-
-        <PieCharts 
-          title="Most Played Game Location" 
-          data={data01} 
-          dataKey="value" 
-          nameKey="name" 
-          fill="#8884d8"
-          cx="50%"
-          cy="50%"
-          outerRadius={90}
-          width={730} 
-          height={250}
-        />
-
-      </PageContainer>
+const Progress = props => (
+  <div>
+    <Header />
+    <Sidebar />
+    <PageContainer>
+      <PageSection>
+        <SectionTitle title="Earnings"/>
+        <EarningsChart sessions={props.sessions} />
+      </PageSection>
+      <PageSection title="">
+        <SectionTitle title="Most Successfull Game"/>
+        <BestGameTypeChart sessions={props.sessions} />
+      </PageSection>
+      <PageSection title="">
+        <SectionTitle title="Most Successfull Location"/>
+        <BestLocationsChart sessions={props.sessions}/>
+      </PageSection>
+      <PageSection title="">
+        <SectionTitle title="Most Played Location"/>
+        <MostPlayedLocationChart sessions={props.sessions}/>
+      </PageSection>
+    </PageContainer>
+  </div>
+)
 
 
-      <Footer />
-    </div>
-  )
-
-}
-
-
-
-export default Home
+export default Progress
