@@ -1,12 +1,12 @@
 import React from "react"
 import {
+  AreaChart,
+  Area,
   CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
-  Line,
-  LineChart,
+  Legend
 } from 'recharts'
 
 const LifetimeEarningsChart = props => {

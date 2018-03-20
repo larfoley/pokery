@@ -7,11 +7,11 @@ import {
 
 const MostPlayedLocationChart = props => {
 
-  const data = props.sessions.map(session => ({
-    name: session.name, value: 29
-  }))
+  // const data = props.sessions.map(session => ({
+  //   name: session.name, value: 29
+  // }))
 
-  var data01 = [
+  const data01 = [
   {name: 'Green Room', value: 29},
   {name: 'Village Green', value: 22},
   {name: 'Fitzwilliam Casino', value: 11},
