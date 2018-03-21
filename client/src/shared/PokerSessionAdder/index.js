@@ -55,7 +55,7 @@ class AddSessionForm extends React.Component {
         <FormField label="Game Variation">
           <ComboBox onChange={this.handleChange.bind(this)} name="gameVariation" options={[
             {value: "Texas Hold'em "},
-            {value: "Cash Game"}
+            {value: "Omaha"}
           ]}/>
         </FormField>
 

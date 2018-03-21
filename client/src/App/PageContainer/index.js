@@ -5,7 +5,7 @@ const Wrapper = styled.div`
   position: relative;
   padding-top: 1px;
   margin-top: 46px;
-  
+
   @media screen and (min-width: 700px) {
     margin-left: 300px;
     margin-top: 68px;

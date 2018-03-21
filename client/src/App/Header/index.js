@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../shared/Button/'
+import ButtonLink from '../../shared/ButtonLink/'
 
 // Components
 import Wrapper from './Wrapper'
@@ -11,10 +11,10 @@ import Hamburger from './Hamburger'
 const Header = (props) => (
   <Wrapper>
     <Col>
-      <Title><Hamburger>foo</Hamburger> Poker Tracker</Title>
+      <Title><Hamburger>foo</Hamburger> Pokery</Title>
     </Col>
     <Col align="right">
-      <Button href="/add-session">Add a Session</Button>
+      <ButtonLink to="/add-session">Add a Session</ButtonLink>
     </Col>
   </Wrapper>
 )

@@ -1,4 +1,5 @@
 import { css } from 'styled-components'
+import vars from './variables'
 
 export default css`
   html {
@@ -15,10 +16,12 @@ export default css`
     font-size: 18px;
     line-height: 1.2;
     font-family:  'Nunito', sans-serif;
+    background-color: #f5f5f5;
   }
 
   img {
     vertical-align: bottom;
+    max-width: 100%;
   }
 
   ul,
@@ -29,5 +32,14 @@ export default css`
 
   li {
     list-style-type: none;
+  }
+
+  p,
+  input,
+  textarea,
+  button
+  option,
+  select {
+    color: ${vars.text_color}
   }
 `

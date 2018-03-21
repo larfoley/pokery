@@ -16,6 +16,8 @@ import Login from '../views/Login'
 import FindAGame from '../views/FindAGame'
 import Register from '../views/Register'
 import Progress from '../views/Progress'
+import SessionHistory from '../views/SessionHistory'
+import Settings from '../views/Settings'
 
 class App extends Component {
 
@@ -55,6 +57,14 @@ class App extends Component {
       })
   }
 
+  logout() {
+    axios.get("/api/logout")
+    .then(res => {
+      this.setState(null)
+      window.location.reload()
+    })
+  }
+
   addPokerSession(session, callback) {
     axios.post('/api/poker-sessions/add', {pokerSession: session})
       .then(res => {
@@ -68,16 +78,49 @@ class App extends Component {
   }
 
   addPokerLocation(location, callback) {
-    axios.post('/api/locations/add', {pokerLocation: location})
+    axios.post('/api/poker-locations/add', {pokerLocation: location})
       .then(res => {
         this.setState(prevState => {
-          prevState.user.pokerLocations.push({name: location})
-          callback(null, res)
+          prevState.user.pokerLocations.push(res.data.pop())
+          callback(null, true)
           return prevState
         })
       })
       .catch(err => {callback(err)})
   }
+
+  deleteLivePokerLocation(id, name, callback) {
+    if (window.confirm(`
+      Deleting this location will also delete all sessions associatied with this location.
+      Are you sure you want to delete?
+      `)) {
+      axios.post('/api/poker-locations/delete', { id, name })
+        .then(res => {
+          this.setState(prevState => {
+            prevState.user.pokerLocations = res.data
+            callback(null, true)
+            return prevState
+          })
+        })
+        .catch(err => callback(err))
+    }
+
+  }
+
+  editLivePokerLocation(id, newName, callback) {
+    axios.post('/api/poker-locations/edit', {id, newName})
+      .then(res => {
+        this.setState(prevState => {
+          prevState.user.pokerLocations = res.data
+          return prevState
+        });
+        callback(null, true)
+      })
+      .catch(err => callback(err))
+  }
+
+
+
 
   render() {
 
@@ -95,17 +138,19 @@ class App extends Component {
             <Route path="/home" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Home />
+                <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/progress" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Progress/>
+                <Progress logout={this.logout.bind(this)} sessions={this.state.user.pokerSessions}/>
             )}/>
 
             <Route path="/login" render={() => (
-              <Login logIn={this.logIn.bind(this)}/>
+              !this.state.user?
+               <Login logIn={this.logIn.bind(this)}/> :
+               <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/register" component={Register}/>
@@ -117,11 +162,24 @@ class App extends Component {
                   user={this.state.user}
                   addSession={this.addPokerSession.bind(this)}
                   addPokerLocation={this.addPokerLocation.bind(this)}
+                  deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
+                  editLivePokerLocation={this.editLivePokerLocation.bind(this)}
                 />
             )}/>
 
              <Route path="/find-a-game" render={() => <FindAGame /> }/>
 
+             <Route path="/session-history" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <SessionHistory logout={this.logout.bind(this)}/>
+            )}/>
+
+            <Route path="/settings" render={() => (
+             !this.state.user?
+               <Landing logIn={this.logIn.bind(this)}/> :
+               <Settings logout={this.logout.bind(this)}/>
+           )}/>
           </div>
         </ThemeProvider>
       </Router>

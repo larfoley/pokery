@@ -1,27 +1,25 @@
-import React, { Component } from "react"
+import React from "react"
 
 // Component
-import LivePokerGame from "../../shared/LivePokerGame"
+import LivePokerGames from "../../shared/LivePokerGames"
 import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
+import SectionTitle from "../../shared/SectionTitle"
+import PageSection from "../../shared/PageSection"
 
-class FindAGame extends Component {
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <Sidebar />
-        <PageContainer>
-
-          <LivePokerGame />
-
-        </PageContainer>
-        <Footer />
-      </div>
-  )}
-
-}
+const FindAGame = (props) => (
+  <div>
+    <Header />
+    <Sidebar />
+    <PageContainer>
+        <PageSection>
+          <SectionTitle title="Find a Game"/>
+          <LivePokerGames limit={15} />
+        </PageSection>
+    </PageContainer>
+    <Footer />
+  </div>
+)
 export default FindAGame

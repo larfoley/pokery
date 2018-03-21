@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import css from '../../styles/variables'
+import { darken } from 'polished'
 
 const StyledLink = styled(Link)`
   padding: 1em;
   display: inline-block;
   width: 100%;
-  border-bottom: 1px solid #2e2e2e;
+  border-bottom: 1px solid ${darken(0.05, css.sidebar_bg_color)};
   color: white;
   text-decoration: none;
   transition: .3s;
   &:hover {
-    background-color: #232526;
+    background-color: ${css.primary_color};
   }
   span {
     margin-right: 8px;

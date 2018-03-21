@@ -64,12 +64,12 @@ class LoginForm extends React.Component {
             </FormField>
 
             <FormField>
-              <Button type="submit" fullWidth >Login</Button>
+              <Button type="submit" fullWidth>Login</Button>
             </FormField>
 
-            <Text color="white" align="center" size=".8em">
-              Not Registered?
-              <Link to="/register">Create an account </Link>
+            <Text color="black" align="center" size=".8em">
+              Not Registered?&nbsp;
+              <Link to="/register" color="black">Create an account </Link>
             </Text>
 
         </Form>

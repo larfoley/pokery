@@ -30,10 +30,9 @@ router.post('/add', requiresAuth, (req, res, next) => {
 			return res.status(400).json({message: "session already exists"})
 		};
 		user.pokerSessions.push(req.body.pokerSession)
-		console.log(11111, user);
-		user.save(function (err) {
+		user.save((err, doc) => {
     if (err) return next(err);
-    	res.json({message: "session added"});
+    	res.json(doc.pokerSessions);
   	});
 	})
 });
