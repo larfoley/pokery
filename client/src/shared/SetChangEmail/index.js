@@ -12,14 +12,14 @@ class SetChangEmail extends React.Component {
     super(props);
 
     this.state = {
-      username: "admin",
+      email: "",
+	  emailNew: "",
 
-      authenticated: false,
     };
   } 
   
     validateForm() {
-    return this.state.username.length > 0;
+    this.state.email.length>6 && this.state.email==this.state.emailNew;
   }
   
 	render() {
@@ -29,11 +29,11 @@ class SetChangEmail extends React.Component {
 				<Form method="post" action="/register">
 
 					<FormField >
-						<Input type="email" placeholder="New Email"/>
+						<Input type="email" placeholder="New Email" value={this.state.email} />
 					</FormField>
 					
 					<FormField >
-						<Input type="email" placeholder="Confirm new Email"/>
+						<Input type="email" placeholder="Confirm new Email" value={this.state.emailNew} />
 					</FormField>
 
 					<Button type="submit" fullWidth>Update</Button>
