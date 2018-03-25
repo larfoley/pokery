@@ -7,19 +7,21 @@ import Form from '../Form'
 
 
 class SetChangPass extends React.Component {
-	
+
+
     constructor(props) {
     super(props);
 
     this.state = {
-      password: "password",
+      password: '',
+	  passwordCheck: '',
 
-      authenticated: false,
     };
   } 
   
+  
     validateForm() {
-    this.state.password.length > 0;
+    this.state.password.length > 0 && this.state.password==this.state.passwordCheck;
   }
   
 	render() {
@@ -29,11 +31,11 @@ class SetChangPass extends React.Component {
 				<Form method="post" action="/register">
 
 					<FormField >
-						<Input id="textInput" type="password" placeholder="New Password"/>
+						<Input id="textInput" type="password" placeholder="New Password" value={this.state.password} />
 					</FormField>
 					
 					<FormField >
-						<Input id="textInput" type="password" placeholder="Confirm new Password"/>
+						<Input id="textInput" type="password" placeholder="Confirm new Password" value={this.state.passwordNew} />
 					</FormField>
 
 					<Button type="submit" fullWidth>Update</Button>
