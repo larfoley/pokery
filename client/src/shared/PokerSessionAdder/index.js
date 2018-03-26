@@ -5,6 +5,7 @@ import FormField from "../FormField"
 import Input from "../Input"
 import ComboBox from "../ComboBox"
 import Button from "../Button"
+import Select from "../Select"
 
 class AddSessionForm extends React.Component {
 
@@ -38,56 +39,49 @@ class AddSessionForm extends React.Component {
   handleChange(event) {
     const session = this.state.session;
     session[event.target.name] = event.target.value;
-    console.log(session);
-    console.log("name", event.target.name);
     this.setState(session);
   }
 
   render() {
-    const locations = this.props.pokerLocations.map(location => ({value: location.name}));
+    const locations = this.props.pokerLocations.map(location => location.name);
+
     return (
+
       <form ref={form => {this.form = form}} onSubmit={this.onSubmit.bind(this)}>
 
-        <FormField label="Location">
-          <ComboBox onChange={this.handleChange.bind(this)} name="locations" options={locations}/>
-        </FormField>
+        <Select
+          label="Location"
+          options={locations}
+        />
+        <Select
+          label="Variation"
+          options={["Texas Hold'em", "Omaha"]}
+          onChange={this.handleChange.bind(this)}
+          name="variation"
+        />
+        <Select
+          label="Game Type"
+          options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
+          onChange={this.handleChange.bind(this)}
+          name="gameType"
+        />
+        <Input
+          label="Buy In"
+          name="buyIn"
+          type="number"
+          value={this.state.name}
+          onChange={this.handleChange.bind(this)}
+        />
+        <Input
+          label="Amount Won"
+          name="amountWon"
+          type="number"
+          value={this.state.name}
+          onChange={this.handleChange.bind(this)}
+        />
 
-        <FormField label="Game Variation">
-          <ComboBox onChange={this.handleChange.bind(this)} name="gameVariation" options={[
-            {value: "Texas Hold'em "},
-            {value: "Omaha"}
-          ]}/>
-        </FormField>
+        <Button>Submit</Button>
 
-        <FormField label="Game Type">
-          <ComboBox onChange={this.handleChange.bind(this)} name="gameType" options={[
-            {value: "Tournament (Re-Buy)"},
-            {value: "Frezeout"},
-            {value: "Cash Game"}
-          ]}/>
-        </FormField>
-
-        <FormField label="Buy In">
-          <Input
-            name="buyIn"
-            type="number"
-            value={this.state.name}
-            onChange={this.handleChange.bind(this)}
-          />
-        </FormField>
-
-        <FormField label="Amount Won (Excluding Buy In)">
-          <Input
-            name="amountWon"
-            type="number"
-            value={this.state.name}
-            onChange={this.handleChange.bind(this)}
-          />
-        </FormField>
-
-        <FormField>
-          <Button>Submit</Button>
-        </FormField>
 
       </form>
     )

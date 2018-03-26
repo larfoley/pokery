@@ -4,7 +4,6 @@ import Input from '../Input'
 import Button from '../Button'
 import Text from '../Text'
 import Link from '../Link'
-import FormField from '../FormField'
 import Form from '../Form'
 
 class LoginForm extends React.Component {
@@ -45,35 +44,28 @@ class LoginForm extends React.Component {
 
         <Form onSubmit={this.handleSubmit}>
 
-            <FormField>
-              <Input name="username"
-                autoFocus
-                type="text"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </FormField>
+          <Input name="username"
+            autoFocus
+            type="text"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
 
-            <FormField>
-              <Input
-                name="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-                type="password"
-              />
-            </FormField>
+          <Input
+            name="password"
+            value={this.state.password}
+            onChange={this.handleChange}
+            type="password"
+          />
 
-            <FormField>
-              <Button type="submit" fullWidth>Login</Button>
-            </FormField>
+          <Button type="submit" fullWidth>Login</Button>
 
-            <Text color="black" align="center" size=".8em">
-              Not Registered?&nbsp;
-              <Link to="/register" color="black">Create an account </Link>
-            </Text>
+          <Text color="black" align="center" size=".8em">
+            Not Registered?&nbsp;
+            <Link to="/register" color="black">Create an account </Link>
+          </Text>
 
         </Form>
-
         }
       </div>
     );

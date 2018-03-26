@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import LivePokerGame from "./LivePokerGame"
 import FormField from "../FormField"
-import ComboBox from "../ComboBox"
+import Select from "../Select"
 import axios from "axios"
 import Button from "../Button"
 import Loading from "../Loading"
@@ -56,14 +56,14 @@ class LivePokerGames extends Component {
     return (
       <div>
         <FormField>
-          <ComboBox selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
-            {value: "Monday"},
-            {value: "Tuesday"},
-            {value: "Wednesday"},
-            {value: "Thursday"},
-            {value: "Friday"},
-            {value: "Saturday"},
-            {value: "Sunday"},
+          <Select selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
           ]}/>
         </FormField>
         {!this.state.loading?
