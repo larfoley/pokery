@@ -6,6 +6,8 @@ import PageContainer from '../../App/PageContainer'
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 
+import Preferences from '../../shared/Preferences'
+
 const SettingsPage = props => {
   return (
     <div>
@@ -14,6 +16,7 @@ const SettingsPage = props => {
       <PageContainer>
         <PageSection>
           <SectionTitle title="Preferences"/>
+          <Preferences />
         </PageSection>
 
         <PageSection>
