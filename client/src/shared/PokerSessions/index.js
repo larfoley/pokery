@@ -17,7 +17,7 @@ class PokerSessions extends React.Component {
   componentWillMount() {
     axios.get('/api/poker-sessions')
       .then(res => {
-        console.log(res);
+        console.log("Sessions", res);
       })
   }
 
