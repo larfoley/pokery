@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import LivePokerGame from "./LivePokerGame"
-import FormField from "../FormField"
 import Select from "../Select"
 import axios from "axios"
 import Button from "../Button"
@@ -55,7 +54,7 @@ class LivePokerGames extends Component {
 
     return (
       <div>
-        <FormField>
+      
           <Select selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
             "Monday",
             "Tuesday",
@@ -65,7 +64,7 @@ class LivePokerGames extends Component {
             "Saturday",
             "Sunday"
           ]}/>
-        </FormField>
+        
         {!this.state.loading?
           <div>
             <h5>Games Found: {this.state.livePokerGames.length}</h5>
