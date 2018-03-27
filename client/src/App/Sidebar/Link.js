@@ -8,7 +8,7 @@ const StyledLink = styled(Link)`
   padding: 1em;
   display: inline-block;
   width: 100%;
-  border-bottom: 1px solid ${darken(0.05, css.sidebar_bg_color)};
+  border-bottom: 1px solid ${darken(0.03, css.sidebar_bg_color)};
   color: white;
   text-decoration: none;
   transition: .3s;
@@ -16,7 +16,7 @@ const StyledLink = styled(Link)`
     background-color: ${css.primary_color};
   }
   span {
-    margin-right: 8px;
+    margin-right: 10px;
   }
 `
 
