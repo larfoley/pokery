@@ -7,7 +7,7 @@ const requiresAuth = require('../middleware/requiresAuth.js')
 router.get('/', requiresAuth, (req, res, next) => {
 	User.findById(req.user._id, (err, user) => {
 	  if (err) return next(err);
-	  res.json(user.sessions);
+	  res.json(user.pokerSessions);
 	})
 })
 

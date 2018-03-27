@@ -3,10 +3,6 @@ import PokerLocation from "./PokerLocation/"
 
 class PokerLocations extends React.Component {
 
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const pokerLocations = this.props.locations;
     const sessions = this.props.sessions;
