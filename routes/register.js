@@ -14,17 +14,18 @@ router.post('/', (req, res, next) => {
 
   // =============================
 
-
   // Check if user already exists
   User.findOne({username}).exec((err, user) => {
     if (user) {
-      res.status = 400;
-      res.json({message: "user already exists"})
+      console.log("user exists", user);
+      res.status(400).json({message: "user already exists"})
       return;
     }
 
     // Hash users password before saving to db
     bcrypt.hash(password, 10, (err, hash) => {
+      if (err) return next(err)
+
       const user = new User({
         username: username,
         hash: hash,
@@ -33,7 +34,7 @@ router.post('/', (req, res, next) => {
 
       // Add user to db
       user.save()
-      return res.json({success: true, user: user})
+      return res.status(200).json({success: true, user: user})
     });
 
   })

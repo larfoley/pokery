@@ -1,5 +1,5 @@
 import React from "react"
-// import { Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 import Input from '../Input'
 import Button from '../Button'
 import Form from '../Form'
@@ -10,11 +10,9 @@ class RegisterForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: {
-        username: "",
-        email: "",
-        password: "",
-      },
+      username: "",
+      email: "",
+      password: "",
       registrationSuccesfull: false
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,27 +25,57 @@ class RegisterForm extends React.Component {
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    });
+    })
   }
 
   handleSubmit = event => {
-    event.preventDefault();
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email
+    }
+    event.preventDefault()
 
-    axios.post('/api/register', this.state.user)
+    axios.post('/api/register', user)
       .then(res => {
-        console.log("regiter response", res);
+        this.setState({registrationSuccesfull: true})
       })
   }
 
   render() {
     return (
       <div>
-      	<Form onSubmit={this.handleSubmit}>
-          <Input type="text" placeholder="Username"/>
-          <Input type="email" placeholder="Email"/>
-          <Input type="password" placeholder="Password"/>
-          <Button type="submit" fullWidth>Register</Button>
-      	</Form>
+        {
+          this.state.registrationSuccesfull ?
+
+            <Redirect to="/login" /> :
+
+            <Form onSubmit={this.handleSubmit}>
+              <Input
+                type="text"
+                placeholder="Username"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <Input
+                type="password"
+                placeholder="Password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <Button type="submit" fullWidth>Register</Button>
+            </Form>
+        }
+
       </div>
     );
   }
