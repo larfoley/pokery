@@ -23,6 +23,7 @@ var livePokerTimetables = require('./routes/live-poker-timetables')
 var locations = require('./routes/poker-locations')
 var pokerSessions = require('./routes/poker-sessions')
 var isLoggedIn = require('./routes/is-logged-in')
+var changePassword = require('./routes/change-password')
 
 
 db.on('error', () => {
@@ -55,6 +56,7 @@ app.use(session({ secret: "foobar" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/api/change-password', changePassword)
 app.use('/api/register', register)
 app.use('/api/live-poker-timetables', livePokerTimetables)
 app.use('/api/login', login)
