@@ -24,6 +24,7 @@ router.post('/', (req, res) => {
 router.get('/', (req, res) => {
   User.find((err, lists) => {
 		if(err){
+      console.log(err)
 			throw err;
 		}
 		res.json(lists);
