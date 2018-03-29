@@ -3,23 +3,23 @@ import Button from '../Button'
 import Select from '../Select'
 import Input from '../Input'
 
-class ChangePassword extends React.Component {
+class ChangeEmail extends React.Component {
   	constructor() {
 		super()
 		this.state = {
-			password: '',
-			passwordCheck: '',
+			email: '',
+			emailCheck: '',
 		};
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleChange = this.handleChange.bind(this)
 	} 	
 	handleSubmit(event) {
 		event.preventDefault()
-		if ((this.state.password.length > 0) && (this.state.password==this.state.passwordCheck)){
+		if ((this.state.email.length > 6) && (this.state.email==this.state.emailCheck)){
 			console.log(this.state);
-			window.alert("New password submitted")
+			window.alert("New email submitted")
 		} else {
-			window.alert("New password mismatch")
+			window.alert("New email mismatch")
 		}
 	} 
 	handleChange(event) {
@@ -30,20 +30,21 @@ class ChangePassword extends React.Component {
 			return prevState
 		})
 	}
+	
 	render() {
 		return (	
 			<form onSubmit={this.handleSubmit}>
 			
 				<Input
-					name="password"
-					value={this.state.password}
-					label="New Password"          			
+					name="email"
+					value={this.state.email}
+					label="New Email"          			
 					onChange={this.handleChange}
 				/>
 				<Input
-					name="passwordCheck"
-					value={this.state.passwordCheck}
-					label="Retype New Password"
+					name="emailCheck"
+					value={this.state.emailCheck}
+					label="Retype New Email"
 					onChange={this.handleChange}
 				/>
 				<Button type="submit">Update</Button>
@@ -52,6 +53,6 @@ class ChangePassword extends React.Component {
   	}
 }
 
-export default ChangePassword
+export default ChangeEmail
 
 
