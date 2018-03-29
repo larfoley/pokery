@@ -10,10 +10,10 @@ module.exports = new LocalStrategy(
         return done(null, false, { message: 'Incorrect username.' });
       }
       user.validPassword(password, user.hash, (err, isValid) => {
-        if (err) { return done(err); }
-        if (!isValid) {
+        if (err) { return done(err) }
+        if (err) {
           return done(null, false, { message: 'Incorrect password.' });
-        } else {
+        } else if (isValid) {
           return done(null, user);
         }
       })

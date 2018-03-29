@@ -1,11 +1,11 @@
 import React from "react"
-import RegForm from "../../shared/RegForm/"
+import RegisterForm from "../../shared/RegisterForm/"
 import Header from '../../views/Landing/Navbar'
 
 const Register = props => (
   <div>
     <Header />
-    <RegForm />
+    <RegisterForm />
   </div>
 )
 

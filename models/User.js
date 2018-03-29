@@ -23,8 +23,7 @@ var UserSchema = new mongoose.Schema({
 
 UserSchema.methods.validPassword = (password, hash, callback) => {
   bcrypt.compare(password, hash, function(err, res) {
-    // callback(err, res)
-    callback(err, password === hash)
+    callback(err, res)
   });
 }
 
