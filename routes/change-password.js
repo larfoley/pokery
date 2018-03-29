@@ -1,8 +1,9 @@
 var router = require("express").Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt')
+const requiresAuth = require('../middleware/requiresAuth.js')
 
-router.post('/', (req, res) => {
+router.post('/', requiresAuth, (req, res) => {
   const _id = req.body._id;
   const password = req.body.password;
 
@@ -18,16 +19,6 @@ router.post('/', (req, res) => {
         res.json({user})
       });
     });
-  });
-})
-
-router.get('/', (req, res) => {
-  User.find((err, lists) => {
-		if(err){
-      console.log(err)
-			throw err;
-		}
-		res.json(lists);
   });
 })
 
