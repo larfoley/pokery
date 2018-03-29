@@ -9,7 +9,14 @@ router.post('/', (req, res) => {
 
     bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
       if (err) return next(err)
-      console.log("hash: " + hash)      
+      user.hash= hash
+      // console.log("hash: " + hash)
+      User.findOneAndUpdate({_id: req.body.id}, {hash: hash}, {}, (err, user) => {
+        if(err){
+          throw err;
+        }
+        console.log("\nnew user" + user)
+      });
     });
 
     res.json({"1":1})
