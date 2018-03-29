@@ -4,20 +4,16 @@ const bcrypt = require('bcrypt')
 
 router.post('/', (req, res) => {
   const _id = req.body._id;
-  const password = req.body.password;
+  const email = req.body.email;
 
   User.findById(_id, (err, user) => {
-    bcrypt.hash(password, 10, (err, hash) => {
-      if (err) {
-        return next(err)
-      }
-      User.findOneAndUpdate({_id}, {hash}, {}, (err, user) => {
+      User.findOneAndUpdate({_id}, {email}, {}, (err, user) => {
         if(err) {
           throw err
         }
+        console.log(user)
         res.json({user})
       });
-    });
   });
 })
 
