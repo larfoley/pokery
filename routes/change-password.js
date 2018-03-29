@@ -3,15 +3,14 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt')
 
 router.post('/', (req, res) => {
-  console.log(req.body)
-  User.findById(req.body.id, (err, user) => {
-    console.log(user)
-
-    bcrypt.hash(req.body.newPassword, 10, (err, hash) => {
+  const _id = req.body.id;
+  const password = req.body.newPassword;
+  
+  User.findById(_id, (err, user) => {
+    bcrypt.hash(password, 10, (err, hash) => {
       if (err) return next(err)
-      user.hash= hash
-      // console.log("hash: " + hash)
-      User.findOneAndUpdate({_id: req.body.id}, {hash: hash}, {}, (err, user) => {
+      
+      User.findOneAndUpdate({_id: _id}, {hash: hash}, {}, (err, user) => {
         if(err){
           throw err;
         }
