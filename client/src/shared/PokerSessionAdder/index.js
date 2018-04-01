@@ -86,7 +86,7 @@ class AddSessionForm extends React.Component {
 
         :
 
-      <Text>Before you add a session you need to add the location of where you played.</Text>
+      <Text>Before you can add a session you need to first add the name of a poker location that you play in so that we can track your progress in that location.</Text>
 
     )
   }
