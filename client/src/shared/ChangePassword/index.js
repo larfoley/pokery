@@ -1,50 +1,72 @@
 import React from "react"
 import Button from '../Button'
-import Select from '../Select'
-
+import Input from '../Input'
+import axios from 'axios'
 
 class ChangePassword extends React.Component {
-  	constructor() {
-		super()
-		this.state = {
-			password: '',
-			passwordCheck: '',
-		};
-		this.handleSubmit = this.handleSubmit.bind(this)
-	} 
-	
-handleSubmit(event) {
-    event.preventDefault()
-	if ((this.state.password.length > 0) && (this.state.password==this.state.passwordCheck)){
-    	console.log(this.state);
-    	window.alert("Form Submitted")
-	} else {
-		window.alert("New password mismatch")
+  constructor() {
+    super()
+    this.state = {
+    	password: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
 	}
-}
-  
-render() {
-	return (
-		<form onSubmit={this.handleSubmit}>
-		
-			<Select
-         		name="password"
-          		value={this.state.password}
-          		label="New Password"          			
-          		onChange={this.handleChange}
-       		/>
-        	<Select
-         		name="passwordCheck"
-          		value={this.state.passwordCheck}
-         		label="Retype New Password"
-		  		onChange={this.handleChange}
-   			/>
-			<Button type="submit">Update</Button>
-		</form>
-    	)
-  	}
+
+  handleSubmit(event) {
+    event.preventDefault()
+
+    const password = this.state.password
+
+  	if (this.validateUserInput()) {
+      axios.post('/api/change-password', {password: password})
+        .then(res => {
+          window.alert("Password updated")
+        })
+        .catch(err => {
+          window.alert("Unable to update password. Try again later.")
+          console.log(err);
+        })
+    }
+  }
+
+  handleChange(event) {
+    const name = event.target.name
+    const value = event.target.value
+
+    this.setState(prevState => {
+      prevState[name] = value
+      return prevState
+    })
+
+  }
+
+  validateUserInput() {
+    const password = this.state.password
+
+    if (password.trim().length < 5) {
+      window.alert("Your password must have at least 5 characters")
+      return false
+    }
+
+    return true
+  }
+
+  render() {
+  	return (
+  		<form onSubmit={this.handleSubmit}>
+  			<Input
+      		name="password"
+          type="password"
+      		value={this.state.password}
+      		label="New Password"
+      		onChange={this.handleChange}
+          autoComplete="off"
+      	/>
+  			<Button type="submit">Update</Button>
+  		</form>
+    )
+   }
 }
 
 export default ChangePassword
-
-
