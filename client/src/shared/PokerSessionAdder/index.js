@@ -2,6 +2,7 @@ import React from 'react'
 import Input from "../Input"
 import Button from "../Button"
 import Select from "../Select"
+import Text from "../Text"
 
 class AddSessionForm extends React.Component {
 
@@ -40,8 +41,10 @@ class AddSessionForm extends React.Component {
 
   render() {
     const locations = this.props.pokerLocations.map(location => location.name);
-
+    console.log(locations);
     return (
+
+      locations.length > 0 ?
 
       <form ref={form => {this.form = form}} onSubmit={this.onSubmit.bind(this)}>
 
@@ -80,6 +83,11 @@ class AddSessionForm extends React.Component {
 
 
       </form>
+
+        :
+
+      <Text>Before you add a session you need to add the location of where you played.</Text>
+
     )
   }
 }
