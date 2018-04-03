@@ -7,7 +7,7 @@ import Header from '../../LivePokerGames/LivePokerGame/Header'
 const PokerSession = props => (
  <Wrapper>
    <Header>
-     <h3>Variation</h3>
+     <h3>{props.variation}</h3>
      <h4>Location</h4>
    </Header>
    {/* <Box>

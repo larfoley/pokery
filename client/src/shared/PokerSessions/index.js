@@ -14,9 +14,9 @@ class PokerSessions extends React.Component {
     axios.get('/api/poker-sessions')
       .then(res => {
         console.log("Sessions", res);
-        let sessions = res.data
-        console.log(sessions)
-        
+        let sessions = res.data;
+        this.setState({pokerSessions: sessions})
+        console.log(sessions);
       })
       .catch(error => console.log(error));
       
@@ -25,14 +25,13 @@ class PokerSessions extends React.Component {
 
 
   render() {
-    const sessions = this.state.pokerSessions;
-    console.log(sessions)
+    
     return (
       <div>
-        {/* {this.state.pokerSessions.map((item, i) => <PokerSession key={i} 
-         
-        />)} */}
-        <PokerSession />
+        {this.state.pokerSessions.map((session, i) => <PokerSession key={i} 
+         variation = {session.variation}
+        />)}
+    
       </div>
     )
   }
