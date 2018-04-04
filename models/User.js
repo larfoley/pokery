@@ -10,13 +10,14 @@ var pokerSessionSchema = mongoose.Schema({
   variation: { type: String, required: true },
   gameType: { type: String, required: true },
   buyIn: { type: Number, required: true },
-  amountWon: { type: String, required: true},
+  amountWon: { type: Number, required: true},
+  date: { type: String, required: true},
 });
 
 var UserSchema = new mongoose.Schema({
-  username: String,
-  email: String,
-  hash: String,
+  username: { type: String, required: true },
+  email: { type: String, required: true },
+  hash: { type: String, required: true },
   pokerLocations: [pokerLocationSchema],
   pokerSessions: [pokerSessionSchema]
 });

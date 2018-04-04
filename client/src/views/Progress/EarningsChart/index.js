@@ -9,16 +9,26 @@ import {
   LineChart,
 } from 'recharts'
 
+// location: { type: String, required: true },
+// variation: { type: String, required: true },
+// gameType: { type: String, required: true },
+// buyIn: { type: Number, required: true },
+// amountWon: { type: String, required: true},
+// 2018-04-11
 const EarningsChart = props => {
 
-  const data = props.sessions.map(session => ({
-    name: 'Jan',
-    Cash: 400,
-    Tournament: 240,
-    amt: session.amountWon
-  }))
 
+  let total = 0;
+  const data = props.sessions.map((session, i) => {
+    total += parseInt(session.amountWon)
+    return {
+      name: session.date,
+      earnings: total,
+    }
+  })
+  console.log(data);
   return (
+    data.length ?
     <LineChart
       width={730}
       height={250}
@@ -37,10 +47,12 @@ const EarningsChart = props => {
       <Legend />
       <Line
         type="monotone"
-        dataKey="Cash"
+        dataKey="earnings"
         stroke="#82ca9d"
       />
-    </LineChart>
+    </LineChart> :
+
+    <p>Not enough data to display chart.</p>
   )
 }
 
