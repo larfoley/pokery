@@ -33,7 +33,7 @@ const Header = props => (
        <div className="grid__col grid__col--2-of-4">
          <Section>
            <Title>Pokery</Title>
-           <Tagline>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero asperiores velit, mollitia, beatae ut nihil modi natus distinctio laudantium. Soluta ex quasi itaque, corrupti repudiandae modi voluptatum ut dolorum earum!</Tagline>
+           <Tagline> Sign up to Pokery to find a poker game near you and to enhance your poker playing skills. </Tagline>
            <Button>Sign Up</Button>
          </Section>
        </div>
