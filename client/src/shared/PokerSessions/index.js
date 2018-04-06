@@ -23,7 +23,7 @@ class PokerSessions extends React.Component {
       .catch(error => console.log(error)); 
       
       
-  }
+  } 
 
 
   render() {
