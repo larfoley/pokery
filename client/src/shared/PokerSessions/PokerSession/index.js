@@ -8,26 +8,23 @@ const PokerSession = props => (
  <Wrapper>
    <Header>
      <h3>{props.variation}</h3>
-     <h4>Location</h4>
+     <h4>{props.location}</h4>
    </Header>
-   {/* <Box>
-     Earnings: {props.session.earnings}
-   </Box> */}
    <TableBox>
     <Table>
       <table>
         <tbody>
          <tr>
-          <th>Earnings:</th>
-          <td>Hi</td>
+          <th>Game type:</th>
+          <td>{props.gameType}</td>
          </tr>
          <tr>
-          <th>Date:</th>
-          <td>Hi</td>
+          <th>Buy in:</th>
+          <td>{props.buyIn}</td>
          </tr>
          <tr>
-          <th>Total player:</th>
-          <td>Hi</td>
+          <th>Amount won:</th>
+          <td>{props.amountWon}</td>
          </tr>
          <tr>
           <th>Position:</th>
