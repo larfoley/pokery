@@ -7,35 +7,58 @@ class PokerSessions extends React.Component {
     super(props)
     this.state = {
       pokerSessions:[],
+      limit: props.limit
     }
   }
 
   componentDidMount() {
     axios.get('/api/poker-sessions')
-      .then(Response => {
-        console.log("Response from the sessions api: ",Response);
-        let sessions = Response.data
-        console.log("Get requests: ")        
-        console.log(sessions)
-        this.setState({pokerSessions : Response.data})
-        
+      .then(res => {
+        let pokerSessions = res.data
+        this.setState({ pokerSessions })
       })
-      .catch(error => console.log(error)); 
-      
-      
+      .catch(error => console.log(error))
   } 
 
 
   render() {
-    const sessions = this.state.pokerSessions;
-    console.log("Displaying the sessions: ")    
-    console.log(sessions)
+    const sessions = this.state.pokerSessions
+    const limit = this.state.limit
+
     return (
-      <div>
-        {this.state.pokerSessions.map((item, i) => <PokerSession key={i} 
-        
-        />)}
-      </div>
+      sessions.length > 0 ? (
+      
+        typeof limit === "number"?
+          sessions.map((session, i) => {
+            if (i <= limit) {
+              return (
+                <PokerSession
+                  key={i}
+                  location={session.location}
+                  variation={session.variation}
+                  gameType={session.gameType}
+                  buyIn={session.buyIn}
+                  amountWon={session.amountWon}
+                  date={session.date}
+                  editPokerSession={this.props.editPokerSession}
+                />
+              )
+            }
+          }) :
+          sessions.map((session, i) => (
+            <PokerSession
+              key={parseInt(i) + sessions.length}
+              location={session.location}
+              variation={session.variation}
+              gameType={session.gameType}
+              buyIn={session.buyIn}
+              amountWon={session.amountWon}
+              date={session.date}
+              editPokerSession={this.props.editPokerSession}
+            />
+          ))
+      
+      ): <p>No sessions</p>
     )
   }
 

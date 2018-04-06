@@ -9,17 +9,9 @@ import PokerSessionAdder from "../../shared/PokerSessionAdder"
 import PokerLocationAdder from "../../shared/PokerLocationAdder"
 import PokerLocations from "../../shared/PokerLocations"
 
-class AddSession extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      locations: [{name: "foo"}],
-      sessions: [{name: "foo"}]
-    }
-  }
+const AddSession = props => {
 
-  render() {
-    const locations = this.state.locations
+    const pokerLocations = props.user.pokerLocations
 
     return (
       <div>
@@ -30,10 +22,10 @@ class AddSession extends React.Component {
           <PageSection>
             <SectionTitle title="Create a Session"/>
             {
-            locations.length?
+            pokerLocations.length?
             <PokerSessionAdder
-              pokerLocations={this.props.user.pokerLocations}
-              addSession={this.props.addSession}
+              pokerLocations={props.user.pokerLocations}
+              addSession={props.addSession}
             /> :
             <p>Before creating a session you must add a location</p>
             }
@@ -41,21 +33,21 @@ class AddSession extends React.Component {
           <PageSection>
             <SectionTitle title="Poker Locations"/>
             <PokerLocationAdder
-              user={this.props.user}
-              addPokerLocation={this.props.addPokerLocation}
+              user={props.user}
+              addPokerLocation={props.addPokerLocation}
             />
             <PokerLocations
-              locations={this.props.user.pokerLocations}
-              sessions={this.props.user.pokerSessions}
-              editLivePokerLocation={this.props.editLivePokerLocation}
-              deleteLivePokerLocation={this.props.deleteLivePokerLocation}
+              locations={props.user.pokerLocations}
+              sessions={props.user.pokerSessions}
+              editLivePokerLocation={props.editLivePokerLocation}
+              deleteLivePokerLocation={props.deleteLivePokerLocation}
             />
           </PageSection>
         </PageContainer>
         <Footer />
       </div>
     )
-  }
+  
 }
 
 

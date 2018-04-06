@@ -4,19 +4,22 @@ import Table from '../../LivePokerGames/LivePokerGame/Table'
 import TableBox from '../../LivePokerGames/LivePokerGame/TableBox'
 import Wrapper from '../../LivePokerGames/LivePokerGame/Wrapper'
 import Header from '../../LivePokerGames/LivePokerGame/Header'
+import Button from '../../Button'
+
 const PokerSession = props => (
  <Wrapper>
    <Header>
-     <h3>{props.variation}</h3>
-     <h4>{props.location}</h4>
+     <h3>
+     {`${props.variation} ${props.gameType}`}
+     </h3>
    </Header>
    <TableBox>
-    <Table>
+    <Table>    
       <table>
         <tbody>
-         <tr>
-          <th>Game type:</th>
-          <td>{props.gameType}</td>
+        <tr>
+          <th>Date:</th>
+          <td>{props.date}</td>
          </tr>
          <tr>
           <th>Buy in:</th>
@@ -27,16 +30,15 @@ const PokerSession = props => (
           <td>{props.amountWon}</td>
          </tr>
          <tr>
-          <th>Position:</th>
-          <td>Hi</td>
-         </tr>
-         <tr>
-          <th>Note:</th>
-          <td>Hi</td>
+          <th>Notes:</th>
+          <td></td>
          </tr>
         </tbody>
       </table>
     </Table>
+    <br/>
+    <Button onClick={() => {console.log(props)}}>Edit</Button>
+    <Button bgColor="crimson">Delete</Button>
    </TableBox>
   </Wrapper>
 )
