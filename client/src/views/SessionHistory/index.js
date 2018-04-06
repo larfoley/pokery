@@ -15,7 +15,7 @@ const SessionsHistoryPage = props => {
       <PageContainer>
         <PageSection>
           <SectionTitle title="Sessions"/>
-          <PokerSessions />
+          <PokerSessions limit = "5"/>
         </PageSection>
       </PageContainer>
       <Footer />

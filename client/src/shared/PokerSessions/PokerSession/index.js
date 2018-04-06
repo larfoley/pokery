@@ -7,8 +7,8 @@ import Header from '../../LivePokerGames/LivePokerGame/Header'
 const PokerSession = props => (
  <Wrapper>
    <Header>
-     <h3>Variation</h3>
-     <h4>Location</h4>
+     <h3>{props.variation}</h3>
+     <h4>{props.location}</h4>
    </Header>
    {/* <Box>
      Earnings: {props.session.earnings}
@@ -19,15 +19,15 @@ const PokerSession = props => (
         <tbody>
          <tr>
           <th>Earnings:</th>
-          <td>Hi</td>
+          <td>{props.amountWon}</td>
          </tr>
          <tr>
-          <th>Date:</th>
-          <td>Hi</td>
+          <th>Game Type:</th>
+          <td>{props.gameType}</td>
          </tr>
          <tr>
-          <th>Total player:</th>
-          <td>Hi</td>
+          <th>Buy In:</th>
+          <td>{props.buyIn}</td>
          </tr>
          <tr>
           <th>Position:</th>

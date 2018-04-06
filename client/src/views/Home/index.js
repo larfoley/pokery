@@ -8,6 +8,7 @@ import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import LivePokerGames from "../../shared/LivePokerGames";
+import PokerSessions from "../../shared/PokerSessions"
 
 const Home = props => {
   return (
@@ -27,6 +28,7 @@ const Home = props => {
         </PageSection>
         <PageSection>
           <SectionTitle title="Recent Sessions"/>
+          <PokerSessions limit="3"/>
         </PageSection>
         <PageSection>
           <SectionTitle title="Nearby Games"/>
