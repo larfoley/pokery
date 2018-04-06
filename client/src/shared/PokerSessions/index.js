@@ -13,8 +13,9 @@ class PokerSessions extends React.Component {
   componentDidMount() {
     axios.get('/api/poker-sessions')
       .then(Response => {
-        console.log("Sessions",Response);
+        console.log("Response from the sessions api: ",Response);
         let sessions = Response.data
+        console.log("Get requests: ")        
         console.log(sessions)
         this.setState({pokerSessions : Response.data})
         
@@ -27,6 +28,7 @@ class PokerSessions extends React.Component {
 
   render() {
     const sessions = this.state.pokerSessions;
+    console.log("Displaying the sessions: ")    
     console.log(sessions)
     return (
       <div>
