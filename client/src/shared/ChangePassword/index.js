@@ -59,7 +59,7 @@ class ChangePassword extends React.Component {
       		name="password"
           type="password"
       		value={this.state.password}
-      		label="New Password"
+      		label="Enter your new Password"
       		onChange={this.handleChange}
           autoComplete="off"
       	/>

@@ -38,7 +38,7 @@ class ChangeEmail extends React.Component {
 				<Input
 					name="email"
 					value={this.state.email}
-					label="New Email"          			
+					label="Enter your new Email"          			
 					onChange={this.handleChange}
 				/>
 				<Input

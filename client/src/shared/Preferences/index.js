@@ -20,7 +20,7 @@ class Preferences extends React.Component {
     event.preventDefault()
 
     console.log(this.state);
-    window.alert("Form Submitted")
+    window.alert("Settings saved")
   }
 
   handleChange(event) {
@@ -46,28 +46,28 @@ class Preferences extends React.Component {
         <Select
           name="theme"
           value={this.state.theme}
-          label="Theme"
+          label="Select your prefered theme:"
           options={["light", "dark"]}
           onChange={this.handleChange}
         />
         <Select
           name="currency"
           value={this.state.currency}
-          label="Currency"
+          label="Select your prefered currency denotation:"
           options={["Euro"]}
           onChange={this.handleChange}
         />
         <Select
           name="variation"
           value={this.state.variation}
-          label="Variation"
+          label="Select your prefered variation of game:"
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
           name="gameType"
           value={this.state.gameType}
-          label="Game Type"
+          label="Select your prefered game type"
           options={["Tournament", "Cash Game", "Frezeout"]}
           onChange={this.handleChange}
         />
