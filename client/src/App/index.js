@@ -50,6 +50,7 @@ class App extends Component {
       })
       .then(res => {
         callback(null, res.data)
+        console.log("DSFdf", res.data);
         this.setState({user: res.data})
       })
       .catch(err => {
