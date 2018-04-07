@@ -16,6 +16,7 @@ class AddSessionForm extends React.Component {
         gameType: "texas holdem",
         buyIn: 0,
         amountWon: 0,
+        date: ""
       }
     }
   }
@@ -41,7 +42,7 @@ class AddSessionForm extends React.Component {
 
   render() {
     const locations = this.props.pokerLocations.map(location => location.name);
-    console.log(locations);
+
     return (
 
       locations.length > 0 ?
@@ -79,6 +80,14 @@ class AddSessionForm extends React.Component {
           onChange={this.handleChange.bind(this)}
         />
 
+        <Input
+          label="Date"
+          name="date"
+          type="date"
+          value={this.state.date}
+          onChange={this.handleChange.bind(this)}
+        />
+
         <Button>Submit</Button>
 
 
@@ -86,7 +95,7 @@ class AddSessionForm extends React.Component {
 
         :
 
-      <Text>Before you add a session you need to add the location of where you played.</Text>
+      <Text>Before you can add a session you need to first add the name of a poker location that you play in so that we can track your progress in that location.</Text>
 
     )
   }

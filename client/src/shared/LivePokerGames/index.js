@@ -28,6 +28,7 @@ class LivePokerGames extends Component {
         this.setState({ livePokerGames , loading: false})
       })
       .catch(error => console.log(error));
+      
   }
 
   handleDayChange(event) {
@@ -49,6 +50,8 @@ class LivePokerGames extends Component {
   }
 
   render() {
+    let games = this.state.livePokerGames;
+    console.log(games);
     const livePokerGames = this.state.livePokerGames
       .filter((game, i) => i < this.state.limit? true : false);
 
