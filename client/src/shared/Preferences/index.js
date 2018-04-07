@@ -44,14 +44,14 @@ class Preferences extends React.Component {
         <Select
           name="theme"
           value={this.state.theme}
-          label="Select your prefered theme:"
+          label="Theme"
           options={["light", "dark"]}
           onChange={this.handleChange}
         />
         <Select
           name="currency"
           value={this.state.currency}
-          label="Select your prefered currency denotation:"
+          label="Currency"
           options={["Euro"]}
           onChange={this.handleChange}
         />
