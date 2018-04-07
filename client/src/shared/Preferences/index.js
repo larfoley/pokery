@@ -18,13 +18,7 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
-<<<<<<< HEAD
     window.alert("Preferences Updated")
-=======
-
-    console.log(this.state);
-    window.alert("Settings saved")
->>>>>>> 0295e45b69a7c8f6d33d35c0148e282808f83a6c
   }
 
   handleChange(event) {
@@ -64,22 +58,14 @@ class Preferences extends React.Component {
         <Select
           name="variation"
           value={this.state.variation}
-<<<<<<< HEAD
           label="Prefered Poker Variation"
-=======
-          label="Select your prefered variation of game:"
->>>>>>> 0295e45b69a7c8f6d33d35c0148e282808f83a6c
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
           name="gameType"
           value={this.state.gameType}
-<<<<<<< HEAD
           label="Prefered Game Type"
-=======
-          label="Select your prefered game type"
->>>>>>> 0295e45b69a7c8f6d33d35c0148e282808f83a6c
           options={["Tournament", "Cash Game", "Frezeout"]}
           onChange={this.handleChange}
         />
