@@ -16,10 +16,16 @@ class ChangeEmail extends React.Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		if ((this.state.email.length > 6) && (this.state.email==this.state.emailCheck)){
-			console.log(this.state);
-			window.alert("New email submitted")
+			const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+			if (reg.test(this.state.email) === true){
+               
+			   console.log(this.state);
+				window.alert("New email submitted")			
+			} else {
+				window.alert("Not a valid email address")
+			}			
 		} else {
-			window.alert("New email mismatch")
+			window.alert("Entered email addresses mismatch")
 		}
 	} 
 	handleChange(event) {
