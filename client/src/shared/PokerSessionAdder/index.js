@@ -6,14 +6,17 @@ import Text from "../Text"
 
 class AddSessionForm extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+
+    const locations = props.pokerLocations.map(location => location.name);
+
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
       session: {
-        location: "foo",
+        location: locations[0],
         variation: "texas holdem",
-        gameType: "texas holdem",
+        gameType: "tournament",
         buyIn: 0,
         amountWon: 0,
         date: ""
@@ -41,7 +44,8 @@ class AddSessionForm extends React.Component {
   }
 
   render() {
-    const locations = this.props.pokerLocations.map(location => location.name);
+    
+    const locations = this.props.pokerLocations.map(location => location.name)
 
     return (
 
@@ -52,18 +56,21 @@ class AddSessionForm extends React.Component {
         <Select
           label="Location"
           options={locations}
+          value={this.state.location}
         />
         <Select
           label="Variation"
           options={["Texas Hold'em", "Omaha"]}
           onChange={this.handleChange.bind(this)}
           name="variation"
+          value={this.state.variation}
         />
         <Select
           label="Game Type"
           options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
           onChange={this.handleChange.bind(this)}
           name="gameType"
+          value={this.state.gameType}
         />
         <Input
           label="Buy In"

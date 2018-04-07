@@ -7,36 +7,62 @@ class PokerSessions extends React.Component {
     super(props)
     this.state = {
       pokerSessions:[],
+      limit: props.limit
     }
   }
 
   componentDidMount() {
     axios.get('/api/poker-sessions')
       .then(res => {
-        console.log("Sessions", res);
-        let sessions = res.data
-        console.log(sessions)
-        
+        let pokerSessions = res.data
+        this.setState({ pokerSessions })
       })
-      .catch(error => console.log(error));
-      
-      
-  }
+      .catch(error => console.log(error))
+  } 
 
 
   render() {
-    const sessions = this.state.pokerSessions;
-    console.log(sessions)
+    const sessions = this.state.pokerSessions
+    const limit = this.state.limit
+    const editSession = this.props.editPokerSession
     return (
-      <div>
-        {/* {this.state.pokerSessions.map((item, i) => <PokerSession key={i} 
-         
-        />)} */}
-        <PokerSession />
-      </div>
+      sessions.length > 0 ? (
+      
+        typeof limit === "number"?
+          sessions.map((session, i) => {
+            if (i <= limit) {
+              return (
+                <PokerSession
+                  key={i}
+                  location={session.location}
+                  variation={session.variation}
+                  gameType={session.gameType}
+                  buyIn={session.buyIn}
+                  amountWon={session.amountWon}
+                  date={session.date}
+                  editPokerSession={editSession}
+                />
+              )
+            }
+          }) :
+          sessions.map((session, i) => (
+            <PokerSession
+              key={parseInt(i) + sessions.length}
+              location={session.location}
+              variation={session.variation}
+              gameType={session.gameType}
+              buyIn={session.buyIn}
+              amountWon={session.amountWon}
+              date={session.date}
+              editPokerSession={editSession}
+            />
+          ))
+      
+      ): <p>No sessions</p>
     )
   }
 
 }
 
 export default PokerSessions
+ 

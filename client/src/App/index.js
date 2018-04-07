@@ -28,6 +28,8 @@ class App extends Component {
     }
   }
 
+ 
+
   componentWillMount() {
     // Update state in the case the user refreshes a protected route
     this.isLoggedIn((err, user) => {
@@ -120,6 +122,10 @@ class App extends Component {
       .catch(err => callback(err))
   }
 
+  editPokerSession() {
+    console.log(this.state)
+  }
+
 
 
 
@@ -173,7 +179,9 @@ class App extends Component {
              <Route path="/session-history" render={() => (
               !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <SessionHistory logout={this.logout.bind(this)}/>
+                <SessionHistory
+                  logout={this.logout.bind(this)}
+                  editPokerSession={this.editPokerSession.bind(this)}/>
             )}/>
 
             <Route path="/settings" render={() => (
