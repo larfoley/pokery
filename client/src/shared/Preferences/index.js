@@ -18,9 +18,7 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
-
-    console.log(this.state);
-    window.alert("Form Submitted")
+    window.alert("Preferences Updated")
   }
 
   handleChange(event) {
@@ -60,18 +58,18 @@ class Preferences extends React.Component {
         <Select
           name="variation"
           value={this.state.variation}
-          label="Variation"
+          label="Prefered Poker Variation"
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
           name="gameType"
           value={this.state.gameType}
-          label="Game Type"
+          label="Prefered Game Type"
           options={["Tournament", "Cash Game", "Frezeout"]}
           onChange={this.handleChange}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Update Preferences</Button>
       </form>
     )
   }
