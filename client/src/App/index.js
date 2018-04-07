@@ -28,9 +28,7 @@ class App extends Component {
     }
   }
 
-  editPokerSession() {
-    console.log(this.state)
-  }
+ 
 
   componentWillMount() {
     // Update state in the case the user refreshes a protected route
@@ -122,6 +120,10 @@ class App extends Component {
         callback(null, true)
       })
       .catch(err => callback(err))
+  }
+
+  editPokerSession() {
+    console.log(this.state)
   }
 
 

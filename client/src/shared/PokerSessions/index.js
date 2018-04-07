@@ -24,7 +24,7 @@ class PokerSessions extends React.Component {
   render() {
     const sessions = this.state.pokerSessions
     const limit = this.state.limit
-
+    const editSession = this.props.editPokerSession
     return (
       sessions.length > 0 ? (
       
@@ -40,7 +40,7 @@ class PokerSessions extends React.Component {
                   buyIn={session.buyIn}
                   amountWon={session.amountWon}
                   date={session.date}
-                  editPokerSession={this.props.editPokerSession}
+                  editPokerSession={editSession}
                 />
               )
             }
@@ -54,7 +54,7 @@ class PokerSessions extends React.Component {
               buyIn={session.buyIn}
               amountWon={session.amountWon}
               date={session.date}
-              editPokerSession={this.props.editPokerSession}
+              editPokerSession={editSession}
             />
           ))
       
