@@ -35,11 +35,7 @@ class ChangeEmail extends React.Component {
           type="email"
 					name="email"
 					value={this.state.email}
-<<<<<<< HEAD
 					label="New Email"
-=======
-					label="Enter your new Email"          			
->>>>>>> 0295e45b69a7c8f6d33d35c0148e282808f83a6c
 					onChange={this.handleChange}
 				/>
 				<Button type="submit">Update Email</Button>
