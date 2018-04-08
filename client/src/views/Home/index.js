@@ -7,7 +7,8 @@ import Header from '../../App/Header'
 import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
-import LivePokerGames from "../../shared/LivePokerGames";
+import LivePokerGames from "../../shared/LivePokerGames"
+import ProgressOverview from '../../shared/ProgressOverview'
 
 const Home = props => {
   return (
@@ -16,13 +17,8 @@ const Home = props => {
       <Sidebar logout={props.logout.bind(this)}/>
       <PageContainer>
         <PageSection>
-          <SectionTitle title="Lifetime Progress"/>
-          <Table rows={[
-            [ {data: "Earnings: ", type: "th"}, {data: "$2590", type: "td"} ],
-            [ {data: "Win Rate: ", type: "th"}, {data: "27%", type: "td"} ],
-            [ {data: "Most Scuccesfull Location", type: "th"}, {data: "Merrion", type: "td"} ],
-            [ {data: "Most Scuccesfull Variation", type: "th"}, {data: "Texas Hold'em", type: "td"} ]
-          ]}/>
+          <SectionTitle title="Progress"/>
+          <ProgressOverview />
           <Button to="/progress">Find out More</Button>
         </PageSection>
         <PageSection>
