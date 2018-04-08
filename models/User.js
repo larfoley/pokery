@@ -11,7 +11,7 @@ var pokerSessionSchema = mongoose.Schema({
   gameType: { type: String, required: true },
   buyIn: { type: Number, required: true },
   amountWon: { type: Number, required: true},
-  date: { type: String, required: true},
+  date: { type: String, required: false},
   notes: { type: String, required: false}
 });
 
