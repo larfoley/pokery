@@ -16,7 +16,7 @@ const AddSession = props => {
     return (
       <div>
         <Header />
-        <Sidebar logout={props.logout.bind(this)}/>
+        <Sidebar logout={props.logout}/>
         <PageContainer>
 
           <PageSection>

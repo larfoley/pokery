@@ -190,10 +190,15 @@ class App extends Component {
                 addPokerLocation={this.addPokerLocation.bind(this)}
                 deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
                 editLivePokerLocation={this.editLivePokerLocation.bind(this)}
+                logout={this.logout.bind(this)}
               />
             )}/>
 
-            <Route path="/find-a-game" render={() => <FindAGame /> }/>
+            <Route path="/find-a-game" render={() => (
+              !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <FindAGame logout={this.logout.bind(this)} />
+            )}/>
 
             <Route path="/session-history" render={() => (
               !this.state.user?

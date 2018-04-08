@@ -12,7 +12,7 @@ import PageSection from "../../shared/PageSection"
 const FindAGame = (props) => (
   <div>
     <Header />
-    <Sidebar logout={props.logout.bind(this)}/>
+    <Sidebar logout={props.logout}/>
     <PageContainer>
         <PageSection>
           <SectionTitle title="Find a Game"/>
