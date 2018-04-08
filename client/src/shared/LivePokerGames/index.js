@@ -28,7 +28,7 @@ class LivePokerGames extends Component {
         this.setState({ livePokerGames , loading: false})
       })
       .catch(error => console.log(error));
-      
+
   }
 
   handleDayChange(event) {
@@ -51,13 +51,12 @@ class LivePokerGames extends Component {
 
   render() {
     let games = this.state.livePokerGames;
-    console.log(games);
     const livePokerGames = this.state.livePokerGames
       .filter((game, i) => i < this.state.limit? true : false);
 
     return (
       <div>
-      
+
           <Select selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
             "Monday",
             "Tuesday",
@@ -67,7 +66,7 @@ class LivePokerGames extends Component {
             "Saturday",
             "Sunday"
           ]}/>
-        
+
         {!this.state.loading?
           <div>
             <h5>Games Found: {this.state.livePokerGames.length}</h5>
