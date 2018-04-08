@@ -1,11 +1,10 @@
 import styled from 'styled-components'
-import css from '../../styles/variables.js'
 import Button from '../Button'
 
 const SubmitButton = styled.button`
   float: left;
-  background-color: ${css.primary_color};
-  border-color: ${css.primary_color};
+  background-color: ${props => props.theme.primary_color};
+  border-color: ${props => props.theme.primary_color};
   outline: 0;
   color: white;
   padding-top: .9em;

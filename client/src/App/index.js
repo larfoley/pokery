@@ -5,8 +5,9 @@ import {
   Redirect
 } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import mainTheme from '../styles/variables.js'
+import themes from '../styles/themes/index'
 import axios from 'axios'
+import Wrapper from './Wrapper'
 
 // Views
 import Landing from '../views/Landing'
@@ -28,7 +29,7 @@ class App extends Component {
     }
   }
 
- 
+
 
   componentWillMount() {
     // Update state in the case the user refreshes a protected route
@@ -52,7 +53,6 @@ class App extends Component {
       })
       .then(res => {
         callback(null, res.data)
-        console.log("DSFdf", res.data);
         this.setState({user: res.data})
       })
       .catch(err => {
@@ -132,66 +132,73 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
-        <ThemeProvider theme={mainTheme}>
-          <div>
+        <Router>
+
+          <ThemeProvider theme={themes[
+            this.state.user?
+            this.state.user.theme?
+            this.state.user.theme : "light"
+            : "light"
+          ]}>
+          <Wrapper>
 
             <Route exact path="/" render={() => (
               !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <Redirect to="/home" />
+              <Landing logIn={this.logIn.bind(this)}/> :
+              <Redirect to="/home" />
             )}/>
 
             <Route path="/home" render={() => (
               !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <Home logout={this.logout.bind(this)}/>
+              <Landing logIn={this.logIn.bind(this)}/> :
+              <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/progress" render={() => (
               !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <Progress logout={this.logout.bind(this)} sessions={this.state.user.pokerSessions}/>
+              <Landing logIn={this.logIn.bind(this)}/> :
+              <Progress logout={this.logout.bind(this)} sessions={this.state.user.pokerSessions}/>
             )}/>
 
             <Route path="/login" render={() => (
               !this.state.user?
-               <Login logIn={this.logIn.bind(this)}/> :
-               <Home logout={this.logout.bind(this)}/>
+              <Login logIn={this.logIn.bind(this)}/> :
+              <Home logout={this.logout.bind(this)}/>
             )}/>
 
             <Route path="/register" component={Register}/>
 
             <Route path="/add-session" render={() => (
               !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <AddSession
-                  user={this.state.user}
-                  addSession={this.addPokerSession.bind(this)}
-                  addPokerLocation={this.addPokerLocation.bind(this)}
-                  deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
-                  editLivePokerLocation={this.editLivePokerLocation.bind(this)}
-                />
+              <Landing logIn={this.logIn.bind(this)}/> :
+              <AddSession
+                user={this.state.user}
+                addSession={this.addPokerSession.bind(this)}
+                addPokerLocation={this.addPokerLocation.bind(this)}
+                deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
+                editLivePokerLocation={this.editLivePokerLocation.bind(this)}
+              />
             )}/>
 
-             <Route path="/find-a-game" render={() => <FindAGame /> }/>
+            <Route path="/find-a-game" render={() => <FindAGame /> }/>
 
-             <Route path="/session-history" render={() => (
+            <Route path="/session-history" render={() => (
               !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <SessionHistory
-                  logout={this.logout.bind(this)}
-                  editPokerSession={this.editPokerSession.bind(this)}/>
-            )}/>
+              <Landing logIn={this.logIn.bind(this)}/> :
+              <SessionHistory
+                logout={this.logout.bind(this)}
+                editPokerSession={this.editPokerSession.bind(this)}/>
+              )}/>
 
-            <Route path="/settings" render={() => (
-             !this.state.user?
-               <Landing logIn={this.logIn.bind(this)}/> :
-               <Settings logout={this.logout.bind(this)}/>
-           )}/>
-          </div>
-        </ThemeProvider>
-      </Router>
+              <Route path="/settings" render={() => (
+                !this.state.user?
+                <Landing logIn={this.logIn.bind(this)}/> :
+                <Settings logout={this.logout.bind(this)}/>
+              )}/>
+            </Wrapper>
+          </ThemeProvider>
+
+        </Router>
     );
   }
 

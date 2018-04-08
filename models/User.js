@@ -19,8 +19,9 @@ var UserSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   hash: { type: String, required: true },
+  theme: { type: String, default: 'light', required: true},
   pokerLocations: [pokerLocationSchema],
-  pokerSessions: [pokerSessionSchema]
+  pokerSessions: [pokerSessionSchema],
 });
 
 UserSchema.methods.validPassword = (password, hash, callback) => {
