@@ -126,7 +126,17 @@ class App extends Component {
     console.log(this.state)
   }
 
-
+  updateUserPreferences(update, callback) {
+    axios.post('/api/update-preferences', update)
+      .then(res => {
+        this.setState(prevState => {
+          prevState.user.preferences = update
+          return prevState
+        });
+        callback(null, true)
+      })
+      .catch(err => callback(err))
+  }
 
 
   render() {
@@ -136,9 +146,7 @@ class App extends Component {
 
           <ThemeProvider theme={themes[
             this.state.user?
-            this.state.user.theme?
-            this.state.user.theme : "light"
-            : "light"
+             this.state.user.preferences.theme : "light"
           ]}>
           <Wrapper>
 
@@ -151,13 +159,18 @@ class App extends Component {
             <Route path="/home" render={() => (
               !this.state.user?
               <Landing logIn={this.logIn.bind(this)}/> :
-              <Home logout={this.logout.bind(this)}/>
+              <Home
+                logout={this.logout.bind(this)}
+                />
             )}/>
 
             <Route path="/progress" render={() => (
               !this.state.user?
               <Landing logIn={this.logIn.bind(this)}/> :
-              <Progress logout={this.logout.bind(this)} sessions={this.state.user.pokerSessions}/>
+              <Progress
+                logout={this.logout.bind(this)}
+                sessions={this.state.user.pokerSessions}
+              />
             )}/>
 
             <Route path="/login" render={() => (
@@ -193,7 +206,10 @@ class App extends Component {
               <Route path="/settings" render={() => (
                 !this.state.user?
                 <Landing logIn={this.logIn.bind(this)}/> :
-                <Settings logout={this.logout.bind(this)}/>
+                <Settings
+                  logout={this.logout.bind(this)}
+                  updateUserPreferences={this.updateUserPreferences.bind(this)}
+                />
               )}/>
             </Wrapper>
           </ThemeProvider>
@@ -204,4 +220,4 @@ class App extends Component {
 
 }
 
-export default App;
+export default App

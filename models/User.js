@@ -15,27 +15,24 @@ var pokerSessionSchema = mongoose.Schema({
   notes: { type: String, required: false}
 })
 
-var preferencesSchema = mongoose.Schema({
-  theme: { type: String, default: 'light', required: true },
-  currency: { type: String, default: 'euro', required: true },
-  preferedPokerVariation: { type: String, default: 'texas holdem', required: true },
-  preferedPokerGameType: { type: String, default: 'tournament', required: true },
-})
-
 var UserSchema = new mongoose.Schema({
   username: { type: String, required: true },
   email: { type: String, required: true },
   hash: { type: String, required: true },
-  theme: { type: String, default: 'light', required: true},
   pokerLocations: [pokerLocationSchema],
   pokerSessions: [pokerSessionSchema],
-  preferences: [preferencesSchema]
+  preferences: {
+    theme: { type: String, default: 'light', required: true },
+    currency: { type: String, default: 'euro', required: true },
+    preferedPokerVariation: { type: String, default: 'texas holdem', required: true },
+    preferedPokerGameType: { type: String, default: 'tournament', required: true }
+  }
 })
 
 UserSchema.methods.validPassword = (password, hash, callback) => {
   bcrypt.compare(password, hash, function(err, res) {
     callback(err, res)
-  }
+  })
 }
 
 var User = mongoose.model('User', UserSchema);
