@@ -9,14 +9,7 @@ import {
   LineChart,
 } from 'recharts'
 
-// location: { type: String, required: true },
-// variation: { type: String, required: true },
-// gameType: { type: String, required: true },
-// buyIn: { type: Number, required: true },
-// amountWon: { type: String, required: true},
-// 2018-04-11
 const EarningsChart = props => {
-
 
   let total = 0;
   const data = props.sessions.map((session, i) => {
@@ -26,7 +19,7 @@ const EarningsChart = props => {
       earnings: total,
     }
   })
-  console.log(data);
+
   return (
     data.length ?
     <LineChart
