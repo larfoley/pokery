@@ -16,9 +16,9 @@ const LifetimeEarningsChart = props => {
 
   const data = props.sessions.map(session => ({
     name: 'Jan',
-    Cash: 400,
-    Tournament: 240,
-    amt: 200
+    Cash: Math.random() * 300,
+    Tournament: Math.random() * 300,
+    amt: 400
   }))
 
   return (
