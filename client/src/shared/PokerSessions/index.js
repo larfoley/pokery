@@ -7,7 +7,7 @@ class PokerSessions extends React.Component {
     super(props)
     this.state = {
       pokerSessions:[],
-      limit: props.limit
+      limit:props.limit
     }
   }
 
@@ -25,6 +25,7 @@ class PokerSessions extends React.Component {
     const sessions = this.state.pokerSessions
     const limit = this.state.limit
     const editSession = this.props.editPokerSession
+    console.log(this.state.pokerSessions)
     return (
       sessions.length > 0 ? (
       
@@ -34,13 +35,14 @@ class PokerSessions extends React.Component {
               return (
                 <PokerSession
                   key={i}
+                  id={session._id}
                   location={session.location}
                   variation={session.variation}
                   gameType={session.gameType}
                   buyIn={session.buyIn}
                   amountWon={session.amountWon}
                   date={session.date}
-                  editPokerSession={editSession}
+                  editPokerSession={this.props.editPokerSession}
                 />
               )
             }
@@ -48,13 +50,14 @@ class PokerSessions extends React.Component {
           sessions.map((session, i) => (
             <PokerSession
               key={parseInt(i) + sessions.length}
+              id={session._id}
               location={session.location}
               variation={session.variation}
               gameType={session.gameType}
               buyIn={session.buyIn}
               amountWon={session.amountWon}
               date={session.date}
-              editPokerSession={editSession}
+              editPokerSession={this.props.editPokerSession}
             />
           ))
       
