@@ -42,7 +42,16 @@ class ProgressOverview extends React.Component {
   }
 
   calculateEarnings(sessions) {
+    if (sessions.length === 0) {
+      return 0
+    }
+
+    if (sessions.length === 1) {
+      return sessions[0].amountWon - sessions[0].buyIn
+    }
+
     return sessions.reduce((a, b) => a.amountWon + b.amountWon)
+
   }
 
   calculateMostSuccesfull(sessions) {
@@ -66,7 +75,7 @@ class ProgressOverview extends React.Component {
     return (
       <div>
         <div><strong>Earnings</strong></div>
-        <div>{this.state.earnings}</div>
+        <div>&euro; {this.state.earnings}</div>
         <br/>
         <div><strong>Win Rate</strong></div>
         <div>{this.state.winRate}</div>
