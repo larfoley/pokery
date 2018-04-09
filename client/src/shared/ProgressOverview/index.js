@@ -65,7 +65,7 @@ class ProgressOverview extends React.Component {
   render() {
     return (
       <div>
-        <div><strong>Earings</strong></div>
+        <div><strong>Earnings</strong></div>
         <div>{this.state.earnings}</div>
         <br/>
         <div><strong>Win Rate</strong></div>
