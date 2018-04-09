@@ -42,6 +42,7 @@ class ProgressOverview extends React.Component {
   }
 
   calculateEarnings(sessions) {
+
     if (sessions.length === 0) {
       return 0
     }
@@ -50,7 +51,10 @@ class ProgressOverview extends React.Component {
       return sessions[0].amountWon - sessions[0].buyIn
     }
 
-    return sessions.reduce((a, b) => a.amountWon + b.amountWon)
+
+    return sessions
+      .map(session => session.amountWon - session.buyIn)
+      .reduce((a, b) => a + b)
 
   }
 
@@ -75,7 +79,7 @@ class ProgressOverview extends React.Component {
     return (
       <div>
         <div><strong>Earnings</strong></div>
-        <div>&euro; {this.state.earnings}</div>
+        <div>&euro; {this.state.earnings} </div>
         <br/>
         <div><strong>Win Rate</strong></div>
         <div>{this.state.winRate}</div>
