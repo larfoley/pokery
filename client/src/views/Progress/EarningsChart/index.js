@@ -13,7 +13,7 @@ const EarningsChart = props => {
 
   let total = 0;
   const data = props.sessions.map((session, i) => {
-    total += parseInt(session.amountWon)
+    total += parseInt(session.amountWon - session.buyIn)
     return {
       name: session.date,
       earnings: total,
