@@ -4,7 +4,6 @@ import PageSection from "../../shared/PageSection"
 import Button from "../../shared/ButtonLink"
 import Table from "../../shared/Table"
 import Header from '../../App/Header'
-import Footer from '../../App/Footer'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import LivePokerGames from "../../shared/LivePokerGames"
@@ -14,7 +13,7 @@ const Home = props => {
   return (
     <div>
       <Header />
-      <Sidebar logout={props.logout.bind(this)}/>
+      <Sidebar logout={props.logout}/>
       <PageContainer>
         <PageSection>
           <SectionTitle title="Progress"/>
@@ -31,7 +30,6 @@ const Home = props => {
         </PageSection>
 
       </PageContainer>
-      <Footer />
     </div>
   )
 

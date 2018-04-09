@@ -15,7 +15,7 @@ import LifetimeEarningsChart from './LifetimeEarningsChart'
 const Progress = props => (
   <div>
     <Header />
-    <Sidebar />
+    <Sidebar logout={props.logout}/>
     <PageContainer>
 
       <PageSection>

@@ -11,7 +11,7 @@ const SessionsHistoryPage = props => {
   return (
     <div>
       <Header />
-      <Sidebar />
+      <Sidebar logout={props.logout}/>
       <PageContainer>
         <PageSection>
           <SectionTitle title="Sessions"/>

@@ -2,10 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import FontAwesome from 'react-fontawesome'
 import Link from './Link'
-import css from "../../styles/variables"
 
 const Wrapper = styled.div`
-  background-color: ${css.sidebar_bg_color};
+  background-color: ${props => props.theme.sidebar_bg_color};
   color: white;
   position: fixed;
   width: 300px;

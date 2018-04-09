@@ -16,7 +16,7 @@ const AddSession = props => {
     return (
       <div>
         <Header />
-        <Sidebar />
+        <Sidebar logout={props.logout}/>
         <PageContainer>
 
           <PageSection>
@@ -47,7 +47,7 @@ const AddSession = props => {
         <Footer />
       </div>
     )
-  
+
 }
 
 

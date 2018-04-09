@@ -44,7 +44,7 @@ class AddSessionForm extends React.Component {
   }
 
   render() {
-    
+
     const locations = this.props.pokerLocations.map(location => location.name)
 
     return (
@@ -55,8 +55,10 @@ class AddSessionForm extends React.Component {
 
         <Select
           label="Location"
+          name="location"
           options={locations}
           value={this.state.location}
+          onChange={this.handleChange.bind(this)}
         />
         <Select
           label="Variation"

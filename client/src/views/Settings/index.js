@@ -13,11 +13,11 @@ const SettingsPage = props => {
   return (
     <div>
       <Header />
-      <Sidebar />
+      <Sidebar logout={props.logout}/>
       <PageContainer>
         <PageSection>
           <SectionTitle title="Preferences"/>
-          <Preferences />
+          <Preferences updateUserPreferences={props.updateUserPreferences.bind(this)}/>
         </PageSection>
 
         <PageSection>

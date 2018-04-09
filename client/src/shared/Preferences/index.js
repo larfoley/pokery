@@ -8,8 +8,8 @@ class Preferences extends React.Component {
     this.state = {
       theme: "light",
       currency: "euro",
-      variation: "Texas Hold'em",
-      gameType: "Tournament"
+      preferedPokerVariation: "Texas Hold'em",
+      preferedPokerGameType: "Tournament",
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -18,7 +18,14 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
-    window.alert("Preferences Updated")
+    this.props.updateUserPreferences(this.state, (err, res) => {
+      if (!err) {
+        window.alert("Preferences Updated")
+      } else {
+        window.alert("Error updating preferences")
+        console.log(err)
+      }
+    })
   }
 
   handleChange(event) {

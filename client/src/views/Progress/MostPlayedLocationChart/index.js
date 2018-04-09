@@ -6,32 +6,57 @@ import {
 } from 'recharts'
 
 const MostPlayedLocationChart = props => {
+  const locations = []
 
-  // const data = props.sessions.map(session => ({
-  //   name: session.name, value: 29
-  // }))
+  props.sessions.map(session => {
+    let locationExists = false
+    let location;
 
-  const data01 = [
-  {name: 'Green Room', value: 29},
-  {name: 'Village Green', value: 22},
-  {name: 'Fitzwilliam Casino', value: 11},
-  {name: 'Green Room', value: 19}
-]
+    locations.forEach(l => {
+      if (session.location === l) {
+        locationExists = true
+      }
+    })
+
+    if (!locationExists) {
+      locations.push(session.location)
+    }
+  })
+
+  let data = []
+
+  locations.map(location => {
+
+    // return array of sessions mapped to the same location
+    let sessions = props.sessions.filter(session => {
+      if (session.location == location) {
+        return session
+      } else {
+        return null
+      }
+    })
+
+    data.push({name: sessions[0].location, value: sessions.length})
+  })
+
+
 
   return (
-    <PieChart width={730} height={250}>
-      <Pie
-        data={data01}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={90}
-        fill="#82ca9d"
-        legend
-      />
-      <Legend />
-    </PieChart>
+    data.length > 0 ?
+      <PieChart width={730} height={250}>
+        <Pie
+          data={data}
+          dataKey="value"
+          nameKey="name"
+          cx="50%"
+          cy="50%"
+          outerRadius={90}
+          fill="#82ca9d"
+          legend
+        />
+        <Legend />
+      </PieChart> :
+      <p>Not enough data to display chart.</p>
   )
 
 }
