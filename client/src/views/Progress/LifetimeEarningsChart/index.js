@@ -11,6 +11,9 @@ import {
 
 const LifetimeEarningsChart = props => {
 
+  const cashGames = props.sessions.filter(game => game.gameType === "Cash")
+  const tournamentGames = props.sessions.filter(game => game.gameType === "Tournament")
+
   const data = props.sessions.map(session => ({
     name: 'Jan',
     Cash: 400,
