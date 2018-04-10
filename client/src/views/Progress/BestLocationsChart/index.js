@@ -2,8 +2,10 @@ import React from "react"
 import {
   PieChart,
   Pie,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from 'recharts'
+import ChartContainer from '../../../shared/ChartContainer'
 
 const BestLocationsChart = props => {
 
@@ -49,19 +51,27 @@ const BestLocationsChart = props => {
   }
 
   return (
-    <PieChart width={730} height={250}>
-      <Pie
-        data={mostSuccesfullLocations}
-        dataKey="value"
-        nameKey="name"
-        cx="50%"
-        cy="50%"
-        outerRadius={90}
-        fill="#82ca9d"
-        legend
-      />
-      <Legend />
-    </PieChart>
+    mostSuccesfullLocations.length > 0?
+
+      <ChartContainer>
+        <ResponsiveContainer>
+          <PieChart width={730} height={250}>
+            <Pie
+              data={mostSuccesfullLocations}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="50%"
+              outerRadius={90}
+              fill="#82ca9d"
+              legend
+            />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </ChartContainer>
+      :
+      <p>Not enough data to display chart</p>
   )
 
 }

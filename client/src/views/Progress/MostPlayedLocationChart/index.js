@@ -2,8 +2,10 @@ import React from "react"
 import {
   PieChart,
   Pie,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from 'recharts'
+import ChartContainer from '../../../shared/ChartContainer'
 
 const MostPlayedLocationChart = props => {
   const locations = []
@@ -43,19 +45,24 @@ const MostPlayedLocationChart = props => {
 
   return (
     data.length > 0 ?
-      <PieChart width={730} height={250}>
-        <Pie
-          data={data}
-          dataKey="value"
-          nameKey="name"
-          cx="50%"
-          cy="50%"
-          outerRadius={90}
-          fill="#82ca9d"
-          legend
-        />
-        <Legend />
-      </PieChart> :
+    <ChartContainer>
+      <ResponsiveContainer>
+        <PieChart width={730} height={250}>
+          <Pie
+            data={data}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={90}
+            fill="#82ca9d"
+            legend
+          />
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartContainer>
+       :
       <p>Not enough data to display chart.</p>
   )
 
