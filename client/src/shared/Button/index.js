@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { darken } from 'polished'
 
 const Button = styled.button`
+  width: ${props => props.width? props.width : null};
   font-size: 16px;
   padding: .6em 1.1em;
   text-align: center;
