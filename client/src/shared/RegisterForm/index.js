@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import Input from '../Input'
 import Button from '../Button'
 import Form from '../Form'
+import FormTitle from '../FormTitle'
 import axios from 'axios'
 
 
@@ -13,7 +14,7 @@ class RegisterForm extends React.Component {
       username: "",
       email: "",
       password: "",
-      registrationSuccesfull: false
+      registrationSuccesfull: false,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -38,9 +39,14 @@ class RegisterForm extends React.Component {
 
     axios.post('/api/register', user)
       .then(res => {
+        window.alert("Registered")
         this.setState({registrationSuccesfull: true})
       })
+      .catch(error => {
+        window.alert("Unable to register")
+      })
   }
+
 
   render() {
     return (
@@ -51,12 +57,14 @@ class RegisterForm extends React.Component {
             <Redirect to="/login" /> :
 
             <Form onSubmit={this.handleSubmit}>
+              <FormTitle>Sign Up</FormTitle>
               <Input
                 type="text"
                 placeholder="Username"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
+                required="true"
               />
               <Input
                 type="email"
@@ -64,6 +72,7 @@ class RegisterForm extends React.Component {
                 name="email"
                 value={this.state.email}
                 onChange={this.handleChange}
+                required="true"
               />
               <Input
                 type="password"
@@ -71,6 +80,7 @@ class RegisterForm extends React.Component {
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
+                required="true"
               />
               <Button type="submit" fullWidth>Register</Button>
             </Form>

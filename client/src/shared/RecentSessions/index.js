@@ -3,7 +3,7 @@ import PokerSession from './PokerSession'
 import ButtonLink from '../ButtonLink'
 
 const RecentSessions = props => {
-  const sessions = props.sessions
+  const sessions = props.sessions || []
   return (
     sessions.length?
       <div>

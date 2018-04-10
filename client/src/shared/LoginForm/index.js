@@ -5,6 +5,7 @@ import Button from '../Button'
 import Text from '../Text'
 import Link from '../Link'
 import Form from '../Form'
+import FormTitle from '../FormTitle'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -43,7 +44,7 @@ class LoginForm extends React.Component {
         {this.state.authenticated? <Redirect to="/home" /> :
 
         <Form onSubmit={this.handleSubmit}>
-
+          <FormTitle>Login</FormTitle>
           <Input name="username"
             autoFocus
             type="text"
