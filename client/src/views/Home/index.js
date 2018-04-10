@@ -8,6 +8,7 @@ import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'
 import LivePokerGames from "../../shared/LivePokerGames"
 import ProgressOverview from '../../shared/ProgressOverview'
+import RecentSessions from '../../shared/RecentSessions'
 
 const Home = props => {
   return (
@@ -22,6 +23,7 @@ const Home = props => {
         </PageSection>
         <PageSection>
           <SectionTitle title="Recent Sessions"/>
+          <RecentSessions sessions={props.sessions}/>
         </PageSection>
         <PageSection>
           <SectionTitle title="Nearby Games"/>

@@ -120,7 +120,7 @@ class App extends Component {
         callback(null, true)
       })
       .catch(err => callback(err))
-      
+
   }
 
   editPokerSession(id, newBuyIn, callback){
@@ -170,6 +170,7 @@ class App extends Component {
               <Landing logIn={this.logIn.bind(this)}/> :
               <Home
                 logout={this.logout.bind(this)}
+                sessions={this.state.user.pokerSessions}
                 />
             )}/>
 
