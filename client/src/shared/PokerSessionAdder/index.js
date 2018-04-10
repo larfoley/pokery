@@ -59,6 +59,7 @@ class AddSessionForm extends React.Component {
           options={locations}
           value={this.state.location}
           onChange={this.handleChange.bind(this)}
+          required="true"
         />
         <Select
           label="Variation"
@@ -66,6 +67,7 @@ class AddSessionForm extends React.Component {
           onChange={this.handleChange.bind(this)}
           name="variation"
           value={this.state.variation}
+          required="true"
         />
         <Select
           label="Game Type"
@@ -73,6 +75,7 @@ class AddSessionForm extends React.Component {
           onChange={this.handleChange.bind(this)}
           name="gameType"
           value={this.state.gameType}
+          required="true"
         />
         <Input
           label="Buy In"
@@ -80,6 +83,7 @@ class AddSessionForm extends React.Component {
           type="number"
           value={this.state.name}
           onChange={this.handleChange.bind(this)}
+          required="true"
         />
         <Input
           label="Amount Won"
@@ -87,6 +91,7 @@ class AddSessionForm extends React.Component {
           type="number"
           value={this.state.name}
           onChange={this.handleChange.bind(this)}
+          required="true"
         />
 
         <Input
@@ -95,6 +100,7 @@ class AddSessionForm extends React.Component {
           type="date"
           value={this.state.date}
           onChange={this.handleChange.bind(this)}
+          required="true"
         />
 
         <Button>Submit</Button>

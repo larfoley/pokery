@@ -31,6 +31,7 @@ const Input = props => (
       placeholder={props.placeholder}
       onChange={props.onChange}
       name={props.name}
+      required={props.required}
     />
   </div>
 )
