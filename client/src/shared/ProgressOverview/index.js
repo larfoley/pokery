@@ -3,8 +3,8 @@ import axios from 'axios'
 
 class ProgressOverview extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       earnings:	0,
       winRate:	0,
@@ -15,27 +15,35 @@ class ProgressOverview extends React.Component {
   }
 
   componentDidMount() {
-    let earnings, winRate, mostSuccesfullLocation;
 
-    axios.get('/api/poker-sessions')
-      .then(res => {
-        const pokerSessions = res.data
-        console.log(3, this.calculateWinRate);
-        earnings = this.calculateEarnings(pokerSessions)
-        winRate = this.calculateWinRate(pokerSessions) + "%"
-        mostSuccesfullLocation = this.calculateMostSuccesfull(pokerSessions)
+    const pokerSessions = this.props.sessions
+    let earnings,
+        winRate,
+        mostSuccesfullLocation,
+        mostSuccesfullGameType,
+        mostSuccesfullVariation;
 
-        this.setState({ earnings, winRate })
+    earnings = this.calculateEarnings(pokerSessions)
+    winRate = this.calculateWinRate(pokerSessions) + "%"
+    mostSuccesfullLocation = this.calculateMostSuccesfullLocation(pokerSessions)
+    mostSuccesfullVariation = this.calculateMostSuccesfullVariation(pokerSessions)
+    mostSuccesfullGameType = this.calculateMostSuccesfullGameType(pokerSessions)
 
-      })
-      .catch(error => console.log(error))
+    this.setState({
+      earnings,
+      winRate,
+      mostSuccesfullLocation,
+      mostSuccesfullVariation,
+      mostSuccesfullGameType
+    })
+
   }
 
   calculateWinRate(sessions) {
     if (sessions.length === 0) {
       return 0
     }
-    
+
     let wins = 0
     sessions.forEach(session => {
       if (session.amountWon > 0) {
@@ -55,16 +63,16 @@ class ProgressOverview extends React.Component {
       return sessions[0].amountWon - sessions[0].buyIn
     }
 
-    console.log(2, sessions);
     return sessions
       .map(session => session.amountWon - session.buyIn)
       .reduce((a, b) => a + b, 0)
 
   }
 
-  calculateMostSuccesfull(sessions) {
+  calculateMostSuccesfullLocation(sessions) {
     let locations = {}
     let mostSuccesfullLocation;
+    let mostWins = 0;
 
     sessions.forEach(session => {
       locations[session.location] = {wins: 0}
@@ -76,8 +84,47 @@ class ProgressOverview extends React.Component {
       }
     })
 
+    for (var key in locations) {
+      if (locations.hasOwnProperty(key)) {
+        if (locations[key].wins >= mostWins) {
+          mostSuccesfullLocation = key
+        }
+      }
+    }
 
+    return mostSuccesfullLocation? mostSuccesfullLocation : "Unknown"
   }
+
+  calculateMostSuccesfullVariation(sessions) {
+    let texasHoldemEarnings = 0;
+    let omahaEarnings = 0;
+
+    sessions.map(session => {
+      if (session.variation === "omaha") {
+        omahaEarnings += (session.amountWon - session.buyIn)
+      } else {
+        texasHoldemEarnings += (session.amountWon - session.buyIn)
+      }
+    })
+
+    if (texasHoldemEarnings === 0 && omahaEarnings === 0) {
+      return "Unknown"
+    }
+    return texasHoldemEarnings > omahaEarnings? "Texas Hold'em" : "Omaha"
+  }
+
+  calculateMostSuccesfullGameType(sessions) {
+    const calcGameTypeEarnings = type => (
+      sessions
+        .filter(session => session.gameType === type)
+        .map(game => (game.amountWon - game.buyIn))
+        .reduce((a,b) => a + b, 0)
+    )
+    const tournamentGamesEarnings = calcGameTypeEarnings("tournament")
+    const cashGamesEarnings = calcGameTypeEarnings("Cash Game")
+    return tournamentGamesEarnings > cashGamesEarnings? "Tournaments" : "Cash Games"
+  }
+
 
   render() {
     return (
@@ -89,13 +136,13 @@ class ProgressOverview extends React.Component {
         <div>{this.state.winRate}</div>
         <br/>
         <div><strong>Most Succesfull Location</strong></div>
-        <div>Unknown</div>
+        <div>{this.state.mostSuccesfullLocation}</div>
         <br/>
         <div><strong>Most Succesfull Variation </strong></div>
-        <div>Unknown</div>
+        <div>{this.state.mostSuccesfullVariation}</div>
         <br/>
         <div><strong>Most Succesfull Game Type</strong></div>
-        <div>Unknown</div>
+        <div>{this.state.mostSuccesfullGameType}</div>
         <br/>
       </div>
     )

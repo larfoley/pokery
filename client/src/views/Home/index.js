@@ -18,7 +18,7 @@ const Home = props => {
       <PageContainer>
         <PageSection>
           <SectionTitle title="Progress"/>
-          <ProgressOverview />
+          <ProgressOverview sessions={props.sessions}/>
           <Button to="/progress">Find out More</Button>
         </PageSection>
         <PageSection>
