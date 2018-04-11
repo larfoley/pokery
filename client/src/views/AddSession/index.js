@@ -27,7 +27,7 @@ const AddSession = props => {
               pokerLocations={props.user.pokerLocations}
               addSession={props.addSession}
             /> :
-            <p>Before creating a session you must add a location</p>
+            <p>Before creating a session you must add a location below so that we can track your most succesfull location.</p>
             }
           </PageSection>
           <PageSection>
