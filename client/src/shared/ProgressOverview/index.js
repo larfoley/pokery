@@ -20,7 +20,7 @@ class ProgressOverview extends React.Component {
     axios.get('/api/poker-sessions')
       .then(res => {
         const pokerSessions = res.data
-
+        console.log(3, this.calculateWinRate);
         earnings = this.calculateEarnings(pokerSessions)
         winRate = this.calculateWinRate(pokerSessions) + "%"
         mostSuccesfullLocation = this.calculateMostSuccesfull(pokerSessions)
@@ -32,6 +32,10 @@ class ProgressOverview extends React.Component {
   }
 
   calculateWinRate(sessions) {
+    if (sessions.length === 0) {
+      return 0
+    }
+    
     let wins = 0
     sessions.forEach(session => {
       if (session.amountWon > 0) {
@@ -51,10 +55,10 @@ class ProgressOverview extends React.Component {
       return sessions[0].amountWon - sessions[0].buyIn
     }
 
-
+    console.log(2, sessions);
     return sessions
       .map(session => session.amountWon - session.buyIn)
-      .reduce((a, b) => a + b)
+      .reduce((a, b) => a + b, 0)
 
   }
 
