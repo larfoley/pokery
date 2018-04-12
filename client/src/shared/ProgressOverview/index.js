@@ -16,7 +16,7 @@ class ProgressOverview extends React.Component {
 
   componentDidMount() {
 
-    const pokerSessions = this.props.sessions
+    const pokerSessions = this.props.sessions || []
     let earnings,
         winRate,
         mostSuccesfullLocation,
@@ -54,7 +54,7 @@ class ProgressOverview extends React.Component {
   }
 
   calculateEarnings(sessions) {
-
+    console.log(this.props);
     if (sessions.length === 0) {
       return 0
     }
