@@ -8,7 +8,7 @@ const tournamentsGames = [];
 router.get('/', (req, res) => {
 	const dayToFilterBy = req.query.day;
 
-	request('http://en.clubpoker.net/poker-tournaments', (error, response, html) => {
+	request('https://en.clubpoker.net/poker-tournaments/the-fitzwilliam-casino-card-club/ireland/0-426-0-0-0-0-0-111', (error, response, html) => {
 
 		const tournamentItemDate = itemDate =>
 			itemDate.children('.tournamentItemDate').children('.dateInfos');
