@@ -114,6 +114,9 @@ class ProgressOverview extends React.Component {
   }
 
   calculateMostSuccesfullGameType(sessions) {
+    if (sessions.length === 0) {
+      return "Unknown"
+    }
     const calcGameTypeEarnings = type => (
       sessions
         .filter(session => session.gameType === type)
