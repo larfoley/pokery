@@ -45,9 +45,10 @@ class RegisterForm extends React.Component {
     }
     if (password.length > 7 && hasNumber) {
       passwordIsValid = true
-    
+    }
+
     return passwordIsValid
-  }
+}
 
   handleSubmit = event => {
     event.preventDefault()
