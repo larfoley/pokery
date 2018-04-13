@@ -33,9 +33,9 @@ class RegisterForm extends React.Component {
   }
 
   validatePassword() {
-    const password = this.state.password;
+    const password = this.state.password
     let passwordIsValid = false
-    let hasNumber
+    let hasNumber = false
 
     for (let i = 0; i < password.length; i++) {
       if (!isNaN(parseInt(password[i], 10))) {
@@ -43,9 +43,9 @@ class RegisterForm extends React.Component {
         break
       }
     }
-    if (password > 7 && hasNumber) {
+    if (password.length > 7 && hasNumber) {
       passwordIsValid = true
-    }
+    
     return passwordIsValid
   }
 
@@ -96,7 +96,7 @@ class RegisterForm extends React.Component {
           }
           {
             this.state.success?
-              <Message type="success">Regitered. Click <Link to="/">here</Link> to login.</Message>
+              <Message type="success">Regitered. Click <Link to="/login">here</Link> to login.</Message>
                 :
               null
           }
