@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const StyledSection = styled.section`
   margin: 10px;
-  background-color: white;
+  background-color: ${props => props.theme.section_bg_color};
   padding: 1em;
   box-shadow: inset 0 1px 0 0 rgba(200,200,200,0.4), 0 1px 1px 0 rgba(0,0,0,0.3);
 
@@ -11,6 +11,7 @@ const StyledSection = styled.section`
     margin: 3em 2em;
     padding: 2em;
   }
+  ${'' /* color: ${props => props.theme.text_color} */}
 `
 
 const PageSection = (props) => (

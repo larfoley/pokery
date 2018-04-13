@@ -58,6 +58,7 @@ class LoginForm extends React.Component {
             type="text"
             value={this.state.username}
             onChange={this.handleChange}
+            required="true"
           />
 
           <Input
@@ -66,6 +67,7 @@ class LoginForm extends React.Component {
             value={this.state.password}
             onChange={this.handleChange}
             type="password"
+            required="true"
           />
 
           <Button type="submit" fullWidth>Login</Button>

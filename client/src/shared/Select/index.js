@@ -4,8 +4,9 @@ import Label from './Label'
 
 const StyledSelect = styled.select`
   border: none;
-  background-color: white;
-  border: 1px solid #eee;
+  background-color: ${props => props.theme.input_bg_color};
+  color: ${props => props.theme.input_color};
+  border: 1px solid ${props => props.theme.input_border_color};
   padding: .6em;
   width: 100%;
   font-family: inherit;

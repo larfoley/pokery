@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledH2 = styled.h2`
-  color: black;
+  color: ${props => props.theme.headings_color};
   text-decoration: none;
   &:after {
     display: block;

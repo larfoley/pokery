@@ -5,6 +5,7 @@ import axios from "axios"
 import Button from "../Button"
 import Loading from "../Loading"
 import Align from "../Align"
+import Title from "./Title"
 
 class LivePokerGames extends Component {
 
@@ -69,7 +70,7 @@ class LivePokerGames extends Component {
 
         {!this.state.loading?
           <div>
-            <h5>Games Found: {this.state.livePokerGames.length}</h5>
+            <Title>Games Found: {this.state.livePokerGames.length}</Title>
             {livePokerGames.map((item, i) => (
               <LivePokerGame key = {i}
                 type={item.type }

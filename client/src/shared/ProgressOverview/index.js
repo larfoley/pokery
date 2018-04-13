@@ -1,5 +1,10 @@
 import React from 'react'
 import axios from 'axios'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  color: ${props => props.theme.text_color};
+`
 
 class ProgressOverview extends React.Component {
 
@@ -131,7 +136,7 @@ class ProgressOverview extends React.Component {
 
   render() {
     return (
-      <div>
+      <Wrapper>
         <div><strong>Earnings</strong></div>
         <div>&euro; {this.state.earnings} </div>
         <br/>
@@ -147,7 +152,7 @@ class ProgressOverview extends React.Component {
         <div><strong>Most Succesfull Game Type</strong></div>
         <div>{this.state.mostSuccesfullGameType}</div>
         <br/>
-      </div>
+      </Wrapper>
     )
   }
 
