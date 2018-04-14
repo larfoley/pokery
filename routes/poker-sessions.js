@@ -39,38 +39,22 @@ router.post('/add', requiresAuth, (req, res, next) => {
 
 // Edit poker pokerSession
 router.post('/edit', requiresAuth, (req, res, next) => {
-	const	newLocation = req.body.location
-	const	newVariation = req.body.variation
-	const	newGameType = req.body.gameType
-	const	newNotes = req.body.notes
-	const	newDate = req.body.date
-	const	newBuyIn = parseInt(req.body.buyIn, 10)
-	const	newAmountWon = parseInt(req.body.amountWon, 10)
+	let update = req.body.update
+	let id = req.body.id
+
 
 	User.findById(req.user._id, (err, user) => {
 		if (err) return next(err)
 
-		const pokerSession = user
-			.pokerSessions
-			.find(session => session._id == req.body.id)
+		// Update poker session
+		user.pokerSessions = user.pokerSessions
+			.map(session => session._id == id? update : session)
 
-		if (pokerSession) {
-			// Update poker session
-			pokerSession.location = newLocation
-			pokerSession.variation = newVariation
-			pokerSession.gameType = newGameType
-			pokerSession.date = newDate
-			pokerSession.notes = newNotes
-			pokerSession.buyIn = isNaN(newBuyIn)? pokerSession.buyIn : newBuyIn
-			pokerSession.amountWon = isNaN(newAmountWon)? pokerSession.amountWon : newAmountWon
+		user.save((err, saved) => {
+			if (err) return next(err)
+			res.json(saved.pokerSessions)
+		})
 
-			user.save((err, saved) => {
-				if (err) return next(err)
-				res.json(saved.pokerSessions)
-			})
-		} else {
-			next(new Error("pokerSession not found"))
-		}
 
 	})
 })

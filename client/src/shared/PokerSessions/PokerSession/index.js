@@ -6,45 +6,56 @@ import Wrapper from '../../LivePokerGames/LivePokerGame/Wrapper'
 import Header from '../../LivePokerGames/LivePokerGame/Header'
 import Button from '../../Button'
 import Input from '../../Input'
+import Select from '../../Select'
+
 class PokerSession extends React.Component {
   constructor(props){
     super(props)
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onSaveEdit = this.onSaveEdit.bind(this);
     this.state = {
       editMode: false,
       date: this.props.date,
       buyIn: this.props.buyIn,
       amountWon: this.props.amountWon,
-      newDate: this.props.date,
-      newBuyIn: this.props.buyIn,
-      newAmountWon: this.props.amountWon,
-      id: this.props._id,
-      
+      variation: this.props.variation,
+      location: this.props.location,
+      gameType: this.props.gameType,
+      id: this.props.id,
     }
+
+    this.onInputChange = this.onInputChange.bind(this)
+    this.onSaveEdit = this.onSaveEdit.bind(this)
+    this.toggleEditMode = this.toggleEditMode.bind(this)
+
   }
 
   onInputChange(event) {
-    this.setState({newDate: event.target.value})
-    this.setState({newBuyIn: event.target.value})
-    this.setState({newAmountWon: event.target.value})
+    const session = this.state;
+    session[event.target.name] = event.target.value;
+    this.setState(session);
   }
-  
-  onSaveEdit() {
-    var newBuyIn = this.state.value;
-    var validationErrors = [];
 
-    if(newBuyIn !== this.state.buyIn) {   
-      this.props.editPokerSession(this.state.id, newBuyIn, (err, session) => {
-       if(!err) {
-         this.setState({editMode: false})
-         window.alert("Poker Session Updated!")
-       } else {
-         window.alert("There was an error")
-         console.log(err);
-       }
-      })
+  onSaveEdit() {
+    const update = {
+      date: this.state.date,
+      buyIn: this.state.buyIn,
+      amountWon: this.state.amountWon,
+      variation: this.state.variation,
+      location: this.state.location,
+      gameType: this.state.gameType,
     }
+    const validationErrors = [];
+
+    this.props.editPokerSession(this.state.id, update, (err, res) => {
+     if(!err) {
+       window.alert("Poker Session Updated!")
+       console.log(res);
+       this.toggleEditMode()
+     } else {
+       window.alert("There was an error")
+       console.error();(err);
+     }
+    })
+
   }
 
   toggleEditMode() {
@@ -53,7 +64,8 @@ class PokerSession extends React.Component {
       return prevState
     })
   }
-  render(){
+
+  render() {
     return(
       <Wrapper>
         <Header>
@@ -62,52 +74,143 @@ class PokerSession extends React.Component {
           </h3>
         </Header>
       <TableBox>
-        <Table>    
-          <table>
-            <tbody>
-              <tr>
-                <th>Date:</th>
-                  <td>{this.state.editMode?
-                    <Input
-                    onChange={this.onInputChange}
-                    autoFocus
-                    value={this.state.newDate} />
-                    :this.props.date}
-                  </td>
-              </tr>
-              <tr>
-                <th>Buy in:</th>
-                <td>{this.state.editMode?
-                 <Input 
-                  onChange={this.onInputChange}
-                  autoFocus
-                  value={this.state.newBuyIn} />
-                  :this.props.buyIn}</td>
-              </tr>
-              <tr>
-                <th>Amount won:</th>
-                <td>{this.state.editMode?
-                 <Input
-                  onChange={this.onInputChange}
-                  autoFocus
-                  value={this.state.newAmountWon} />
-                  :this.props.amountWon}</td>
-              </tr>
-              <tr>
-                <th>Notes:</th>
-                <td> </td>
-              </tr>
-            </tbody>
-          </table>
-        
+        <Table>
+          {
+            this.state.editMode?
+
+              <form>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>Date:</th>
+                      <td>
+                        <Input
+                          name="date"
+                          value={this.state.date}
+                          type="date"
+                          onChange={this.onInputChange}
+                          placeholder={this.state.buyIn}
+                          required="true"
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Buy in:</th>
+                      <td>
+                       <Input
+                         type="number"
+                         name="buyIn"
+                         value={this.state.buyIn}
+                         placeholder={this.state.buyIn}
+                         onChange={this.onInputChange}
+                         required="true"
+                       />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Amount won:</th>
+                      <td>
+                       <Input
+                         type="number"
+                         name="amountWon"
+                         value={this.state.amountWon}
+                         onChange={this.onInputChange}
+                         required="true"
+                       />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Location</th>
+                      <td>
+                        <Select
+                          type="number"
+                          name="location"
+                          value={this.state.location}
+                          onChange={this.onInputChange}
+                          required="true"
+                          options={this.props.locations}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Game Type</th>
+                      <td>
+                        <Select
+                          options={[]}
+                          type="number"
+                          name="gameType"
+                          value={this.state.gameType}
+                          onChange={this.onInputChange}
+                          required="true"
+                          options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Game Variation</th>
+                      <td>
+                        <Select
+                          options={[]}
+                          type="number"
+                          name="variation"
+                          value={this.state.amountWon}
+                          onChange={this.onInputChange}
+                          value={this.state.newAmountWon}
+                          required="true"
+                          options={["Texas Hold'em", "Omaha"]}
+                        />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+
+                :
+
+              <table>
+                <tbody>
+                  <tr>
+                    <th>Date:</th>
+                      <td>
+                        {this.props.date}
+                      </td>
+                  </tr>
+                  <tr>
+                    <th>Buy in:</th>
+                    <td>{this.props.buyIn}</td>
+                  </tr>
+                  <tr>
+                    <th>Amount won:</th>
+                    <td>{this.props.amountWon}</td>
+                  </tr>
+                  <tr>
+                    <th>Location</th>
+                    <td>{this.props.location}</td>
+                  </tr>
+                  <tr>
+                    <th>Game Type</th>
+                    <td>{this.props.gameType}</td>
+                  </tr>
+                  <tr>
+                    <th>Game Variation</th>
+                    <td>{this.props.variation}</td>
+                  </tr>
+                </tbody>
+              </table>
+          }
+
         </Table>
         <br/>
         {!this.state.editMode?
         <div>
-            <Button onClick={this.toggleEditMode.bind(this)}>Edit</Button>
-            <Button bgColor="crimson">Delete</Button>
+            <Button bgColor="#d62c1a" onClick={this.toggleEditMode.bind(this)}>Edit</Button>
+            <Button bgColor="#3498db">Delete</Button>
         </div>
-            :<Button onClick={this.onSaveEdit}>Save</Button>
+            :
+        <div>
+          <Button onClick={this.onSaveEdit}>Save</Button>
+          <Button bgColor="#d62c1a" onClick={this.toggleEditMode}>Cancel</Button>
+        </div>
         }
       </TableBox>
       </Wrapper>

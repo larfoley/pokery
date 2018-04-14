@@ -123,16 +123,17 @@ class App extends Component {
 
   }
 
-  editPokerSession(id, newBuyIn, callback){
-    axios.post('/api/poker-sessions/edit', {id, newBuyIn})
+  editPokerSession(id, update, callback){
+    axios.post('/api/poker-sessions/edit', {id, update})
      .then(res => {
        this.setState(prevState => {
          prevState.user.pokerSessions = res.data
          return prevState
        });
-       callback(null, true)
+       callback(null, res.data)
      })
      .catch(err => callback(err))
+
   }
 
   updateUserPreferences(update, callback) {

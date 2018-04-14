@@ -36,6 +36,7 @@ const Input = props => (
       onChange={props.onChange}
       name={props.name}
       required={props.required}
+      value={props.value}
     />
   </div>
 )
