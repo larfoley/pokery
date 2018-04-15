@@ -10,7 +10,7 @@ import EarningsChart from './EarningsChart'
 import BestGameTypeChart from './BestGameTypeChart'
 import BestLocationsChart from './BestLocationsChart';
 import MostPlayedLocationChart from './MostPlayedLocationChart';
-import LifetimeEarningsChart from './LifetimeEarningsChart'
+import CashVsTournament from './CashVsTournament'
 import Select from '../../shared/Select'
 
 class Progress extends React.Component {
@@ -52,7 +52,6 @@ class Progress extends React.Component {
           prevState.filteredSessions = this.state.sessions
 
         }
-        console.log(prevState.filteredSessions);
         return prevState
       })
 
@@ -80,7 +79,7 @@ class Progress extends React.Component {
 
           <PageSection>
             <SectionTitle title="Cash Games vs Tournaments"/>
-            <LifetimeEarningsChart sessions={this.state.filteredSessions} />
+            <CashVsTournament sessions={this.state.filteredSessions} />
           </PageSection>
 
           <PageSection title="">
