@@ -79,7 +79,7 @@ class Progress extends React.Component {
 
           <PageSection>
             <SectionTitle title="Cash Games vs Tournaments"/>
-            <CashVsTournament sessions={this.state.filteredSessions} />
+            <CashVsTournament sessions={this.state.filteredSessions} locations={this.props.locations} />
           </PageSection>
 
           <PageSection title="">

@@ -25,7 +25,7 @@ const CashVsTournament = props => {
 
   const data = []
   const sessionsByLocation = {}
-  const locations = ["merrion", "fitz"]
+  const locations = props.locations.map(l => l.name)
   const randomColor = new RandomColor()
 
   // Group session by location

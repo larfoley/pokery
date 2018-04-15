@@ -200,6 +200,7 @@ class App extends Component {
               <Progress
                 logout={this.logout.bind(this)}
                 sessions={this.state.user.pokerSessions}
+                locations={this.state.user.pokerLocations}
               />
             )}/>
 
