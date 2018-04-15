@@ -10,9 +10,8 @@ import ChartContainer from '../../../shared/ChartContainer'
 const MostPlayedLocationChart = props => {
   const locations = []
 
-  props.sessions.map(session => {
+  props.sessions.forEach(session => {
     let locationExists = false
-    let location;
 
     locations.forEach(l => {
       if (session.location === l) {
@@ -27,11 +26,11 @@ const MostPlayedLocationChart = props => {
 
   let data = []
 
-  locations.map(location => {
+  locations.forEach(location => {
 
     // return array of sessions mapped to the same location
     let sessions = props.sessions.filter(session => {
-      if (session.location == location) {
+      if (session.location === location) {
         return session
       } else {
         return null

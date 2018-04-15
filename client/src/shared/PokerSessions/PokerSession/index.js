@@ -1,5 +1,4 @@
 import React from 'react'
-import Box from '../../Box'
 import Table from '../../LivePokerGames/LivePokerGame/Table'
 import TableBox from '../../LivePokerGames/LivePokerGame/TableBox'
 import Wrapper from '../../LivePokerGames/LivePokerGame/Wrapper'
@@ -31,20 +30,18 @@ class PokerSession extends React.Component {
   onInputChange(event) {
     const session = this.state;
     session[event.target.name] = event.target.value;
-    console.log(session);
     this.setState(session);
   }
 
   onSaveEdit() {
     const update = {
       date: this.state.date,
-      buyIn: parseInt(this.state.buyIn),
-      amountWon: parseInt(this.state.amountWon),
+      buyIn: parseInt(this.state.buyIn, 10),
+      amountWon: parseInt(this.state.amountWon, 10),
       variation: this.state.variation,
       location: this.state.location,
       gameType: this.state.gameType,
     }
-    const validationErrors = [];
 
     this.props.editPokerSession(this.state.id, update, (err, res) => {
      if(!err) {
@@ -52,7 +49,7 @@ class PokerSession extends React.Component {
        this.toggleEditMode()
      } else {
        window.alert("There was an error")
-       console.error();(err);
+       console.error(err)
      }
     })
 
@@ -149,7 +146,6 @@ class PokerSession extends React.Component {
                       <th>Game Type</th>
                       <td>
                         <Select
-                          options={[]}
                           type="number"
                           name="gameType"
                           value={this.state.gameType}
@@ -163,12 +159,10 @@ class PokerSession extends React.Component {
                       <th>Game Variation</th>
                       <td>
                         <Select
-                          options={[]}
                           type="number"
                           name="variation"
                           value={this.state.amountWon}
                           onChange={this.onInputChange}
-                          value={this.state.newAmountWon}
                           required="true"
                           options={["Texas Hold'em", "Omaha"]}
                         />

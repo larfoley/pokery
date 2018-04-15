@@ -2,7 +2,6 @@ import React from "react"
 import SectionTitle from "../../shared/SectionTitle"
 import PageSection from "../../shared/PageSection"
 import Button from "../../shared/ButtonLink"
-import Table from "../../shared/Table"
 import Header from '../../App/Header'
 import Sidebar from '../../App/Sidebar'
 import PageContainer from '../../App/PageContainer'

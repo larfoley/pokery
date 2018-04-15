@@ -28,8 +28,6 @@ class Progress extends React.Component {
   onFilterSession(event) {
     const value = event.target.value
     const currentDate = new Date()
-    const thisYear = currentDate.getMonth()
-    const thisMonth = currentDate.getYear()
     let sessionsThisYear
     let sessionsThisMonth
 

@@ -51,7 +51,6 @@ class LivePokerGames extends Component {
   }
 
   render() {
-    let games = this.state.livePokerGames;
     const livePokerGames = this.state.livePokerGames
       .filter((game, i) => i < this.state.limit? true : false);
 

@@ -14,9 +14,8 @@ const BestLocationsChart = props => {
   const sessionsFilteredByLocation = {}
 
   // get all locations
-  props.sessions.map(session => {
+  props.sessions.forEach(session => {
     let locationExists = false
-    let location;
 
     locations.forEach(l => {
       if (session.location === l) {
@@ -40,7 +39,7 @@ const BestLocationsChart = props => {
     let totalEarnings = 0
 
     sessionsFilteredByLocation[key].forEach(session => {
-      totalEarnings += parseInt(session.amountWon - session.buyIn)
+      totalEarnings += parseInt(session.amountWon - session.buyIn, 10)
     })
 
     mostSuccesfullLocations.push({

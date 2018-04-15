@@ -153,23 +153,7 @@ class App extends Component {
     }
   }
 
-  deleteLivePokerLocation(id, name, callback) {
-    if (window.confirm(`
-      Deleting this location will also delete all sessions associatied with this location.
-      Are you sure you want to delete?
-      `)) {
-      axios.post('/api/poker-locations/delete', { id, name })
-        .then(res => {
-          this.setState(prevState => {
-            prevState.user.pokerLocations = res.data
-            callback(null, true)
-            return prevState
-          })
-        })
-        .catch(err => callback(err))
-    }
 
-  }
 
   updateUserPreferences(update, callback) {
     axios.post('/api/update-preferences', update)

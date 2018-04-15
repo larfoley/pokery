@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { darken } from 'polished'
 
 // props.theme.sidebar_bg_color
 // darken(0.03, '')

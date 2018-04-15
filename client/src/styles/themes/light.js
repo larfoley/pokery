@@ -4,7 +4,6 @@ export default {
   sidebar_bg_color: "#4c505d",
   bg_color: "#f5f5f5",
   header_bg_color: "#3D404A",
-  headings_color: "white",
   text_color: "#2e2e2e",
   input_bg_color: "white",
   input_color: "#2e2e2e",

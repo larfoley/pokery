@@ -1,6 +1,5 @@
 import React from 'react'
 import PokerSession from './PokerSession'
-import axios from 'axios'
 
 const PokerSessions = props => {
 
@@ -29,11 +28,11 @@ const PokerSessions = props => {
                   locations={pokerLocations}
                 />
               )
-            }
+            } else { return null}
           }) :
           sessions.map((session, i) => (
             <PokerSession
-              key={parseInt(i) + sessions.length}
+              key={parseInt(i, 10) + sessions.length}
               id={session._id}
               location={session.location}
               variation={session.variation}

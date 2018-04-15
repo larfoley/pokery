@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -104,7 +103,7 @@ class ProgressOverview extends React.Component {
     let texasHoldemEarnings = 0;
     let omahaEarnings = 0;
 
-    sessions.map(session => {
+    sessions.forEach(session => {
       if (session.variation === "omaha") {
         omahaEarnings += (session.amountWon - session.buyIn)
       } else {

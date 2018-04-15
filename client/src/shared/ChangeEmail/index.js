@@ -1,6 +1,5 @@
 import React from "react"
 import Button from '../Button'
-import Select from '../Select'
 import Input from '../Input'
 
 class ChangeEmail extends React.Component {

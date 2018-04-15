@@ -30,8 +30,8 @@ const EarningsChart = props => {
 
   let total = 0;
   const data = props.sessions.map((session, i) => {
-    total += parseInt(session.amountWon - session.buyIn)
-    
+    total += parseInt(session.amountWon - session.buyIn, 10)
+
     return {
       name: session.date? months[new Date(session.date).getMonth()].short_name : null,
       earnings: total,
