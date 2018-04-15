@@ -15,7 +15,12 @@ const SessionsHistoryPage = props => {
       <PageContainer>
         <PageSection>
           <SectionTitle title="Sessions"/>
-          <PokerSessions editPokerSession={props.editPokerSession}/>
+          <PokerSessions
+            sessions={props.sessions}
+            locations={props.locations}
+            editPokerSession={props.editPokerSession}
+            deletePokerSession={props.deletePokerSession}
+          />
         </PageSection>
       </PageContainer>
       <Footer />

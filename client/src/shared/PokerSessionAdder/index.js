@@ -19,7 +19,7 @@ class AddSessionForm extends React.Component {
         gameType: "tournament",
         buyIn: 0,
         amountWon: 0,
-        date: ""
+        date: this.getDate()
       }
     }
   }
@@ -43,21 +43,37 @@ class AddSessionForm extends React.Component {
     this.setState(session);
   }
 
-  render() {
+  getDate() {
+    let date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
 
+    if (day < 10) {
+        day = '0'+ day
+    }
+
+    if (month < 10) {
+        month = '0' + month
+    }
+
+    return year + '-' + month + '-' + day
+  }
+
+  render() {
     const locations = this.props.pokerLocations.map(location => location.name)
 
     return (
 
       locations.length > 0 ?
 
-      <form ref={form => {this.form = form}} onSubmit={this.onSubmit.bind(this)}>
+      <form onSubmit={this.onSubmit.bind(this)}>
 
         <Select
           label="Location"
           name="location"
           options={locations}
-          value={this.state.location}
+          value={this.state.session.location}
           onChange={this.handleChange.bind(this)}
           required="true"
         />
@@ -66,7 +82,7 @@ class AddSessionForm extends React.Component {
           options={["Texas Hold'em", "Omaha"]}
           onChange={this.handleChange.bind(this)}
           name="variation"
-          value={this.state.variation}
+          value={this.state.session.variation}
           required="true"
         />
         <Select
@@ -74,14 +90,14 @@ class AddSessionForm extends React.Component {
           options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
           onChange={this.handleChange.bind(this)}
           name="gameType"
-          value={this.state.gameType}
+          value={this.state.session.gameType}
           required="true"
         />
         <Input
           label="Buy In"
           name="buyIn"
           type="number"
-          value={this.state.name}
+          value={this.state.session.name}
           onChange={this.handleChange.bind(this)}
           required="true"
         />
@@ -89,7 +105,7 @@ class AddSessionForm extends React.Component {
           label="Amount Won"
           name="amountWon"
           type="number"
-          value={this.state.name}
+          value={this.state.session.name}
           onChange={this.handleChange.bind(this)}
           required="true"
         />
@@ -98,7 +114,7 @@ class AddSessionForm extends React.Component {
           label="Date"
           name="date"
           type="date"
-          value={this.state.date}
+          value={this.state.session.date}
           onChange={this.handleChange.bind(this)}
           required="true"
         />

@@ -59,4 +59,25 @@ router.post('/edit', requiresAuth, (req, res, next) => {
 	})
 })
 
+// Delete Session
+router.post('/delete', requiresAuth, (req, res, next) => {
+
+	const id = req.body.id
+
+	User.findById(req.user._id, (err, user) => {
+		if (err) return next(err)
+
+		// Delete poker session
+		user.pokerSessions = user.pokerSessions
+			.filter(session => session._id != id)
+
+		user.save((err, saved) => {
+			if (err) return next(err)
+			res.json(saved.pokerSessions)
+		})
+
+
+	})
+})
+
 module.exports = router;

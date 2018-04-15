@@ -72,10 +72,10 @@ class App extends Component {
     axios.post('/api/poker-sessions/add', {pokerSession: session})
       .then(res => {
         this.setState(prevState => {
-          prevState.user.pokerSessions.push(session)
-          callback(null, true)
+          prevState.user.pokerSessions = res.data
           return prevState
         })
+        callback(null, true)
       })
       .catch(err => callback(err))
   }
@@ -133,6 +133,41 @@ class App extends Component {
        callback(null, res.data)
      })
      .catch(err => callback(err))
+
+  }
+
+  deletePokerSession(id, callback) {
+    if (window.confirm(`
+      Are you sure you want to delete this session?
+      `)) {
+      axios.post('/api/poker-sessions/delete', { id })
+        .then(res => {
+          this.setState(prevState => {
+            prevState.user.pokerSessions = res.data
+            console.log("New State", res.data);
+            return prevState
+          })
+          callback(null)
+        })
+        .catch(err => callback(err))
+    }
+  }
+
+  deleteLivePokerLocation(id, name, callback) {
+    if (window.confirm(`
+      Deleting this location will also delete all sessions associatied with this location.
+      Are you sure you want to delete?
+      `)) {
+      axios.post('/api/poker-locations/delete', { id, name })
+        .then(res => {
+          this.setState(prevState => {
+            prevState.user.pokerLocations = res.data
+            callback(null, true)
+            return prevState
+          })
+        })
+        .catch(err => callback(err))
+    }
 
   }
 
@@ -216,7 +251,11 @@ class App extends Component {
               <Landing logIn={this.logIn.bind(this)}/> :
               <SessionHistory
                 logout={this.logout.bind(this)}
-                editPokerSession={this.editPokerSession.bind(this)}/>
+                sessions={this.state.user.pokerSessions}
+                locations={this.state.user.pokerLocations}
+                editPokerSession={this.editPokerSession.bind(this)}
+                deletePokerSession={this.deletePokerSession.bind(this)}
+              />
               )}/>
 
               <Route path="/settings" render={() => (

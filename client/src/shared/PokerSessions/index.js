@@ -2,36 +2,12 @@ import React from 'react'
 import PokerSession from './PokerSession'
 import axios from 'axios'
 
-class PokerSessions extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      pokerSessions:[],
-      pokerLocations: [],
-      limit: props.limit
-    }
-  }
+const PokerSessions = props => {
 
-  componentWillMount() {
-    let pokerSessions, pokerLocations;
+    const sessions = props.sessions
+    const pokerLocations = props.locations.map(l => l.name)
+    const limit = props.limit
 
-    axios.get('/api/poker-sessions')
-      .then(res => {
-        pokerSessions = res.data
-        return axios.get('api/poker-locations')
-      })
-      .then(res => {
-        pokerLocations = res.data.map(l => l.name)
-        this.setState({ pokerSessions, pokerLocations})
-      })
-      .catch(error => console.log(error))
-  }
-
-
-  render() {
-    const sessions = this.state.pokerSessions
-    const limit = this.state.limit
-    const editSession = this.props.editPokerSession
     return (
       sessions.length > 0 ? (
 
@@ -48,8 +24,9 @@ class PokerSessions extends React.Component {
                   buyIn={session.buyIn}
                   amountWon={session.amountWon}
                   date={session.date}
-                  editPokerSession={this.props.editPokerSession}
-                  locations={this.state.pokerLocations}
+                  editPokerSession={props.editPokerSession}
+                  deletePokerSession={props.deletePokerSession}
+                  locations={pokerLocations}
                 />
               )
             }
@@ -64,14 +41,14 @@ class PokerSessions extends React.Component {
               buyIn={session.buyIn}
               amountWon={session.amountWon}
               date={session.date}
-              editPokerSession={this.props.editPokerSession}
-              locations={this.state.pokerLocations}
+              editPokerSession={props.editPokerSession}
+              deletePokerSession={props.deletePokerSession}
+              locations={pokerLocations}
             />
           ))
 
       ): <p>No sessions</p>
     )
-  }
 
 }
 

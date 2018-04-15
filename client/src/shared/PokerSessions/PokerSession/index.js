@@ -13,13 +13,13 @@ class PokerSession extends React.Component {
     super(props)
     this.state = {
       editMode: false,
-      date: this.props.date,
-      buyIn: this.props.buyIn,
-      amountWon: this.props.amountWon,
-      variation: this.props.variation,
-      location: this.props.location,
-      gameType: this.props.gameType,
-      id: this.props.id,
+      date: props.date,
+      buyIn: props.buyIn,
+      amountWon: props.amountWon,
+      variation: props.variation,
+      location: props.location,
+      gameType: props.gameType,
+      id: props.id,
     }
 
     this.onInputChange = this.onInputChange.bind(this)
@@ -31,14 +31,15 @@ class PokerSession extends React.Component {
   onInputChange(event) {
     const session = this.state;
     session[event.target.name] = event.target.value;
+    console.log(session);
     this.setState(session);
   }
 
   onSaveEdit() {
     const update = {
       date: this.state.date,
-      buyIn: this.state.buyIn,
-      amountWon: this.state.amountWon,
+      buyIn: parseInt(this.state.buyIn),
+      amountWon: parseInt(this.state.amountWon),
       variation: this.state.variation,
       location: this.state.location,
       gameType: this.state.gameType,
@@ -48,7 +49,6 @@ class PokerSession extends React.Component {
     this.props.editPokerSession(this.state.id, update, (err, res) => {
      if(!err) {
        window.alert("Poker Session Updated!")
-       console.log(res);
        this.toggleEditMode()
      } else {
        window.alert("There was an error")
@@ -56,6 +56,19 @@ class PokerSession extends React.Component {
      }
     })
 
+  }
+
+
+  onDeleteSession() {
+
+    this.props.deletePokerSession(this.state.id, (err) => {
+      if (err) {
+        window.alert("There was an error deleting session")
+        console.error(err);
+      } else {
+        window.alert("Session deleted")
+      }
+    })
   }
 
   toggleEditMode() {
@@ -177,11 +190,11 @@ class PokerSession extends React.Component {
                   </tr>
                   <tr>
                     <th>Buy in:</th>
-                    <td>{this.props.buyIn}</td>
+                    <td>{this.props.buyIn} &euro;</td>
                   </tr>
                   <tr>
                     <th>Amount won:</th>
-                    <td>{this.props.amountWon}</td>
+                    <td>{this.props.amountWon} &euro;</td>
                   </tr>
                   <tr>
                     <th>Location</th>
@@ -203,8 +216,16 @@ class PokerSession extends React.Component {
         <br/>
         {!this.state.editMode?
         <div>
-            <Button bgColor="#d62c1a" onClick={this.toggleEditMode.bind(this)}>Edit</Button>
-            <Button bgColor="#3498db">Delete</Button>
+          <Button
+            bgColor="#d62c1a"
+            onClick={this.toggleEditMode.bind(this)}>
+            Edit
+          </Button>
+          <Button
+            bgColor="#3498db"
+            onClick={this.onDeleteSession.bind(this)}>
+            Delete
+          </Button>
         </div>
             :
         <div>
