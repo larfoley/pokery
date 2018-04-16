@@ -26,6 +26,7 @@ var isLoggedIn = require('./routes/is-logged-in')
 var changePassword = require('./routes/change-password')
 var changeEmail = require('./routes/change-email')
 var updatePreferences = require('./routes/update-preferences')
+var getLocation = require('./routes/get-location')
 
 
 db.on('error', () => {
@@ -69,6 +70,7 @@ app.use('/api/poker-locations', locations)
 app.use('/api/poker-sessions', pokerSessions)
 app.use('/api/is-logged-in', isLoggedIn)
 app.use('/api/update-preferences', updatePreferences)
+app.use('/api/get-location', getLocation)
 app.get('/api/*', (req, res) => {
   res.status(404).json({message: 'resource not found'})
 })

@@ -36,6 +36,34 @@ class App extends Component {
     this.isLoggedIn((err, user) => {
       this.setState({ user })
     })
+
+    this.getLocation((err, location) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(location);
+      }
+    })
+
+  }
+
+  getLocation(callback) {
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        axios.post("/api/get-location", {
+          longitude: position.coords.latitude,
+          latitude: position.coords.longitude
+        })
+        .then(res => {
+          callback(null, res.data)
+        })
+        .catch(err => {
+          callback(err)
+        })
+      })
+    }
+
   }
 
   isLoggedIn(callback) {
