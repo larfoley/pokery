@@ -34,7 +34,7 @@ const Features = props => (
         <div className="grid">
           <div className="grid__col grid__col--2-of-4">
             <h1>Available on All platforms</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum voluptatem adipisci, voluptatum sit! Veniam, cupiditate omnis numquam nam nobis possimus in eum blanditiis, tempore voluptatem. Quos magni obcaecati quisquam inventore.</p>
+            <p> Pokery is an online progressive web-application that offers its service to all users no matter what platform, try our mobile friendly website today! </p>
           </div>
           <div className="grid__col grid__col--2-of-4">
             {/* <img
