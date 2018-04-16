@@ -100,7 +100,8 @@ class App extends Component {
       axios.post('/api/poker-locations/delete', { id, name })
         .then(res => {
           this.setState(prevState => {
-            prevState.user.pokerLocations = res.data
+            prevState.user.pokerLocations = res.data.pokerLocations
+            prevState.user.pokerSessions = res.data.pokerSessions
             callback(null, true)
             return prevState
           })
@@ -144,7 +145,6 @@ class App extends Component {
         .then(res => {
           this.setState(prevState => {
             prevState.user.pokerSessions = res.data
-            console.log("New State", res.data);
             return prevState
           })
           callback(null)

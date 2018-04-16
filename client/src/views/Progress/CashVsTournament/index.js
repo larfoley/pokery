@@ -34,6 +34,8 @@ const CashVsTournament = props => {
       .filter(session => session.location === location)
   })
 
+  console.log("l",props.locations);
+
   for (var key in sessionsByLocation) {
     if (sessionsByLocation.hasOwnProperty(key)) {
 
@@ -58,7 +60,7 @@ const CashVsTournament = props => {
         })
     }
   }
-
+  console.log(data);
   return (
 
     data.length > 0 ?
