@@ -10,15 +10,27 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
+import colors from '../colors'
 
 const BestGameTypeChart = props => {
+  const sessions = props.sessions
 
-  const data = props.sessions.map(session => ({
-    name: 'Village Green',
-    Cash: 10,
-    Tournaments: 19,
-    amt: 100
-  }))
+  const calculateEarnings = (sessions, gameType) => {
+    return sessions
+      .filter(session => session.gameType === gameType)
+      .map(game => game.amountWon - game.buyIn)
+      .reduce((a,b) => a + b)
+  }
+  const cashGamesEarnings = calculateEarnings(sessions, "Cash Game")
+  const tournamentGamesEarnings = calculateEarnings(sessions, "tournament")
+
+  const data = [
+    {
+      name: "",
+      Cash: cashGamesEarnings,
+      Tournaments: tournamentGamesEarnings
+    }
+  ]
 
   return (
     data.length > 0?
@@ -30,8 +42,8 @@ const BestGameTypeChart = props => {
             <YAxis label={{ value: 'games won', angle: -90, position: 'insideLeft' }} />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Cash" fill="#8884d8" />
-            <Bar dataKey="Tournaments" fill="#82ca9d" />
+            <Bar dataKey="Cash" fill={colors[0]} />
+            <Bar dataKey="Tournaments" fill={colors[1]} />
           </BarChart>
         </ResponsiveContainer>
       </ChartContainer>

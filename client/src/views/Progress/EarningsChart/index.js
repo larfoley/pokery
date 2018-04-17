@@ -10,20 +10,21 @@ import {
   ResponsiveContainer
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
+import colors from '../colors'
 
 const months = [
   {name: "January", short_name: "Jan"},
   {name: "February", short_name: "Feb"},
   {name: "March", short_name: "March"},
-  {name: "April", short_name: "April"},
+  {name: "April", short_name: "Apr"},
   {name: "May", short_name: "May"},
-  {name: "June", short_name: "June"},
-  {name: "July", short_name: "July"},
-  {name: "August", short_name: "August"},
-  {name: "September", short_name: "September"},
-  {name: "October", short_name: "October"},
-  {name: "November", short_name: "November"},
-  {name: "December", short_name: "December"}
+  {name: "June", short_name: "Jun"},
+  {name: "July", short_name: "Jul"},
+  {name: "August", short_name: "Aug"},
+  {name: "September", short_name: "Sep"},
+  {name: "October", short_name: "Oct"},
+  {name: "November", short_name: "Nov"},
+  {name: "December", short_name: "Dec"}
 ]
 
 const EarningsChart = props => {
@@ -55,7 +56,7 @@ const EarningsChart = props => {
             <Line
               type="monotone"
               dataKey="earnings"
-              stroke="#82ca9d"
+              stroke={colors[0]}
             />
           </LineChart>
         </ResponsiveContainer>

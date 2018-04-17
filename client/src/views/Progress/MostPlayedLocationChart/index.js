@@ -3,9 +3,11 @@ import {
   PieChart,
   Pie,
   Legend,
+  Cell,
   ResponsiveContainer
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
+import colors from '../colors'
 
 const MostPlayedLocationChart = props => {
   const locations = []
@@ -51,12 +53,12 @@ const MostPlayedLocationChart = props => {
             data={data}
             dataKey="value"
             nameKey="name"
-            cx="50%"
-            cy="50%"
-            outerRadius={90}
-            fill="#82ca9d"
-            legend
-          />
+            cx="50%" cy="50%"
+            labelLine={false}
+            outerRadius={80}
+          >
+            {data.map((obj, i) => <Cell fill={colors[i]} key={i} />)}
+          </Pie>
           <Legend />
         </PieChart>
       </ResponsiveContainer>

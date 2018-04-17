@@ -2,10 +2,12 @@ import React from "react"
 import {
   PieChart,
   Pie,
+  Cell,
   Legend,
   ResponsiveContainer
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
+import colors from '../colors'
 
 const BestLocationsChart = props => {
 
@@ -62,9 +64,13 @@ const BestLocationsChart = props => {
               cx="50%"
               cy="50%"
               outerRadius={90}
-              fill="#82ca9d"
               legend
-            />
+            >
+              {
+                mostSuccesfullLocations
+                  .map((location, i) => <Cell fill={colors[i]} key={i} />)
+              }
+            </Pie>
             <Legend />
           </PieChart>
         </ResponsiveContainer>

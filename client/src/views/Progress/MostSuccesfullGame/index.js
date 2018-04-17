@@ -12,21 +12,20 @@ import {
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
 
-import RandomColor from './RandomColor.js'
+// import RandomColor from '../RandomColor.js'
+import colors from '../colors'
 
 
-const CashVsTournament = props => {
+const MostSuccesfullGame = props => {
 
   const filterByGameType = (type) => (
-    (session) => {
-      return session.gameType === type
-    }
+      session => session.gameType === type
   )
 
   const data = []
   const sessionsByLocation = {}
   const locations = props.locations.map(l => l.name)
-  const randomColor = new RandomColor()
+  // const randomColor = new RandomColor()
 
   // Group session by location
   locations.forEach(location => {
@@ -34,19 +33,17 @@ const CashVsTournament = props => {
       .filter(session => session.location === location)
   })
 
-  console.log("l",props.locations);
-
   for (var key in sessionsByLocation) {
     if (sessionsByLocation.hasOwnProperty(key)) {
 
       let cashGamesEarnings = sessionsByLocation[key]
-        .filter(filterByGameType("Cash Games"))
+        .filter(filterByGameType("Cash Game"))
         .map(session => session.amountWon - session.buyIn)
         .reduce((a,b) => a + b, 0)
 
         data.push({
           name: key + " Cash Games",
-          value: cashGamesEarnings
+          earnings: cashGamesEarnings
         })
 
       let tournamentGamesEarnings = sessionsByLocation[key]
@@ -60,7 +57,6 @@ const CashVsTournament = props => {
         })
     }
   }
-  console.log(data);
   return (
 
     data.length > 0 ?
@@ -73,11 +69,10 @@ const CashVsTournament = props => {
               cx="50%" cy="50%"
               outerRadius={80}
               labelLine={false}
-              label
               >
               {
                 data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={randomColor.generateUnique()}/>
+                  <Cell key={`cell-${index}`} fill={colors[index]}/>
                 ))
               }
             </Pie>
@@ -90,4 +85,4 @@ const CashVsTournament = props => {
   )
 }
 
-export default CashVsTournament
+export default MostSuccesfullGame

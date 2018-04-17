@@ -10,7 +10,7 @@ import EarningsChart from './EarningsChart'
 import BestGameTypeChart from './BestGameTypeChart'
 import BestLocationsChart from './BestLocationsChart';
 import MostPlayedLocationChart from './MostPlayedLocationChart';
-import CashVsTournament from './CashVsTournament'
+import MostSuccesfullGame from './MostSuccesfullGame'
 import Select from '../../shared/Select'
 
 class Progress extends React.Component {
@@ -78,12 +78,12 @@ class Progress extends React.Component {
           </PageSection>
 
           <PageSection>
-            <SectionTitle title="Cash Games vs Tournaments"/>
-            <CashVsTournament sessions={this.state.filteredSessions} locations={this.props.locations} />
+            <SectionTitle title="Most Succesfull Game"/>
+            <MostSuccesfullGame sessions={this.state.filteredSessions} locations={this.props.locations} />
           </PageSection>
 
           <PageSection title="">
-            <SectionTitle title="Most Successfull Game"/>
+            <SectionTitle title="Cash Games vs Tournaments"/>
             <BestGameTypeChart sessions={this.state.filteredSessions} />
           </PageSection>
 
