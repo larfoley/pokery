@@ -7,19 +7,7 @@ const Wrapper = styled.div`
 
 class ProgressOverview extends React.Component {
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      earnings:	0,
-      winRate:	0,
-      mostSuccesfullLocation: "",
-      mostSuccesfullVariation: "",
-      mostSuccesfullGameType: ""
-    }
-  }
-
-  componentDidMount() {
-
+  componentWillMount() {
     const pokerSessions = this.props.sessions || []
     let earnings,
         winRate,
@@ -41,6 +29,7 @@ class ProgressOverview extends React.Component {
       mostSuccesfullGameType
     })
 
+
   }
 
   calculateWinRate(sessions) {
@@ -58,7 +47,6 @@ class ProgressOverview extends React.Component {
   }
 
   calculateEarnings(sessions) {
-    console.log(this.props);
     if (sessions.length === 0) {
       return 0
     }

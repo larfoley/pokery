@@ -19,7 +19,7 @@ const BestGameTypeChart = props => {
     return sessions
       .filter(session => session.gameType === gameType)
       .map(game => game.amountWon - game.buyIn)
-      .reduce((a,b) => a + b)
+      .reduce((a,b) => a + b, 0)
   }
   const cashGamesEarnings = calculateEarnings(sessions, "Cash Game")
   const tournamentGamesEarnings = calculateEarnings(sessions, "tournament")

@@ -29,8 +29,6 @@ class App extends Component {
     }
   }
 
-
-
   componentWillMount() {
     // Update state in the case the user refreshes a protected route
     this.isLoggedIn((err, user) => {
@@ -153,13 +151,10 @@ class App extends Component {
   }
 
   editPokerSession(id, update, callback){
-    console.log("Update from form", update);
     axios.post('/api/poker-sessions/edit', {id, update})
      .then(res => {
        this.setState(prevState => {
-         console.log("prevState", prevState)
          prevState.user.pokerSessions = res.data
-         console.log("updated state", prevState.user.pokerSessions)
          return prevState
        });
        callback(null, res.data)
@@ -200,7 +195,6 @@ class App extends Component {
 
 
   render() {
-
     return (
         <Router>
 
@@ -208,82 +202,84 @@ class App extends Component {
             this.state.user?
              this.state.user.preferences.theme : "light"
           ]}>
-          <Wrapper>
+            <Wrapper>
 
-            <Route exact path="/" render={() => (
-              !this.state.user?
-              <Landing logIn={this.logIn.bind(this)}/> :
-              <Redirect to="/home" />
-            )}/>
-
-            <Route path="/home" render={() => (
-              !this.state.user?
-              <Landing logIn={this.logIn.bind(this)}/> :
-              <Home
-                logout={this.logout.bind(this)}
-                sessions={this.state.user.pokerSessions}
-                />
-            )}/>
-
-            <Route path="/progress" render={() => (
-              !this.state.user?
-              <Landing logIn={this.logIn.bind(this)}/> :
-              <Progress
-                logout={this.logout.bind(this)}
-                sessions={this.state.user.pokerSessions}
-                locations={this.state.user.pokerLocations}
-              />
-            )}/>
-
-            <Route path="/login" render={() => (
-              !this.state.user?
-              <Login logIn={this.logIn.bind(this)}/> :
-              <Home logout={this.logout.bind(this)}/>
-            )}/>
-
-            <Route path="/register" component={Register}/>
-
-            <Route path="/add-session" render={() => (
-              !this.state.user?
-              <Landing logIn={this.logIn.bind(this)}/> :
-              <AddSession
-                user={this.state.user}
-                addSession={this.addPokerSession.bind(this)}
-                addPokerLocation={this.addPokerLocation.bind(this)}
-                deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
-                editLivePokerLocation={this.editLivePokerLocation.bind(this)}
-                logout={this.logout.bind(this)}
-              />
-            )}/>
-
-            <Route path="/find-a-game" render={() => (
-              !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <FindAGame logout={this.logout.bind(this)} />
-            )}/>
-
-            <Route path="/session-history" render={() => (
-              !this.state.user?
-              <Landing logIn={this.logIn.bind(this)}/> :
-              <SessionHistory
-                logout={this.logout.bind(this)}
-                sessions={this.state.user.pokerSessions}
-                locations={this.state.user.pokerLocations}
-                editPokerSession={this.editPokerSession.bind(this)}
-                deletePokerSession={this.deletePokerSession.bind(this)}
-              />
-              )}/>
-
-              <Route path="/settings" render={() => (
+              <Route exact path="/" render={() => (
                 !this.state.user?
-                <Landing logIn={this.logIn.bind(this)}/> :
-                <Settings
-                  logout={this.logout.bind(this)}
-                  updateUserPreferences={this.updateUserPreferences.bind(this)}
+                  <Landing logIn={this.logIn.bind(this)}/> :
+                  <Redirect to="/home" />
+              )}/>
+
+              <Route path="/home" render={() => {
+
+                return !this.state.user?
+                  <Redirect to="/" /> :
+                  <Home
+                    logout={this.logout.bind(this)}
+                    sessions={this.state.user.pokerSessions}
+                    test={this.state}
+                    />
+              }}/>
+
+              <Route path="/progress" render={() => (
+                !this.state.user?
+                  <Redirect to="/" /> :
+                  <Progress
+                    logout={this.logout.bind(this)}
+                    sessions={this.state.user.pokerSessions}
+                    locations={this.state.user.pokerLocations}
+                  />
+              )}/>
+
+              <Route path="/login" render={() => (
+                !this.state.user?
+                  <Login logIn={this.logIn.bind(this)}/> :
+                  <Redirect to="/home"/>
+              )}/>
+
+              <Route path="/register" component={Register}/>
+
+              <Route path="/add-session" render={() => (
+                !this.state.user?
+                  <Redirect to="/" /> :
+                  <AddSession
+                    user={this.state.user}
+                    addSession={this.addPokerSession.bind(this)}
+                    addPokerLocation={this.addPokerLocation.bind(this)}
+                    deleteLivePokerLocation={this.deleteLivePokerLocation.bind(this)}
+                    editLivePokerLocation={this.editLivePokerLocation.bind(this)}
+                    logout={this.logout.bind(this)}
                 />
               )}/>
-            </Wrapper>
-          </ThemeProvider>
+
+              <Route path="/find-a-game" render={() => (
+                !this.state.user?
+                  <Redirect to="/" /> :
+                  <FindAGame logout={this.logout.bind(this)} />
+              )}/>
+
+              <Route path="/session-history" render={() => (
+                !this.state.user?
+                  <Redirect to="/" /> :
+                  <SessionHistory
+                    logout={this.logout.bind(this)}
+                    sessions={this.state.user.pokerSessions}
+                    locations={this.state.user.pokerLocations}
+                    editPokerSession={this.editPokerSession.bind(this)}
+                    deletePokerSession={this.deletePokerSession.bind(this)}
+                  />
+                )}/>
+
+                <Route path="/settings" render={() => (
+                  !this.state.user?
+                    <Redirect to="/" /> :
+                    <Settings
+                      logout={this.logout.bind(this)}
+                      updateUserPreferences={this.updateUserPreferences.bind(this)}
+                    />
+                )}/>
+              </Wrapper>
+            </ThemeProvider>
 
         </Router>
     );

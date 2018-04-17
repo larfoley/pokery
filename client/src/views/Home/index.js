@@ -12,6 +12,7 @@ import RecentSessions from '../../shared/RecentSessions'
 const Home = props => {
   return (
     <div>
+      
       <Header />
       <Sidebar logout={props.logout}/>
       <PageContainer>
