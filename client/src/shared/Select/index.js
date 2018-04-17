@@ -28,10 +28,11 @@ const Select = props => (
       border={props.border}
       onChange={props.onChange}
       name={props.name}
+      value={props.value}
       >
       {
         props.options? props.options.map(option => (
-          <option key={option}>{option}</option>
+          <option value={option} key={option}>{option}</option>
         ))
         : null
       }

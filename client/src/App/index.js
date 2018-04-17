@@ -37,13 +37,13 @@ class App extends Component {
       this.setState({ user })
     })
 
-    this.getLocation((err, location) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(location);
-      }
-    })
+    // this.getLocation((err, location) => {
+    //   if (err) {
+    //     console.log(err);
+    //   } else {
+    //     console.log(location);
+    //   }
+    // })
 
   }
 
@@ -153,10 +153,13 @@ class App extends Component {
   }
 
   editPokerSession(id, update, callback){
+    console.log("Update from form", update);
     axios.post('/api/poker-sessions/edit', {id, update})
      .then(res => {
        this.setState(prevState => {
+         console.log("prevState", prevState)
          prevState.user.pokerSessions = res.data
+         console.log("updated state", prevState.user.pokerSessions)
          return prevState
        });
        callback(null, res.data)

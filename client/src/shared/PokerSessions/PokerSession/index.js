@@ -17,8 +17,7 @@ class PokerSession extends React.Component {
       amountWon: props.amountWon,
       variation: props.variation,
       location: props.location,
-      gameType: props.gameType,
-      id: props.id,
+      gameType: props.gameType
     }
 
     this.onInputChange = this.onInputChange.bind(this)
@@ -30,6 +29,7 @@ class PokerSession extends React.Component {
   onInputChange(event) {
     const session = this.state;
     session[event.target.name] = event.target.value;
+    console.log(session);
     this.setState(session);
   }
 
@@ -43,9 +43,10 @@ class PokerSession extends React.Component {
       gameType: this.state.gameType,
     }
 
-    this.props.editPokerSession(this.state.id, update, (err, res) => {
+    this.props.editPokerSession(this.props.id, update, (err, res) => {
      if(!err) {
        window.alert("Poker Session Updated!")
+       console.log("Response", res);
        this.toggleEditMode()
      } else {
        window.alert("There was an error")
@@ -57,7 +58,6 @@ class PokerSession extends React.Component {
 
 
   onDeleteSession() {
-
     this.props.deletePokerSession(this.state.id, (err) => {
       if (err) {
         window.alert("There was an error deleting session")
@@ -161,7 +161,7 @@ class PokerSession extends React.Component {
                         <Select
                           type="number"
                           name="variation"
-                          value={this.state.amountWon}
+                          value={this.state.variation}
                           onChange={this.onInputChange}
                           required="true"
                           options={["Texas Hold'em", "Omaha"]}
