@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import css from '../../styles/variables.js'
 
 const Wrapper = styled.div`
   overflow: auto;
@@ -13,7 +12,7 @@ const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: ${css.primary_color};
+    border-color: ${props => props.theme.primary_color};
   }
 `
 

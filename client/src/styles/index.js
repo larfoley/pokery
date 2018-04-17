@@ -1,5 +1,4 @@
 import { css } from 'styled-components'
-import vars from './variables'
 
 export default css`
   html {
@@ -16,7 +15,6 @@ export default css`
     font-size: 18px;
     line-height: 1.2;
     font-family:  'Nunito', sans-serif;
-    background-color: #f5f5f5;
   }
 
   img {
@@ -40,6 +38,10 @@ export default css`
   button
   option,
   select {
-    color: ${vars.text_color}
+    color: #2e2e2e;
+  }
+
+  body, html, #root, .root {
+    height: 100%;
   }
 `

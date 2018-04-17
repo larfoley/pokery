@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pokery",
+  "name": "Pokery",
   "icons": [
     {
       "src": "icons/windows10/Square71x71Logo.scale-400.png",
@@ -417,6 +417,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "background_color": "#4c505d"
 }

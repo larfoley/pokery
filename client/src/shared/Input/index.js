@@ -16,11 +16,15 @@ const StyledInput = styled.input`
   ${'' /* box-shadow: inset 0 1px 0 0 rgba(200,200,200,0.4), 0 1px 1px 0 rgba(0,0,0,0.3); */}
   margin-bottom: 1em;
   display: block;
+  border: 1px solid ${props => props.theme.input_border_color};
   width: 100%;
-  color: #D1D3E0;
+  color: gray;
   padding: .6em;
   border-radius: 5px;
   border: 1px solid #eee;
+  border: none;
+  background-color: ${props => props.theme.bg_color};
+  color: ${props => props.theme.input_color};
 `
 
 const Input = props => (
@@ -31,6 +35,8 @@ const Input = props => (
       placeholder={props.placeholder}
       onChange={props.onChange}
       name={props.name}
+      required={props.required}
+      value={props.value}
     />
   </div>
 )

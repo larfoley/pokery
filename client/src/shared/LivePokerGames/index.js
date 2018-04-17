@@ -5,6 +5,7 @@ import axios from "axios"
 import Button from "../Button"
 import Loading from "../Loading"
 import Align from "../Align"
+import Title from "./Title"
 
 class LivePokerGames extends Component {
 
@@ -12,10 +13,13 @@ class LivePokerGames extends Component {
     super(props);
     this.state = {
       livePokerGames: [],
+      filteredLivePokerGames: [],
+      filter: false,
       loading: true,
       disableLoadMoreButton: props.disableLoadMoreButton,
       limit: props.limit? props.limit : 15,
       resultsCount: props.limit? props.limit : 15,
+      casino: "",
       day : ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][new Date().getDay()],
     }
   }
@@ -28,7 +32,7 @@ class LivePokerGames extends Component {
         this.setState({ livePokerGames , loading: false})
       })
       .catch(error => console.log(error));
-      
+
   }
 
   handleDayChange(event) {
@@ -41,6 +45,23 @@ class LivePokerGames extends Component {
       .catch(error => console.log(error));
   }
 
+  handleFilterCasino(event) {
+    const casino = event.target.value
+
+    if (casino && casino !== "Any") {
+      this.setState(prevState => {
+        prevState.filter = true
+        prevState.filteredLivePokerGames = prevState.livePokerGames
+        .filter(game => game.address.includes(casino))
+        return prevState
+      })
+    }
+
+    if (casino === "Any") {
+      this.setState({filter: false})
+    }
+  }
+
   loadMorePokerGames() {
     // this.setState({loading: true});
     this.setState({
@@ -50,15 +71,24 @@ class LivePokerGames extends Component {
   }
 
   render() {
-    let games = this.state.livePokerGames;
-    console.log(games);
-    const livePokerGames = this.state.livePokerGames
-      .filter((game, i) => i < this.state.limit? true : false);
+    const livePokerGames = this.state.filter?
+
+      this.state.filteredLivePokerGames
+      .filter((game, i) => i < this.state.limit? true : false)
+        :
+      this.state.livePokerGames
+      .filter((game, i) => i < this.state.limit? true : false)
+
 
     return (
       <div>
-      
-          <Select selected={this.state.day} onChange={this.handleDayChange.bind(this)} name="day" options={[
+
+          <Select
+            selected={this.state.day}
+            onChange={this.handleDayChange.bind(this)}
+            name="day"
+            label="Select Day"
+            options={[
             "Monday",
             "Tuesday",
             "Wednesday",
@@ -67,10 +97,21 @@ class LivePokerGames extends Component {
             "Saturday",
             "Sunday"
           ]}/>
-        
+
+          <Select
+            onChange={this.handleFilterCasino.bind(this)}
+            name="casino"
+            label="Select Casino"
+            options={[
+            "Any",
+            "The Fitzwilliam Casino & Card Club",
+            "The Sporting Emporium",
+            "The Village Green Card Club"
+          ]}/>
+
         {!this.state.loading?
           <div>
-            <h5>Games Found: {this.state.livePokerGames.length}</h5>
+            <Title>Games Found: {livePokerGames.length}</Title>
             {livePokerGames.map((item, i) => (
               <LivePokerGame key = {i}
                 type={item.type }

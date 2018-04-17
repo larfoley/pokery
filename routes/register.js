@@ -17,8 +17,7 @@ router.post('/', (req, res, next) => {
   // Check if user already exists
   User.findOne({username}).exec((err, user) => {
     if (user) {
-      console.log("user exists", user);
-      res.status(400).json({message: "user already exists"})
+      res.status(400).send({message: "user already exists"})
       return;
     }
 

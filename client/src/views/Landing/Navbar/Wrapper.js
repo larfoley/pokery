@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Wrapper = styled.div`
-  background-color: black;
+  background-color: #3D404A;
   text-align: right;
   padding: 1em;
 

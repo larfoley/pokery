@@ -63,7 +63,7 @@ class ChangePassword extends React.Component {
       		onChange={this.handleChange}
           autoComplete="off"
       	/>
-  			<Button type="submit">Update</Button>
+  			<Button type="submit">Update Password</Button>
   		</form>
     )
    }

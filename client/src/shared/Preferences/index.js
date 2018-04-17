@@ -8,8 +8,8 @@ class Preferences extends React.Component {
     this.state = {
       theme: "light",
       currency: "euro",
-      variation: "Texas Hold'em",
-      gameType: "Tournament"
+      preferedPokerVariation: "Texas Hold'em",
+      preferedPokerGameType: "Tournament",
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -18,9 +18,14 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
-
-    console.log(this.state);
-    window.alert("Form Submitted")
+    this.props.updateUserPreferences(this.state, (err, res) => {
+      if (!err) {
+        window.alert("Preferences Updated")
+      } else {
+        window.alert("Error updating preferences")
+        console.log(err)
+      }
+    })
   }
 
   handleChange(event) {
@@ -60,18 +65,18 @@ class Preferences extends React.Component {
         <Select
           name="variation"
           value={this.state.variation}
-          label="Variation"
+          label="Prefered Poker Variation"
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
           name="gameType"
           value={this.state.gameType}
-          label="Game Type"
+          label="Prefered Game Type"
           options={["Tournament", "Cash Game", "Frezeout"]}
           onChange={this.handleChange}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Update Preferences</Button>
       </form>
     )
   }

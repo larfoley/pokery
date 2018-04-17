@@ -37,4 +37,54 @@ router.post('/add', requiresAuth, (req, res, next) => {
 	})
 });
 
+// Edit poker pokerSession
+router.post('/edit', requiresAuth, (req, res, next) => {
+	let update = req.body.update
+	let id = req.body.id
+
+	console.log("Session Update From Client", update)
+
+	User.findById(req.user._id, (err, user) => {
+		if (err) return next(err)
+
+		console.log("ID from client", id, typeof id);
+		console.log("ID from database", user.pokerSessions[0]._id, typeof user.pokerSessions[0]._id);
+		console.log("IDs match", user.pokerSessions[0]._id == id);
+		// Update poker session
+		user.pokerSessions = user.pokerSessions
+			.map(session => session._id == id? update : session)
+
+		console.log(user.pokerSessions
+			.map(session => session._id == id? update : session))
+
+		user.save((err, saved) => {
+			if (err) return next(err)
+			res.json(saved.pokerSessions)
+		})
+
+
+	})
+})
+
+// Delete Session
+router.post('/delete', requiresAuth, (req, res, next) => {
+
+	const id = req.body.id
+
+	User.findById(req.user._id, (err, user) => {
+		if (err) return next(err)
+
+		// Delete poker session
+		user.pokerSessions = user.pokerSessions
+			.filter(session => session._id != id)
+
+		user.save((err, saved) => {
+			if (err) return next(err)
+			res.json(saved.pokerSessions)
+		})
+
+
+	})
+})
+
 module.exports = router;

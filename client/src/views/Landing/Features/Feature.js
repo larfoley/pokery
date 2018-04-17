@@ -11,8 +11,10 @@ const Title = styled.h2`
 `
 
 const Description = styled.p`
-  color: gray;
+  color: #888;
   margin: 0;
+  line-height: 1.3;
+  font-family: Nunito
 `
 
 const Feature = props => (

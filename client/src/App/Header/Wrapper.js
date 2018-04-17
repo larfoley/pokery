@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
   ${'' /* background: -webkit-linear-gradient(to bottom, #414345, #232526);
   background: linear-gradient(to bottom, #414345, #232526); */}
 ${'' /* box-shadow: 0 5px 5px -5px #333; */}
-  background-color: #3D404A;
+  background-color: ${props => props.theme.header_bg_color};
   color: white;
   padding: 1em 2em;
   overflow: auto;

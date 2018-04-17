@@ -51,11 +51,13 @@ router.post('/edit', requiresAuth, (req, res, next) => {
 router.post('/delete', requiresAuth, (req, res, next) => {
 	User.findById(req.user._id, (err, user) => {
 		if (err) return next(err);
+		console.log(req.body.name);
+		user.pokerSessions = user.pokerSessions.filter(session => session.location != req.body.name)
+		console.log(user.pokerSessions);
 		user.pokerLocations.id(req.body.id).remove();
-		user.pokerSessions = user.pokerSessions.filter(session => session.name != req.body.name)
 		user.save((err, doc) => {
 		  if (err) return next(err);
-		  res.json(doc.pokerLocations)
+		  res.json({pokerLocations: doc.pokerLocations, pokerSessions: doc.pokerSessions})
 		});
 	})
 });
