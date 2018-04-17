@@ -8,9 +8,10 @@ import {
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
 import colors from '../colors'
+import RandomColor from '../RandomColor'
 
 const BestLocationsChart = props => {
-
+  const randomColor = new RandomColor()
   const mostSuccesfullLocations = []
   const locations = []
   const sessionsFilteredByLocation = {}
@@ -67,8 +68,13 @@ const BestLocationsChart = props => {
               legend
             >
               {
-                mostSuccesfullLocations
-                  .map((location, i) => <Cell fill={colors[i]} key={i} />)
+                mostSuccesfullLocations.map((obj, i) => (
+                  <Cell
+                    key={i}
+                    fill={mostSuccesfullLocations.length > colors.length?
+                      randomColor.generateUnique() : colors[i]
+                    }/>
+                ))
               }
             </Pie>
             <Legend />

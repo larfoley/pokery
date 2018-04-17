@@ -8,8 +8,10 @@ import {
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
 import colors from '../colors'
+import RandomColor from '../RandomColor'
 
 const MostPlayedLocationChart = props => {
+  const randomColor = new RandomColor()
   const locations = []
 
   props.sessions.forEach(session => {
@@ -57,7 +59,15 @@ const MostPlayedLocationChart = props => {
             labelLine={false}
             outerRadius={80}
           >
-            {data.map((obj, i) => <Cell fill={colors[i]} key={i} />)}
+            {
+              data.map((obj, i) => (
+                <Cell
+                  key={i}
+                  fill={data.length > colors.length?
+                    randomColor.generateUnique() : colors[i]
+                  }/>
+              ))
+            }
           </Pie>
           <Legend />
         </PieChart>

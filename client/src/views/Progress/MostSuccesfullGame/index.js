@@ -1,9 +1,5 @@
 import React from "react"
 import {
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
   Legend,
   PieChart,
   Pie,
@@ -12,11 +8,12 @@ import {
 } from 'recharts'
 import ChartContainer from '../../../shared/ChartContainer'
 
-// import RandomColor from '../RandomColor.js'
+import RandomColor from '../RandomColor.js'
 import colors from '../colors'
 
 
 const MostSuccesfullGame = props => {
+  const randomColor = new RandomColor()
 
   const filterByGameType = (type) => (
       session => session.gameType === type
@@ -72,7 +69,11 @@ const MostSuccesfullGame = props => {
               >
               {
                 data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={colors[index]}/>
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={data.length > colors.length?
+                      randomColor.generateUnique() : colors[index]
+                    }/>
                 ))
               }
             </Pie>
