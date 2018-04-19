@@ -19,6 +19,7 @@ import Register from '../views/Register'
 import Progress from '../views/Progress'
 import SessionHistory from '../views/SessionHistory'
 import Settings from '../views/Settings'
+import { NotificationContainer } from 'react-notifications'
 
 class App extends Component {
 
@@ -35,34 +36,8 @@ class App extends Component {
       this.setState({ user })
     })
 
-    // this.getLocation((err, location) => {
-    //   if (err) {
-    //     console.log(err);
-    //   } else {
-    //     console.log(location);
-    //   }
-    // })
-
   }
 
-  getLocation(callback) {
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        axios.post("/api/get-location", {
-          longitude: position.coords.latitude,
-          latitude: position.coords.longitude
-        })
-        .then(res => {
-          callback(null, res.data)
-        })
-        .catch(err => {
-          callback(err)
-        })
-      })
-    }
-
-  }
 
   isLoggedIn(callback) {
     axios.get("/api/is-logged-in")
@@ -95,6 +70,7 @@ class App extends Component {
   }
 
   addPokerSession(session, callback) {
+
     axios.post('/api/poker-sessions/add', {pokerSession: session})
       .then(res => {
         this.setState(prevState => {
@@ -196,6 +172,8 @@ class App extends Component {
 
   render() {
     return (
+
+
         <Router>
 
           <ThemeProvider theme={themes[
@@ -278,10 +256,12 @@ class App extends Component {
                       updateUserPreferences={this.updateUserPreferences.bind(this)}
                     />
                 )}/>
+                <NotificationContainer/>
               </Wrapper>
             </ThemeProvider>
 
         </Router>
+
     );
   }
 

@@ -1,25 +1,13 @@
-var router = require("express").Router();
-const rg = require('simple-reverse-geocoder')
-const apiKey = 'AIzaSyCdyR0_TSNpFh_92s14HeH2beh37a_lM3o'
+var router = require("express").Router()
+var satelize = require('satelize')
 
-router.post('/', (req, res) => {
-  longitude = req.body.longitude
-  latitude = req.body.latitude
-  console.log([ longitude, latitude ]);
-  const loc = {
-    type: 'Point',
-    coordinates: [ longitude, latitude ]
-  }
+router.get('/', (req, res, next) => {
+  var ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
 
-  rg.getAddress(loc, apiKey)
-    .then(response => {
-      console.log("res", response);
-      res.json(response)
-    })
-    .catch(err => {
-      console.log(":(", err);
-      res.json(err)
-    })
+  satelize.satelize({ip:'2a02:8084:80:6e00:3dcd:ffd6:93f1:d68'}, function(err, payload) {
+    if (err) return next(err);
+    res.json(payload)
+  })
 
 })
 

@@ -12,6 +12,7 @@ class LivePokerGames extends Component {
   constructor(props){
     super(props);
     this.state = {
+      regionSupported: false,
       livePokerGames: [],
       filteredLivePokerGames: [],
       filter: false,
@@ -26,12 +27,20 @@ class LivePokerGames extends Component {
 
   componentWillMount() {
     this.setState({loading: true})
-    axios.get(`/api/live-poker-timetables?day=${this.state.day}`)
-      .then(response => {
-        let livePokerGames = response.data;
+
+    axios.get('/api/get-location')
+      .then(res => {
+        // check if users locations is suported
+        const country = res.data.country.en
+        if (true) {
+          return axios.get(`/api/live-poker-timetables?day=${this.state.day}`)
+        }
+      })
+      .then((res) => {
+        let livePokerGames = res.data
         this.setState({ livePokerGames , loading: false})
       })
-      .catch(error => console.log(error));
+      .catch(console.error)
 
   }
 

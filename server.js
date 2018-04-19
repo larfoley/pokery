@@ -59,6 +59,7 @@ app.use(session({ secret: "foobar" }));
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 app.use('/api/change-password', changePassword)
 app.use('/api/change-email', changeEmail)
 app.use('/api/register', register)

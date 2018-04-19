@@ -5,6 +5,7 @@ import 'normalize.css'
 import styles from './styles/index.js'
 import App from './App/index.js'
 import registerServiceWorker from './registerServiceWorker'
+import 'react-notifications/lib/notifications.css';
 
 injectGlobal`
   ${styles}
