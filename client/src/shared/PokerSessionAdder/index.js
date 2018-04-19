@@ -3,6 +3,7 @@ import Input from "../Input"
 import Button from "../Button"
 import Select from "../Select"
 import Text from "../Text"
+import { NotificationManager } from 'react-notifications';
 
 class AddSessionForm extends React.Component {
 
@@ -28,11 +29,10 @@ class AddSessionForm extends React.Component {
     e.preventDefault()
     this.props.addSession(this.state.session, (err, result) => {
       if (!err) {
-        window.alert("Session added")
-        console.log(result);
+        NotificationManager.success("You have added a sesssion", "Session added")
       } else {
         console.log(err);
-        window.alert('Unable to add session ')
+        NotificationManager.warning('Unable to add session ')
       }
     })
   }
