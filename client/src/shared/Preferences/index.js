@@ -20,7 +20,9 @@ class Preferences extends React.Component {
     axios.get('/api/update-preferences')
      .then(response => {
        console.log(response)
-     })
+       const {theme, currency, preferedPokerVariation,preferedPokerGameType} = response.data
+      this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
+     }).catch(err => {throw new Error(err)})
   }
 
   handleSubmit(event) {
