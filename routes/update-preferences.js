@@ -17,4 +17,12 @@ router.post('/', requiresAuth, (req, res, next) => {
   
 });
 
+router.get('/', (req, res, next) => {
+  User.findById("5aca56f485e30138da7286c7", (err, user) => {
+    
+      
+      res.json(user.preferences)
+  })
+})
+
 module.exports = router;

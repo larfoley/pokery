@@ -1,6 +1,7 @@
 import React from 'react'
 import Select from '../Select'
 import Button from '../Button'
+import axios from 'axios'
 
 class Preferences extends React.Component {
   constructor() {
@@ -13,6 +14,13 @@ class Preferences extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentWillMount() {
+    axios.get('/api/update-preferences')
+     .then(response => {
+       console.log(response)
+     })
   }
 
   handleSubmit(event) {
