@@ -73,7 +73,7 @@ class Preferences extends React.Component {
           name="gameType"
           value={this.state.gameType}
           label="Prefered Game Type"
-          options={["Tournament", "Cash Game", "Frezeout"]}
+          options={["Tournament", "Cash Game", "Freezeout"]}
           onChange={this.handleChange}
         />
         <Button type="submit">Update Preferences</Button>

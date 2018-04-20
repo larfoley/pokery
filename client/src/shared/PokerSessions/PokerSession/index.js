@@ -151,7 +151,7 @@ class PokerSession extends React.Component {
                           value={this.state.gameType}
                           onChange={this.onInputChange}
                           required="true"
-                          options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
+                          options={["Tournament (Re-Buy)", "Freezeout", "Cash Game"]}
                         />
                       </td>
                     </tr>

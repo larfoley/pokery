@@ -87,7 +87,7 @@ class AddSessionForm extends React.Component {
         />
         <Select
           label="Game Type"
-          options={["Tournament (Re-Buy)", "Frezeout", "Cash Game"]}
+          options={["Tournament (Re-Buy)", "Freezeout", "Cash Game"]}
           onChange={this.handleChange.bind(this)}
           name="gameType"
           value={this.state.session.gameType}

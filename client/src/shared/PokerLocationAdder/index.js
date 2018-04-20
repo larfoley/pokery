@@ -4,6 +4,7 @@ import React from 'react'
 import FontAwesome from "react-fontawesome"
 import Input from "./Input"
 import Submit from "./Submit"
+import { NotificationManager } from 'react-notifications';
 
 
 class PokerLocationAdder extends React.Component {
@@ -14,25 +15,42 @@ class PokerLocationAdder extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.state = {
       location: "",
+      error: null
     }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    e.target.reset()
-    this.props.addPokerLocation(this.state.location, (err, res) => {
-      if(!err) {
-        window.alert("Location added")
-      } else {
-        window.alert("Error adding location")
-        console.log("Error", err);
-      }
-    })
   }
 
   handleChange(event) {
     this.setState({location: event.target.value});
   }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    e.target.reset()
+    if (this.validateUserInput(this.state.location.trim())) {
+      return
+    }
+    this.props.addPokerLocation(this.state.location, (err) => {
+      if(!err) {
+        NotificationManager.success('Location Added')
+      } else {
+        NotificationManager.warning(err, "Error adding location")
+        console.log("Error", err);
+      }
+    })
+  }
+
+  validateUserInput(input) {
+    const maxChars = 100
+    if (input.length > maxChars) {
+      NotificationManager.warning(`A Location can not have more than ${maxChars} characters`)
+      return false
+    }
+    return true
+  } 
+
+
+
+
 
   render() {
     return (
