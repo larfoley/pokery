@@ -18,13 +18,12 @@ class Preferences extends React.Component {
   }
 
   componentWillMount() {
-    
     axios.get('/api/update-preferences').then(res => {
       if (res) { 
         const {theme, currency, preferedPokerVariation,preferedPokerGameType} = res.data
         this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
       }
-     }).catch(err => {throw new Error(err)})
+     }).catch(console.error)
   }
 
   handleSubmit(event) {
