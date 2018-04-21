@@ -51,7 +51,7 @@ class PokerSession extends React.Component {
        console.log("Response", res);
        this.toggleEditMode()
      } else {
-       window.alert("There was an error")
+      NotificationManager.error('There was an error')
        console.error(err)
      }
     })
