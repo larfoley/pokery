@@ -73,7 +73,7 @@ class PokerLocation extends React.Component {
         validationErrors.push("Poker Location must be less that 40 characters.")
       }
       if (validationErrors.length > 0) {
-        return validationErrors.forEach(error => NotificationManager.error(error))
+        return validationErrors.forEach(error => NotificationManager.warning(error))
       }
 
       this.props.editLivePokerLocation(this.props.id, newName, (err, location) => {
