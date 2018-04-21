@@ -18,7 +18,7 @@ router.post('/', requiresAuth, (req, res, next) => {
   
 });
 
-router.get('/', (req, res, next) => {
+router.get('/', requiresAuth, (req, res, next) => {
   console.log(req.user)
   User.findById(req.user, (err, user) => {
       res.json(user.preferences)
