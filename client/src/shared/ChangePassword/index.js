@@ -48,7 +48,7 @@ class ChangePassword extends React.Component {
     const password = this.state.password
 
     if (password.trim().length < 5) {
-      window.alert("Your password must have at least 5 characters")
+      NotificationManager.warning("Your password must have at least 5 characters")
       return false
     }
 
