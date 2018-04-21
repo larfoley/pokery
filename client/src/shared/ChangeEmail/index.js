@@ -16,7 +16,7 @@ class ChangeEmail extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-    window.alert("Email Updated")
+		NotificationManager.success('Email Updated')		
 	}
 
 	handleChange(event) {
