@@ -16,7 +16,11 @@ class ChangeEmail extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-		NotificationManager.success('Email Updated')		
+		if (this.state.email < 1) {
+			NotificationManager.warning('Please enter an email')						
+		} else {
+			NotificationManager.success('Email Updated')		
+		}
 	}
 
 	handleChange(event) {
