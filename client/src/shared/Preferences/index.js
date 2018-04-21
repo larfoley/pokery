@@ -2,6 +2,7 @@ import React from 'react'
 import Select from '../Select'
 import Button from '../Button'
 import axios from 'axios'
+import { NotificationManager } from 'react-notifications';
 
 class Preferences extends React.Component {
   constructor() {
@@ -17,11 +18,9 @@ class Preferences extends React.Component {
   }
 
   componentWillMount() {
-    axios.get('/api/update-preferences')
-     .then(response => {
-       console.log(response)
-       const {theme, currency, preferedPokerVariation,preferedPokerGameType} = response.data
-      this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
+    axios.get('/api/update-preferences').then(res => {
+        const {theme, currency, preferedPokerVariation,preferedPokerGameType} = res.data
+        this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
      }).catch(err => {throw new Error(err)})
   }
 
