@@ -64,13 +64,14 @@ class PokerLocation extends React.Component {
   onSaveEdit() {
     var newName = this.state.value;
     var validationErrors = [];
+    const maxChars = 100
 
     if (newName !== this.state.name) {
 
       if (newName.trim() === "") {
       }
-      if (newName.trim().length >  40) {
-        validationErrors.push("Poker Location must be less that 40 characters.")
+      if (newName.trim().length >  maxChars) {
+        validationErrors.push(`Poker Location must be less that ${maxChars} characters.`)
       }
       if (validationErrors.length > 0) {
         return validationErrors.forEach(error => NotificationManager.warning(error))
