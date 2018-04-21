@@ -19,7 +19,7 @@ import Register from '../views/Register'
 import Progress from '../views/Progress'
 import SessionHistory from '../views/SessionHistory'
 import Settings from '../views/Settings'
-import { NotificationContainer,NotificationManager } from 'react-notifications'
+import { NotificationContainer } from 'react-notifications'
 
 class App extends Component {
 
