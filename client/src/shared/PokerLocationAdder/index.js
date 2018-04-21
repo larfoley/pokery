@@ -46,7 +46,7 @@ class PokerLocationAdder extends React.Component {
       return false
     } else if (input.length < 1) {
       NotificationManager.warning(`Please enter a location`)
-      return false       
+      return false
     } else {
       return true
     }
