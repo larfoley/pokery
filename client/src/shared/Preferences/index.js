@@ -18,15 +18,19 @@ class Preferences extends React.Component {
   }
 
   componentWillMount() {
+    
     axios.get('/api/update-preferences').then(res => {
+      if (res) { 
         const {theme, currency, preferedPokerVariation,preferedPokerGameType} = res.data
         this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
+      }
      }).catch(err => {throw new Error(err)})
   }
 
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
+    console.log(this.state)
     this.props.updateUserPreferences(this.state, (err, res) => {
       if (!err) {
         NotificationManager.success('Preferences Updated')
@@ -72,15 +76,15 @@ class Preferences extends React.Component {
           onChange={this.handleChange}
         />
         <Select
-          name="variation"
-          value={this.state.variation}
+          name="preferedPokerVariation"
+          value={this.state.preferedPokerVariation}
           label="Prefered Poker Variation"
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
-          name="gameType"
-          value={this.state.gameType}
+          name="preferedPokerGameType"
+          value={this.state.preferedPokerGameType}
           label="Prefered Game Type"
           options={["Tournament", "Cash Game", "Freezeout"]}
           onChange={this.handleChange}

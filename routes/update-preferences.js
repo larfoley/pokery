@@ -5,20 +5,22 @@ const requiresAuth = require('../middleware/requiresAuth.js')
 
 router.post('/', requiresAuth, (req, res, next) => {
   const preferences = req.body
-
+  
   User.findById(req.user._id, (err, user) => {
       if (err) return next(err);
       user.preferences = preferences
-      user.save((err, doc) => {
+      console.log(preferences)
+      user.save((err, preferences) => {
         if (err) return next(err)
-        res.json(doc)
+        res.json(preferences)
       })
   })
   
 });
 
 router.get('/', (req, res, next) => {
-  User.findById(req.user._id, (err, user) => {
+  console.log(req.user)
+  User.findById("5adb4d2992b75a06fb5d85de", (err, user) => {
       res.json(user.preferences)
   })
 })
