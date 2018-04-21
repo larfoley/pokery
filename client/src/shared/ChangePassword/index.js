@@ -2,6 +2,7 @@ import React from "react"
 import Button from '../Button'
 import Input from '../Input'
 import axios from 'axios'
+import { NotificationManager } from 'react-notifications';
 
 class ChangePassword extends React.Component {
   constructor() {
@@ -22,9 +23,13 @@ class ChangePassword extends React.Component {
       axios.post('/api/change-password', {password: password})
         .then(res => {
           window.alert("Password updated")
+          NotificationManager.success('Password updated')
+
         })
         .catch(err => {
           window.alert("Unable to update password. Try again later.")
+          NotificationManager.error(err, "Unable to update password. Try again later.")
+
           console.log(err);
         })
     }
