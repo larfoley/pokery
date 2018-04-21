@@ -26,7 +26,7 @@ class PokerLocationAdder extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     e.target.reset()
-    if (this.validateUserInput(this.state.location.trim())) {
+    if (!this.validateUserInput(this.state.location.trim())) {
       return
     }
     this.props.addPokerLocation(this.state.location, (err) => {
