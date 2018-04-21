@@ -29,7 +29,7 @@ class ChangePassword extends React.Component {
         .catch(err => {
           window.alert("Unable to update password. Try again later.")
           NotificationManager.error(err, "Unable to update password. Try again later.")
-
+ 
           console.log(err);
         })
     }
