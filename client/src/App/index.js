@@ -95,7 +95,6 @@ class App extends Component {
   }
 
   deleteLivePokerLocation(id, name, callback) {
-      NotificationManager.success('Location has successfully been deleted')
       axios.post('/api/poker-locations/delete', { id, name })
         .then(res => {
           this.setState(prevState => {
