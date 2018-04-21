@@ -6,6 +6,8 @@ import Header from '../../LivePokerGames/LivePokerGame/Header'
 import Button from '../../Button'
 import Input from '../../Input'
 import Select from '../../Select'
+import { NotificationManager } from 'react-notifications'
+
 
 class PokerSession extends React.Component {
   constructor(props){
@@ -45,11 +47,11 @@ class PokerSession extends React.Component {
 
     this.props.editPokerSession(this.props.id, update, (err, res) => {
      if(!err) {
-       window.alert("Poker Session Updated!")
+       NotificationManager.success('Poker Session Updated!')
        console.log("Response", res);
        this.toggleEditMode()
      } else {
-       window.alert("There was an error")
+      NotificationManager.error('There was an error')
        console.error(err)
      }
     })
@@ -60,10 +62,10 @@ class PokerSession extends React.Component {
   onDeleteSession() {
     this.props.deletePokerSession(this.state.id, (err) => {
       if (err) {
-        window.alert("There was an error deleting session")
+       NotificationManager.error('There was an error deleting session')        
         console.error(err);
       } else {
-        window.alert("Session deleted")
+       NotificationManager.success("Session deleted")
       }
     })
   }

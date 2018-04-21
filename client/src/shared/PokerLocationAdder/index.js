@@ -26,14 +26,14 @@ class PokerLocationAdder extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     e.target.reset()
-    if (this.validateUserInput(this.state.location.trim())) {
+    if (!this.validateUserInput(this.state.location.trim())) {
       return
     }
     this.props.addPokerLocation(this.state.location, (err) => {
       if(!err) {
         NotificationManager.success('Location Added')
       } else {
-        NotificationManager.warning(err, "Error adding location")
+        NotificationManager.error(err, "Error adding location")
         console.log("Error", err);
       }
     })
@@ -44,8 +44,12 @@ class PokerLocationAdder extends React.Component {
     if (input.length > maxChars) {
       NotificationManager.warning(`A Location can not have more than ${maxChars} characters`)
       return false
+    } else if (input.length < 1) {
+      NotificationManager.warning(`Please enter a location`)
+      return false
+    } else {
+      return true
     }
-    return true
   } 
 
 

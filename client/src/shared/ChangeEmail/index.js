@@ -1,6 +1,7 @@
 import React from "react"
 import Button from '../Button'
 import Input from '../Input'
+import { NotificationManager } from 'react-notifications';
 
 class ChangeEmail extends React.Component {
 
@@ -15,7 +16,11 @@ class ChangeEmail extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-    window.alert("Email Updated")
+		if (this.state.email < 1) {
+			NotificationManager.warning('Please enter an email')						
+		} else {
+			NotificationManager.success('Email Updated')		
+		}
 	}
 
 	handleChange(event) {

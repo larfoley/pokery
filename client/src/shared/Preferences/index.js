@@ -1,6 +1,8 @@
 import React from 'react'
 import Select from '../Select'
 import Button from '../Button'
+import axios from 'axios'
+import { NotificationManager } from 'react-notifications';
 
 class Preferences extends React.Component {
   constructor() {
@@ -15,14 +17,23 @@ class Preferences extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
+  componentWillMount() {
+    axios.get('/api/update-preferences').then(res => {
+      if (res) { 
+        const {theme, currency, preferedPokerVariation,preferedPokerGameType} = res.data
+        this.setState({theme, currency, preferedPokerVariation,preferedPokerGameType})          
+      }
+     }).catch(console.error)
+  }
+
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
     this.props.updateUserPreferences(this.state, (err, res) => {
       if (!err) {
-        window.alert("Preferences Updated")
+        NotificationManager.success('Preferences Updated')
       } else {
-        window.alert("Error updating preferences")
+        NotificationManager.error('Error updating preferences')
         console.log(err)
       }
     })
@@ -63,15 +74,15 @@ class Preferences extends React.Component {
           onChange={this.handleChange}
         />
         <Select
-          name="variation"
-          value={this.state.variation}
+          name="preferedPokerVariation"
+          value={this.state.preferedPokerVariation}
           label="Prefered Poker Variation"
           options={["Texas Hold'Em", "Omaha"]}
           onChange={this.handleChange}
         />
         <Select
-          name="gameType"
-          value={this.state.gameType}
+          name="preferedPokerGameType"
+          value={this.state.preferedPokerGameType}
           label="Prefered Game Type"
           options={["Tournament", "Cash Game", "Freezeout"]}
           onChange={this.handleChange}

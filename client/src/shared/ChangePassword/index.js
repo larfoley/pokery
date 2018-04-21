@@ -2,6 +2,7 @@ import React from "react"
 import Button from '../Button'
 import Input from '../Input'
 import axios from 'axios'
+import { NotificationManager } from 'react-notifications';
 
 class ChangePassword extends React.Component {
   constructor() {
@@ -21,10 +22,12 @@ class ChangePassword extends React.Component {
   	if (this.validateUserInput()) {
       axios.post('/api/change-password', {password: password})
         .then(res => {
-          window.alert("Password updated")
+          NotificationManager.success('Password updated')
+
         })
         .catch(err => {
-          window.alert("Unable to update password. Try again later.")
+          NotificationManager.error(err, "Unable to update password. Try again later.")
+ 
           console.log(err);
         })
     }
@@ -45,7 +48,7 @@ class ChangePassword extends React.Component {
     const password = this.state.password
 
     if (password.trim().length < 5) {
-      window.alert("Your password must have at least 5 characters")
+      NotificationManager.warning("Your password must have at least 5 characters")
       return false
     }
 
