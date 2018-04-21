@@ -134,7 +134,6 @@ class App extends Component {
   }
 
   deletePokerSession(id, callback) {
-      NotificationManager.success('Session has successfully been deleted')
       axios.post('/api/poker-sessions/delete', { id })
         .then(res => {
           this.setState(prevState => {
