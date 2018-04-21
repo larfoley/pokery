@@ -6,6 +6,8 @@ import Header from '../../LivePokerGames/LivePokerGame/Header'
 import Button from '../../Button'
 import Input from '../../Input'
 import Select from '../../Select'
+import { NotificationManager } from 'react-notifications'
+
 
 class PokerSession extends React.Component {
   constructor(props){
@@ -45,7 +47,7 @@ class PokerSession extends React.Component {
 
     this.props.editPokerSession(this.props.id, update, (err, res) => {
      if(!err) {
-       window.alert("Poker Session Updated!")
+       NotificationManager.success('Poker Session Updated!')
        console.log("Response", res);
        this.toggleEditMode()
      } else {
