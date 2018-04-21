@@ -22,12 +22,10 @@ class ChangePassword extends React.Component {
   	if (this.validateUserInput()) {
       axios.post('/api/change-password', {password: password})
         .then(res => {
-          window.alert("Password updated")
           NotificationManager.success('Password updated')
 
         })
         .catch(err => {
-          window.alert("Unable to update password. Try again later.")
           NotificationManager.error(err, "Unable to update password. Try again later.")
  
           console.log(err);
