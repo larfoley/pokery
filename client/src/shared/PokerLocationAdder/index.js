@@ -45,9 +45,11 @@ class PokerLocationAdder extends React.Component {
       NotificationManager.warning(`A Location can not have more than ${maxChars} characters`)
       return false
     } else if (input.length < 1) {
-      NotificationManager.warning(`Please enter a location`)      
+      NotificationManager.warning(`Please enter a location`)
+      return false       
+    } else {
+      return true
     }
-    return true
   } 
 
 
