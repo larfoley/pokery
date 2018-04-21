@@ -30,7 +30,6 @@ class Preferences extends React.Component {
   handleSubmit(event) {
     // Prevent the browser from submitting the form
     event.preventDefault()
-    console.log(this.state)
     this.props.updateUserPreferences(this.state, (err, res) => {
       if (!err) {
         NotificationManager.success('Preferences Updated')
