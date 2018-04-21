@@ -20,7 +20,7 @@ router.post('/', requiresAuth, (req, res, next) => {
 
 router.get('/', (req, res, next) => {
   console.log(req.user)
-  User.findById("5adb4d2992b75a06fb5d85de", (err, user) => {
+  User.findById(req.user, (err, user) => {
       res.json(user.preferences)
   })
 })
