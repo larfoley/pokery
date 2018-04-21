@@ -19,7 +19,7 @@ import Register from '../views/Register'
 import Progress from '../views/Progress'
 import SessionHistory from '../views/SessionHistory'
 import Settings from '../views/Settings'
-import { NotificationContainer } from 'react-notifications'
+import { NotificationContainer,NotificationManager } from 'react-notifications'
 
 class App extends Component {
 
@@ -95,10 +95,7 @@ class App extends Component {
   }
 
   deleteLivePokerLocation(id, name, callback) {
-    if (window.confirm(`
-      Deleting this location will also delete all sessions associatied with this location.
-      Are you sure you want to delete?
-      `)) {
+      NotificationManager.success('Location has successfully been deleted')
       axios.post('/api/poker-locations/delete', { id, name })
         .then(res => {
           this.setState(prevState => {
@@ -109,8 +106,6 @@ class App extends Component {
           })
         })
         .catch(err => callback(err))
-    }
-
   }
 
   editLivePokerLocation(id, newName, callback) {
@@ -140,9 +135,7 @@ class App extends Component {
   }
 
   deletePokerSession(id, callback) {
-    if (window.confirm(`
-      Are you sure you want to delete this session?
-      `)) {
+      NotificationManager.success('Session has successfully been deleted')
       axios.post('/api/poker-sessions/delete', { id })
         .then(res => {
           this.setState(prevState => {
@@ -152,7 +145,6 @@ class App extends Component {
           callback(null)
         })
         .catch(err => callback(err))
-    }
   }
 
 
