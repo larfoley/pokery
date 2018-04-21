@@ -29,7 +29,7 @@ class Preferences extends React.Component {
     event.preventDefault()
     this.props.updateUserPreferences(this.state, (err, res) => {
       if (!err) {
-        window.alert("Preferences Updated")
+        NotificationManager.success('Preferences Updated')
       } else {
         window.alert("Error updating preferences")
         console.log(err)
