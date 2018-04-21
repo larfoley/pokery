@@ -5,6 +5,7 @@ import Align from '../../Align'
 import Button from '../../Button'
 import Input from '../../Input'
 import FontAwesome from 'react-fontawesome'
+import { NotificationManager } from 'react-notifications';
 
 
 
@@ -72,15 +73,15 @@ class PokerLocation extends React.Component {
         validationErrors.push("Poker Location must be less that 40 characters.")
       }
       if (validationErrors.length > 0) {
-        return validationErrors.forEach(error => window.alert(error))
+        return validationErrors.forEach(error => NotificationManager.error(error))
       }
 
       this.props.editLivePokerLocation(this.props.id, newName, (err, location) => {
         if (!err) {
           this.setState({editMode: false})
-          window.alert("Poker Location Updated")
+          NotificationManager.success('Poker Location Updated')
         } else {
-          window.alert("There was an error")
+          NotificationManager.error('There was an error')          
           console.log(err);
         }
       });
@@ -91,9 +92,9 @@ class PokerLocation extends React.Component {
   onDeleteLocation() {
     this.props.deleteLivePokerLocation(this.state.id, this.state.name, (err, successful) => {
       if (!err) {
-        window.alert("Location deleted")
+        NotificationManager.success('Location deleted')        
       } else {
-        window.alert("there was an error deleting location")
+        NotificationManager.error('There was an error deleting location')
         console.log(err);
       }
     })
