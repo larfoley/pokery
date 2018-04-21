@@ -31,7 +31,7 @@ class Preferences extends React.Component {
       if (!err) {
         NotificationManager.success('Preferences Updated')
       } else {
-        window.alert("Error updating preferences")
+        NotificationManager.error('Error updating preferences')
         console.log(err)
       }
     })
