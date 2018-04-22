@@ -34,11 +34,15 @@ const EarningsChart = props => {
     total += parseInt(session.amountWon - session.buyIn, 10)
 
     return {
-      name: session.date? months[new Date(session.date).getMonth()].short_name : null,
+      name: session.date ? months[new Date(session.date).getMonth()].short_name : null,
       earnings: total,
+      date: new Date(session.date)
     }
   })
 
+  data.sort((chartData1,chartDate2) => chartData1.date < chartDate2.date ? -1 : chartData1.date > chartDate2.date ?  1: 0);
+
+  console.log(data)
   return (
     data.length ?
     <ChartContainer>
