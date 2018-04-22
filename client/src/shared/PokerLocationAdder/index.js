@@ -33,7 +33,7 @@ class PokerLocationAdder extends React.Component {
       if(!err) {
         NotificationManager.success('Location Added')
       } else {
-        NotificationManager.error(err, "Error adding location")
+        NotificationManager.error("Error adding location")
         console.log("Error", err);
       }
     })
