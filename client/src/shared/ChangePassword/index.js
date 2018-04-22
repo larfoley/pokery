@@ -26,7 +26,7 @@ class ChangePassword extends React.Component {
 
         })
         .catch(err => {
-          NotificationManager.error(err, "Unable to update password. Try again later.")
+          NotificationManager.error("Unable to update password. Try again later.")
  
           console.log(err);
         })
