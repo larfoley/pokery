@@ -17,7 +17,7 @@ const LivePokerGame = props => (
 			         <tbody>
 				         <tr>
 					         <th>Buy In:</th>
-					         <td>{props.buyIn}$</td>
+					         <td>{props.buyIn}{props.currency}</td>
 				         </tr>
 				         <tr>
 					         <th>Date:</th>

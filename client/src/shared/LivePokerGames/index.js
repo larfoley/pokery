@@ -155,7 +155,7 @@ class LivePokerGames extends Component {
                       date={item.date }
                       time={item.time }
                       day={item.day}
-
+                      currency={item.currency}
                     />
                   ))}
                 </div> :
