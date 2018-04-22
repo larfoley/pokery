@@ -16,11 +16,9 @@ class ChangeEmail extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-		if (this.state.email < 1) {
-			NotificationManager.warning('Please enter an email')						
-		} else {
+		
 			NotificationManager.success('Email Updated')		
-		}
+		
 	}
 
 	handleChange(event) {
@@ -41,6 +39,8 @@ class ChangeEmail extends React.Component {
 					value={this.state.email}
 					label="New Email"
 					onChange={this.handleChange}
+					required
+					autoFocus
 				/>
 				<Button type="submit">Update Email</Button>
 			</form>

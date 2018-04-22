@@ -88,7 +88,7 @@ class PokerSession extends React.Component {
       <TableBox>
         <Table>
           {
-            this.state.editMode?
+            this.state.editMode ?
 
               <form>
                 <table>

@@ -53,9 +53,6 @@ class PokerLocationAdder extends React.Component {
   } 
 
 
-
-
-
   render() {
     return (
       <form onSubmit={this.handleSubmit.bind(this)}>
