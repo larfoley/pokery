@@ -36,13 +36,11 @@ router.get('/', (req, res, next) => {
 
 	workMyCollection(casinosURLs)
 	  .then(() => {
-			console.log(dayToFilterBy, 'day');
 			if (dayToFilterBy) {
-	
+
 				tournamentsGames = tournamentsGames.filter(
 					game => game.day.toLowerCase() === dayToFilterBy.toLowerCase()
 				)
-				console.log(tournamentsGames);
 			}
 			res.json(tournamentsGames)
 		})
