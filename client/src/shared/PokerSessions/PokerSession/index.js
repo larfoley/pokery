@@ -60,7 +60,7 @@ class PokerSession extends React.Component {
 
 
   onDeleteSession() {
-    this.props.deletePokerSession(this.state.id, (err) => {
+    this.props.deletePokerSession(this.props.id, (err) => {
       if (err) {
        NotificationManager.error('There was an error deleting session')        
         console.error(err);

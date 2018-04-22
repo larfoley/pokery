@@ -134,6 +134,7 @@ class App extends Component {
   }
 
   deletePokerSession(id, callback) {
+    console.log(id)
       axios.post('/api/poker-sessions/delete', { id })
         .then(res => {
           this.setState(prevState => {
