@@ -1,6 +1,7 @@
 import React from "react"
 import Button from '../Button'
 import Input from '../Input'
+import axios from 'axios'
 import { NotificationManager } from 'react-notifications';
 
 class ChangeEmail extends React.Component {
