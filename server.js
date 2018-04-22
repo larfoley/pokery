@@ -27,7 +27,7 @@ var changePassword = require('./routes/change-password')
 var changeEmail = require('./routes/change-email')
 var updatePreferences = require('./routes/update-preferences')
 var getLocation = require('./routes/get-location')
-
+var getCasinos = require('./routes/casinos')
 
 db.on('error', () => {
   console.error.call(console, 'error connecting to database')
@@ -72,6 +72,7 @@ app.use('/api/poker-sessions', pokerSessions)
 app.use('/api/is-logged-in', isLoggedIn)
 app.use('/api/update-preferences', updatePreferences)
 app.use('/api/get-location', getLocation)
+app.use('/api/casinos', getCasinos)
 app.get('/api/*', (req, res) => {
   res.status(404).json({message: 'resource not found'})
 })
