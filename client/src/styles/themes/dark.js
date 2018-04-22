@@ -12,5 +12,6 @@ export default {
   headings_color: "white",
   box_bgColor: "#4c505d",
   box_color: "white",
-  label_color: "white"
+  label_color: "white",
+  placeholder: "#d3c9c9"
 }

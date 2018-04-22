@@ -19,7 +19,7 @@ class Progress extends React.Component {
     super(props)
     this.state = {
       sessions: props.sessions,
-      filter: "lifetime",
+      filter: "Life Time",
       filteredSessions: props.sessions
     }
     this.onFilterSession = this.onFilterSession.bind(this)
@@ -42,10 +42,10 @@ class Progress extends React.Component {
       ))
 
       this.setState(prevState => {
-        if (value === "thisyear") {
+        if (value === "This Year") {
           prevState.filteredSessions = sessionsThisYear
 
-        } else if (value === "thismonth") {
+        } else if (value === "This Month") {
           prevState.filteredSessions = sessionsThisMonth
 
         } else {
@@ -68,7 +68,7 @@ class Progress extends React.Component {
             <SectionTitle title="Progress"/>
             <Select
               label="Filter Progress"
-              options={['Liftetime', 'thismonth', 'thisyear']}
+              options={['Life Time', 'This Month', 'This Year']}
               onChange={this.onFilterSession}
             />
           </PageSection>
@@ -78,7 +78,7 @@ class Progress extends React.Component {
           </PageSection>
 
           <PageSection>
-            <SectionTitle title="Most Succesfull Game"/>
+            <SectionTitle title="Most Succesful Game"/>
             <MostSuccesfullGame sessions={this.state.filteredSessions} locations={this.props.locations} />
           </PageSection>
 
@@ -88,7 +88,7 @@ class Progress extends React.Component {
           </PageSection>
 
           <PageSection title="">
-            <SectionTitle title="Most Successfull Location"/>
+            <SectionTitle title="Most Successful Location"/>
             <BestLocationsChart sessions={this.state.filteredSessions}/>
           </PageSection>
 

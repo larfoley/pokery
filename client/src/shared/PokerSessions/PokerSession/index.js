@@ -60,7 +60,7 @@ class PokerSession extends React.Component {
 
 
   onDeleteSession() {
-    this.props.deletePokerSession(this.state.id, (err) => {
+    this.props.deletePokerSession(this.props.id, (err) => {
       if (err) {
        NotificationManager.error('There was an error deleting session')        
         console.error(err);
@@ -88,7 +88,7 @@ class PokerSession extends React.Component {
       <TableBox>
         <Table>
           {
-            this.state.editMode?
+            this.state.editMode ?
 
               <form>
                 <table>
@@ -189,7 +189,7 @@ class PokerSession extends React.Component {
                     <td>{this.props.buyIn} &euro;</td>
                   </tr>
                   <tr>
-                    <th>Winnings(including buy in)::</th>
+                    <th>Winnings(including buy in):</th>
                     <td>{this.props.amountWon} &euro;</td>
                   </tr>
                   <tr>

@@ -8,11 +8,16 @@ const Wrapper = styled.div`
 const Input = styled.input`
   width: 100%;
   padding: .7em;
-  border: 2px solid #f5f5f5;
+  border: 2px solid ${props => props.theme.input_border_color};
+  background-color: ${props => props.theme.bg_color};
+  color: ${props => props.theme.text_color};
+  ::-webkit-input-placeholder {
+     color: ${props => props.theme.placeholder};
+  }
 
   &:focus {
     outline: none;
-    border-color: ${props => props.theme.primary_color};
+    border-color: ${props => props.theme.bg_color};
   }
 `
 

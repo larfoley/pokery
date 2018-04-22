@@ -1,6 +1,7 @@
 import React from "react"
 import Button from '../Button'
 import Input from '../Input'
+import axios from 'axios'
 import { NotificationManager } from 'react-notifications';
 
 class ChangeEmail extends React.Component {
@@ -16,11 +17,19 @@ class ChangeEmail extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault()
-		if (this.state.email < 1) {
-			NotificationManager.warning('Please enter an email')						
-		} else {
-			NotificationManager.success('Email Updated')		
-		}
+		
+		const email = this.state.email
+
+      axios.post('/api/change-email', {email})
+        .then(res => {
+					NotificationManager.success('Email Updated')		
+        })
+        .catch(err => {
+          NotificationManager.error("Unable to update email address. Try again later.")
+          console.log(err);
+        })
+
+		
 	}
 
 	handleChange(event) {
@@ -41,6 +50,8 @@ class ChangeEmail extends React.Component {
 					value={this.state.email}
 					label="New Email"
 					onChange={this.handleChange}
+					required
+					autoFocus
 				/>
 				<Button type="submit">Update Email</Button>
 			</form>

@@ -130,13 +130,13 @@ class ProgressOverview extends React.Component {
         <div><strong>Win Rate</strong></div>
         <div>{this.state.winRate}</div>
         <br/>
-        <div><strong>Most Succesfull Location</strong></div>
+        <div><strong>Most Succesful Location</strong></div>
         <div>{this.state.mostSuccesfullLocation}</div>
         <br/>
-        <div><strong>Most Succesfull Variation </strong></div>
+        <div><strong>Most Succesful Variation </strong></div>
         <div>{this.state.mostSuccesfullVariation}</div>
         <br/>
-        <div><strong>Most Succesfull Game Type</strong></div>
+        <div><strong>Most Succesful Game Type</strong></div>
         <div>{this.state.mostSuccesfullGameType}</div>
         <br/>
       </Wrapper>
