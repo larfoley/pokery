@@ -19,7 +19,7 @@ class Progress extends React.Component {
     super(props)
     this.state = {
       sessions: props.sessions,
-      filter: "lifetime",
+      filter: "Life Time",
       filteredSessions: props.sessions
     }
     this.onFilterSession = this.onFilterSession.bind(this)
