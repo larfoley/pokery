@@ -33,7 +33,7 @@ const BestGameTypeChart = props => {
   ]
 
   return (
-    data.length > 0?
+    !(data[0].Cash === 0 && data[0].Tournaments === 0) ?
       <ChartContainer>
         <ResponsiveContainer>
           <BarChart width={730} height={250} data={data}>
