@@ -32,7 +32,7 @@ class AddSessionForm extends React.Component {
         NotificationManager.success("You have added a sesssion", "Session added")
       } else {
         console.log(err);
-        NotificationManager.error('Unable to add session ')
+        NotificationManager.error('Your poker session could not be added. Try again later.')
       }
     })
   }

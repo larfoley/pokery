@@ -82,7 +82,7 @@ class PokerLocation extends React.Component {
           this.setState({editMode: false})
           NotificationManager.success('Poker Location Updated')
         } else {
-          NotificationManager.error('There was an error')          
+          NotificationManager.error('The poker location could not be updated. Try again later.')          
           console.log(err);
         }
       });
@@ -95,7 +95,7 @@ class PokerLocation extends React.Component {
       if (!err) {
         NotificationManager.success('Location deleted')        
       } else {
-        NotificationManager.error('There was an error deleting location')
+        NotificationManager.error('The poker location could not be deleted. Try again later.')
         console.log(err);
       }
     })

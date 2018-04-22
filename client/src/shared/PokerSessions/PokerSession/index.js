@@ -189,7 +189,7 @@ class PokerSession extends React.Component {
                     <td>{this.props.buyIn} &euro;</td>
                   </tr>
                   <tr>
-                    <th>Winnings(including buy in)::</th>
+                    <th>Winnings(including buy in):</th>
                     <td>{this.props.amountWon} &euro;</td>
                   </tr>
                   <tr>
