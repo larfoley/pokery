@@ -17,7 +17,20 @@ class ChangeEmail extends React.Component {
 	handleSubmit(event) {
 		event.preventDefault()
 		
-			NotificationManager.success('Email Updated')		
+		const email = this.state.email
+
+  	if (this.validateUserInput()) {
+      axios.post('/api/change-email', {email})
+        .then(res => {
+					NotificationManager.success('Email Updated')		
+        })
+        .catch(err => {
+          NotificationManager.error("Unable to update email address. Try again later.")
+ 
+          console.log(err);
+        })
+    }
+
 		
 	}
 
