@@ -13,8 +13,8 @@ class LoginForm extends React.Component {
     super(props);
 
     this.state = {
-      username: "admin",
-      password: "password",
+      username: "",
+      password: "",
       error: "",
       authenticated: false,
     };
