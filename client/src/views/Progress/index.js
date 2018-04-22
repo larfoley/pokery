@@ -78,7 +78,7 @@ class Progress extends React.Component {
           </PageSection>
 
           <PageSection>
-            <SectionTitle title="Most Succesfull Game"/>
+            <SectionTitle title="Most Succesful Game"/>
             <MostSuccesfullGame sessions={this.state.filteredSessions} locations={this.props.locations} />
           </PageSection>
 
@@ -88,7 +88,7 @@ class Progress extends React.Component {
           </PageSection>
 
           <PageSection title="">
-            <SectionTitle title="Most Successfull Location"/>
+            <SectionTitle title="Most Successful Location"/>
             <BestLocationsChart sessions={this.state.filteredSessions}/>
           </PageSection>
 
